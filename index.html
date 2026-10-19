@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HRANOL | Přesné obrábění a&nbsp;svařence na zakázku, Rousínov u&nbsp;Brna</title>
+<meta name="description" content="CNC frézování, soustružení, broušení, svařování a montáž podsestav pro výrobce strojů. Od prototypu po série v tisících kusů, cena a termín do 48 hodin.">
+<!-- Ukázkový web fiktivní firmy: vyhledávače ho nemají indexovat. Na ostrém webu tento řádek smazat. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:site_name" content="HRANOL s.r.o.">
+<meta property="og:title" content="HRANOL | Přesné obrábění a svařence na zakázku, Rousínov u Brna">
+<meta property="og:description" content="CNC frézování, soustružení, broušení, svařování a montáž podsestav pro výrobce strojů. Od prototypu po série v tisících kusů, cena a termín do 48 hodin.">
+<meta property="og:url" content="https://stepansynek.com/ukazky/hranol/">
+<meta property="og:image" content="https://stepansynek.com/ukazky/hranol/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100..125,300..700&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"HRANOL s.r.o.","description":"Zakázková výroba přesných dílů a svařenců pro výrobce strojů: CNC frézování, soustružení, broušení, svařování a montáž podsestav.","foundingDate":"1994","email":"poptavky@hranol-obrabeni.cz","telephone":"+420517000100","url":"https://stepansynek.com/ukazky/hranol/","logo":"https://stepansynek.com/ukazky/hranol/assets/brand/hranol-logo.svg","address":{"@type":"PostalAddress","streetAddress":"Průmyslová 1187","postalCode":"683 01","addressLocality":"Rousínov","addressCountry":"CZ"},"areaServed":["CZ","DE","AT"]}</script>
+<script defer src="assets/main.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script defer src="assets/part.js"></script>
+</head>
+<body>
+<a class="skip" href="#obsah">Přeskočit na obsah</a>
+<div class="demo"><p class="wrap">Ukázkový web fiktivní firmy HRANOL. Návrh, texty a&nbsp;kód: <a href="https://stepansynek.com" rel="author">Štěpán Synek</a></p></div>
+<header class="hdr">
+  <div class="wrap hdr__bar">
+    <a class="hdr__brand" href="index.html" aria-label="HRANOL, úvodní stránka"><svg class="logo" viewBox="0 -741 3871 753" aria-hidden="true"><g fill="currentColor"><path d="M0 -729H481L729 -481V0H248L0 -248Z"/><path transform="translate(859 0)" d="M60 0V-729H193V-431H200Q225 -485 277.0 -513.5Q329 -542 391 -542Q437 -542 475.5 -529.0Q514 -516 542.0 -488.5Q570 -461 585.5 -416.0Q601 -371 601 -305V0H467V-280Q467 -332 454.5 -366.5Q442 -401 414.5 -418.5Q387 -436 343 -436Q297 -436 263.5 -415.0Q230 -394 211.5 -359.0Q193 -324 193 -279V0Z M675.0 0V-532H796.0L801.0 -443H806.0Q824.0 -491 864.0 -515.5Q904.0 -540 956.0 -540Q968.0 -540 977.5 -539.5Q987.0 -539 995.0 -537V-414Q987.0 -416 976.0 -416.5Q965.0 -417 954.0 -417Q909.0 -417 877.0 -402.0Q845.0 -387 827.5 -356.5Q810.0 -326 808.0 -281V0Z M1246.0 9Q1193.0 9 1148.5 -10.0Q1104.0 -29 1072.0 -64.5Q1040.0 -100 1023.0 -151.0Q1006.0 -202 1006.0 -266Q1006.0 -352 1036.0 -413.5Q1066.0 -475 1120.5 -508.0Q1175.0 -541 1246.0 -541Q1294.0 -541 1331.5 -528.5Q1369.0 -516 1396.0 -493.0Q1423.0 -470 1436.0 -439H1443.0L1448.0 -532H1574.0V0H1444.0L1442.0 -96H1435.0Q1414.0 -48 1363.5 -19.5Q1313.0 9 1246.0 9ZM1289.0 -96Q1338.0 -96 1371.5 -116.5Q1405.0 -137 1423.0 -170.5Q1441.0 -204 1441.0 -245V-290Q1441.0 -331 1423.0 -364.0Q1405.0 -397 1371.5 -416.5Q1338.0 -436 1291.0 -436Q1245.0 -436 1211.5 -416.0Q1178.0 -396 1159.5 -358.0Q1141.0 -320 1141.0 -266Q1141.0 -214 1159.0 -175.5Q1177.0 -137 1210.0 -116.5Q1243.0 -96 1289.0 -96Z M1659.0 0V-532H1788.0L1792.0 -431H1799.0Q1824.0 -485 1876.5 -513.5Q1929.0 -542 1990.0 -542Q2036.0 -542 2074.5 -529.0Q2113.0 -516 2141.0 -488.5Q2169.0 -461 2184.5 -416.0Q2200.0 -371 2200.0 -305V0H2066.0V-280Q2066.0 -332 2053.5 -366.5Q2041.0 -401 2013.5 -418.5Q1986.0 -436 1942.0 -436Q1896.0 -436 1862.5 -415.0Q1829.0 -394 1810.5 -359.0Q1792.0 -324 1792.0 -279V0Z M2532.0 10Q2467.0 10 2414.0 -9.0Q2361.0 -28 2322.5 -64.0Q2284.0 -100 2263.0 -150.5Q2242.0 -201 2242.0 -266Q2242.0 -350 2278.0 -411.5Q2314.0 -473 2379.0 -507.5Q2444.0 -542 2532.0 -542Q2597.0 -542 2650.0 -523.0Q2703.0 -504 2741.0 -468.0Q2779.0 -432 2800.0 -381.0Q2821.0 -330 2821.0 -266Q2821.0 -183 2785.5 -121.0Q2750.0 -59 2685.5 -24.5Q2621.0 10 2532.0 10ZM2532.0 -97Q2580.0 -97 2614.5 -117.0Q2649.0 -137 2668.0 -175.0Q2687.0 -213 2687.0 -266Q2687.0 -306 2676.0 -337.5Q2665.0 -369 2645.0 -391.0Q2625.0 -413 2596.5 -424.0Q2568.0 -435 2532.0 -435Q2485.0 -435 2450.0 -415.5Q2415.0 -396 2396.0 -358.0Q2377.0 -320 2377.0 -266Q2377.0 -226 2387.5 -194.5Q2398.0 -163 2418.5 -141.5Q2439.0 -120 2467.5 -108.5Q2496.0 -97 2532.0 -97Z M2874.0 0V-729H3008.0V0Z"/></g><path class="logo__cut" d="M523 -729H622L729 -622V-523Z"/></svg></a>
+    <nav class="nav" id="nav" aria-label="Hlavní navigace"><ul><li><a href="vyroba.html" data-nav="vyroba">Výroba</a></li><li><a href="stroje.html" data-nav="stroje">Strojový park</a></li><li><a href="reference.html" data-nav="reference">Reference</a></li><li><a href="o-firme.html" data-nav="o-firme">O&nbsp;firmě</a></li><li class="nav__cta"><a href="poptavka.html" data-nav="poptavka">Poptávka</a></li></ul></nav>
+    <button class="search-btn" type="button" data-palette-open aria-haspopup="dialog" aria-keyshortcuts="Meta+K Control+K">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg>
+      <span>Hledat</span><kbd data-kbd>Ctrl K</kbd>
+    </button>
+    <a class="btn btn--dark btn--sm hdr__cta" href="poptavka.html" data-nav="poptavka">Poptávka</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  </div>
+</header>
+<div id="obsah" tabindex="-1">
+<main data-page="domu">
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <h1 id="hero-title">Přesné díly a&nbsp;svařence pro výrobce strojů.</h1>
+      <p class="lead">Frézujeme, soustružíme, svařujeme a&nbsp;montujeme v&nbsp;Rousínově u&nbsp;Brna. Od jednoho prototypu po série v&nbsp;tisících kusů, s&nbsp;měřicím protokolem ke každé dodávce.</p>
+      <div class="actions">
+        <a class="btn btn--dark" href="poptavka.html">Nahrát výkres</a>
+        <a class="btn btn--line" href="stroje.html">Strojový park</a>
+      </div>
+      <a class="status" href="index.html#kapacita" data-status data-week="3"><span class="status__bars" aria-hidden="true"><i style="--v:96"></i><i style="--v:94"></i><i style="--v:88"></i><i class=is-free style="--v:62"></i><i class=is-free style="--v:55"></i><i class=is-free style="--v:48"></i><i class=is-free style="--v:40"></i><i class=is-free style="--v:35"></i></span><span>Volno na pětiosém frézování od <span data-status-date>9.&nbsp;listopadu</span></span></a>
+    </div>
+
+    <figure class="stage" id="stage">
+      <canvas class="stage__canvas" id="part-canvas" role="img" aria-label="3D model obrobené hliníkové příruby. Tažením ho otočíte."></canvas>
+      <figcaption class="stage__meta">
+        <p class="stage__id"><span>Příruba ložiska</span><span class="stage__no">HR-24-118</span></p>
+        <dl class="stage__specs">
+          <div><dt>Materiál</dt><dd>EN&nbsp;AW-6082&nbsp;T6</dd></div>
+          <div><dt>Otvor</dt><dd>Ø40&nbsp;H7</dd></div>
+          <div><dt>Obrábění</dt><dd>6&nbsp;min 40&nbsp;s</dd></div>
+          <div><dt>Stroj</dt><dd>DMU 65</dd></div>
+        </dl>
+      </figcaption>
+      <p class="stage__hint" aria-hidden="true">Tažením díl otočíte</p>
+    </figure>
+  </div>
+</section>
+
+<section class="clients" aria-label="Pro koho vyrábíme">
+  <div class="wrap">
+    <p>Dodáváme víc než 60&nbsp;výrobcům strojů v&nbsp;Česku, Německu a&nbsp;Rakousku. Balicí linky, zemědělská technika, robotická pracoviště, hydraulika.</p>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="tech-title">
+  <div class="wrap">
+    <div class="sec__head">
+      <h2 id="tech-title">Co pro vás vyrobíme</h2>
+      <a class="more" href="vyroba.html">Celá výroba</a>
+    </div>
+    <div class="techlist" data-techlist>
+      <ul class="techlist__items">
+        <li><a href="vyroba.html#frezovani" data-img="frezovani"><span class="techlist__name">Frézování</span><span class="techlist__spec">3–5&nbsp;os, do 1&nbsp;270&nbsp;×&nbsp;610&nbsp;×&nbsp;720&nbsp;mm</span></a></li>
+        <li><a href="vyroba.html#soustruzeni" data-img="soustruzeni"><span class="techlist__name">Soustružení</span><span class="techlist__spec">Ø&nbsp;430&nbsp;×&nbsp;1&nbsp;100&nbsp;mm</span></a></li>
+        <li><a href="vyroba.html#brouseni" data-img="kotouce"><span class="techlist__name">Broušení</span><span class="techlist__spec">až Ra&nbsp;0,2&nbsp;µm</span></a></li>
+        <li><a href="vyroba.html#svarovani" data-img="svarovani"><span class="techlist__name">Svařování</span><span class="techlist__spec">MIG/MAG, TIG, do 2,5&nbsp;t</span></a></li>
+        <li><a href="vyroba.html#montaz" data-img="montaz"><span class="techlist__name">Montáž podsestav</span><span class="techlist__spec">podle vašeho kusovníku</span></a></li>
+      </ul>
+      <div class="techlist__media" aria-hidden="true">
+        <img class="is-active" data-key="frezovani" src="assets/img/frezovani-900.webp" width="900" height="600" alt="" loading="lazy" decoding="async">
+        <img data-key="soustruzeni" src="assets/img/soustruzeni-900.webp" width="900" height="600" alt="" loading="lazy" decoding="async">
+        <img data-key="kotouce" src="assets/img/kotouce-900.webp" width="900" height="675" alt="" loading="lazy" decoding="async">
+        <img data-key="svarovani" src="assets/img/svarovani-900.webp" width="900" height="1125" alt="" loading="lazy" decoding="async">
+        <img data-key="montaz" src="assets/img/montaz-900.webp" width="900" height="1350" alt="" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--mist" id="kapacita" aria-labelledby="cap-title">
+  <div class="wrap">
+    <div class="sec__head">
+      <div class="sec__intro">
+        <h2 id="cap-title">Volná kapacita</h2>
+        <p>Vytížení výroby na příštích osm týdnů. Kde je volno, zvládneme i&nbsp;krátký termín.</p>
+      </div>
+      <p class="sec__note">Aktualizuje se každý pracovní den v&nbsp;6:00</p>
+    </div>
+    <div class="cap" data-capacity>
+      <div class="table-scroll"><table class="cap__table"><caption class="sr-only">Vytížení výroby podle technologie a&nbsp;týdne v&nbsp;procentech</caption><thead><tr><th scope="col" class="cap__corner">Technologie</th><th scope="col" data-week="0"><span class="cap__wk">T43</span><span class="cap__date">19.&nbsp;10.</span></th><th scope="col" data-week="1"><span class="cap__wk">T44</span><span class="cap__date">26.&nbsp;10.</span></th><th scope="col" data-week="2"><span class="cap__wk">T45</span><span class="cap__date">2.&nbsp;11.</span></th><th scope="col" data-week="3"><span class="cap__wk">T46</span><span class="cap__date">9.&nbsp;11.</span></th><th scope="col" data-week="4"><span class="cap__wk">T47</span><span class="cap__date">16.&nbsp;11.</span></th><th scope="col" data-week="5"><span class="cap__wk">T48</span><span class="cap__date">23.&nbsp;11.</span></th><th scope="col" data-week="6"><span class="cap__wk">T49</span><span class="cap__date">30.&nbsp;11.</span></th><th scope="col" data-week="7"><span class="cap__wk">T50</span><span class="cap__date">7.&nbsp;12.</span></th></tr></thead><tbody><tr><th scope="row"><span class="cap__name">5osé frézování</span><span class="cap__when" data-week="3">volno od 9.&nbsp;11.</span></th><td class="cap__cell" tabindex="0" data-week="0" data-v="96" data-free-h="10"><span class="cap__bar" style="--v:96"></span><span class="sr-only">96&nbsp;%</span></td><td class="cap__cell" tabindex="0" data-week="1" data-v="94" data-free-h="14"><span class="cap__bar" style="--v:94"></span><span class="sr-only">94&nbsp;%</span></td><td class="cap__cell" tabindex="0" data-week="2" data-v="88" data-free-h="29"><span class="cap__bar" style="--v:88"></span><span class="sr-only">88&nbsp;%</span></td><td class="cap__cell is-free" tabindex="0" data-week="3" data-v="62" data-free-h="91"><span class="cap__bar" style="--v:62"></span><span class="sr-only">62&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="4" data-v="55" data-free-h="108"><span class="cap__bar" style="--v:55"></span><span class="sr-only">55&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="5" data-v="48" data-free-h="125"><span class="cap__bar" style="--v:48"></span><span class="sr-only">48&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="6" data-v="40" data-free-h="144"><span class="cap__bar" style="--v:40"></span><span class="sr-only">40&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="7" data-v="35" data-free-h="156"><span class="cap__bar" style="--v:35"></span><span class="sr-only">35&nbsp;%, volno</span></td></tr><tr><th scope="row"><span class="cap__name">3osé frézování</span><span class="cap__when" data-week="2">volno od 2.&nbsp;11.</span></th><td class="cap__cell" tabindex="0" data-week="0" data-v="92" data-free-h="19"><span class="cap__bar" style="--v:92"></span><span class="sr-only">92&nbsp;%</span></td><td class="cap__cell" tabindex="0" data-week="1" data-v="86" data-free-h="34"><span class="cap__bar" style="--v:86"></span><span class="sr-only">86&nbsp;%</span></td><td class="cap__cell is-free" tabindex="0" data-week="2" data-v="71" data-free-h="70"><span class="cap__bar" style="--v:71"></span><span class="sr-only">71&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="3" data-v="66" data-free-h="82"><span class="cap__bar" style="--v:66"></span><span class="sr-only">66&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="4" data-v="60" data-free-h="96"><span class="cap__bar" style="--v:60"></span><span class="sr-only">60&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="5" data-v="52" data-free-h="115"><span class="cap__bar" style="--v:52"></span><span class="sr-only">52&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="6" data-v="45" data-free-h="132"><span class="cap__bar" style="--v:45"></span><span class="sr-only">45&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="7" data-v="38" data-free-h="149"><span class="cap__bar" style="--v:38"></span><span class="sr-only">38&nbsp;%, volno</span></td></tr><tr><th scope="row"><span class="cap__name">Soustružení</span><span class="cap__when" data-week="5">volno od 23.&nbsp;11.</span></th><td class="cap__cell" tabindex="0" data-week="0" data-v="98" data-free-h="6"><span class="cap__bar" style="--v:98"></span><span class="sr-only">98&nbsp;%</span></td><td class="cap__cell" tabindex="0" data-week="1" data-v="97" data-free-h="10"><span class="cap__bar" style="--v:97"></span><span class="sr-only">97&nbsp;%</span></td><td class="cap__cell" tabindex="0" data-week="2" data-v="92" data-free-h="26"><span class="cap__bar" style="--v:92"></span><span class="sr-only">92&nbsp;%</span></td><td class="cap__cell" tabindex="0" data-week="3" data-v="85" data-free-h="48"><span class="cap__bar" style="--v:85"></span><span class="sr-only">85&nbsp;%</span></td><td class="cap__cell" tabindex="0" data-week="4" data-v="80" data-free-h="64"><span class="cap__bar" style="--v:80"></span><span class="sr-only">80&nbsp;%</span></td><td class="cap__cell is-free" tabindex="0" data-week="5" data-v="72" data-free-h="90"><span class="cap__bar" style="--v:72"></span><span class="sr-only">72&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="6" data-v="64" data-free-h="115"><span class="cap__bar" style="--v:64"></span><span class="sr-only">64&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="7" data-v="50" data-free-h="160"><span class="cap__bar" style="--v:50"></span><span class="sr-only">50&nbsp;%, volno</span></td></tr><tr><th scope="row"><span class="cap__name">Broušení</span><span class="cap__when" data-week="3">volno od 9.&nbsp;11.</span></th><td class="cap__cell" tabindex="0" data-week="0" data-v="88" data-free-h="10"><span class="cap__bar" style="--v:88"></span><span class="sr-only">88&nbsp;%</span></td><td class="cap__cell" tabindex="0" data-week="1" data-v="82" data-free-h="14"><span class="cap__bar" style="--v:82"></span><span class="sr-only">82&nbsp;%</span></td><td class="cap__cell" tabindex="0" data-week="2" data-v="78" data-free-h="18"><span class="cap__bar" style="--v:78"></span><span class="sr-only">78&nbsp;%</span></td><td class="cap__cell is-free" tabindex="0" data-week="3" data-v="64" data-free-h="29"><span class="cap__bar" style="--v:64"></span><span class="sr-only">64&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="4" data-v="58" data-free-h="34"><span class="cap__bar" style="--v:58"></span><span class="sr-only">58&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="5" data-v="52" data-free-h="38"><span class="cap__bar" style="--v:52"></span><span class="sr-only">52&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="6" data-v="46" data-free-h="43"><span class="cap__bar" style="--v:46"></span><span class="sr-only">46&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="7" data-v="40" data-free-h="48"><span class="cap__bar" style="--v:40"></span><span class="sr-only">40&nbsp;%, volno</span></td></tr><tr><th scope="row"><span class="cap__name">Svařování</span><span class="cap__when" data-week="4">volno od 16.&nbsp;11.</span></th><td class="cap__cell" tabindex="0" data-week="0" data-v="92" data-free-h="26"><span class="cap__bar" style="--v:92"></span><span class="sr-only">92&nbsp;%</span></td><td class="cap__cell" tabindex="0" data-week="1" data-v="90" data-free-h="32"><span class="cap__bar" style="--v:90"></span><span class="sr-only">90&nbsp;%</span></td><td class="cap__cell" tabindex="0" data-week="2" data-v="86" data-free-h="45"><span class="cap__bar" style="--v:86"></span><span class="sr-only">86&nbsp;%</span></td><td class="cap__cell" tabindex="0" data-week="3" data-v="80" data-free-h="64"><span class="cap__bar" style="--v:80"></span><span class="sr-only">80&nbsp;%</span></td><td class="cap__cell is-free" tabindex="0" data-week="4" data-v="74" data-free-h="83"><span class="cap__bar" style="--v:74"></span><span class="sr-only">74&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="5" data-v="66" data-free-h="109"><span class="cap__bar" style="--v:66"></span><span class="sr-only">66&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="6" data-v="58" data-free-h="134"><span class="cap__bar" style="--v:58"></span><span class="sr-only">58&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="7" data-v="50" data-free-h="160"><span class="cap__bar" style="--v:50"></span><span class="sr-only">50&nbsp;%, volno</span></td></tr><tr><th scope="row"><span class="cap__name">Montáž</span><span class="cap__when" data-week="0">volno od 19.&nbsp;10.</span></th><td class="cap__cell is-free" tabindex="0" data-week="0" data-v="70" data-free-h="48"><span class="cap__bar" style="--v:70"></span><span class="sr-only">70&nbsp;%, volno</span></td><td class="cap__cell" tabindex="0" data-week="1" data-v="78" data-free-h="35"><span class="cap__bar" style="--v:78"></span><span class="sr-only">78&nbsp;%</span></td><td class="cap__cell" tabindex="0" data-week="2" data-v="84" data-free-h="26"><span class="cap__bar" style="--v:84"></span><span class="sr-only">84&nbsp;%</span></td><td class="cap__cell" tabindex="0" data-week="3" data-v="80" data-free-h="32"><span class="cap__bar" style="--v:80"></span><span class="sr-only">80&nbsp;%</span></td><td class="cap__cell is-free" tabindex="0" data-week="4" data-v="72" data-free-h="45"><span class="cap__bar" style="--v:72"></span><span class="sr-only">72&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="5" data-v="64" data-free-h="58"><span class="cap__bar" style="--v:64"></span><span class="sr-only">64&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="6" data-v="56" data-free-h="70"><span class="cap__bar" style="--v:56"></span><span class="sr-only">56&nbsp;%, volno</span></td><td class="cap__cell is-free" tabindex="0" data-week="7" data-v="48" data-free-h="83"><span class="cap__bar" style="--v:48"></span><span class="sr-only">48&nbsp;%, volno</span></td></tr></tbody></table></div>
+      <div class="cap__tip" role="tooltip" hidden><strong></strong><span></span></div>
+      <div class="cap__foot">
+        <ul class="legend">
+          <li><span class="legend__key legend__key--busy" aria-hidden="true"></span>Obsazeno</li>
+          <li><span class="legend__key legend__key--free" aria-hidden="true"></span>Volno v&nbsp;týdnu s&nbsp;vytížením pod 75&nbsp;%</li>
+        </ul>
+        <a class="more" href="poptavka.html">Rezervovat termín</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="feat-title">
+  <div class="wrap feat">
+    <img class="feat__img render" src="assets/img/ref-hvezdice-1600.webp" srcset="assets/img/ref-hvezdice-900.webp 900w, assets/img/ref-hvezdice-1600.webp 1600w" sizes="(min-width: 960px) 55vw, 100vw" width="1600" height="1200" loading="lazy" decoding="async" alt="Hliníková hvězdice z balicí linky s deseti kapsami pro lahve a nábojem s drážkou pro pero.">
+    <div class="feat__text">
+      <p class="feat__client">Výrobce balicích linek, Brno</p>
+      <h2 id="feat-title">Dodací lhůta formátových dílů klesla z&nbsp;devíti týdnů na tři.</h2>
+      <p>Převzali jsme výrobu 1&nbsp;400&nbsp;hliníkových hvězdic a&nbsp;vodítek ročně ve 22&nbsp;variantách od dodavatele z&nbsp;Bavorska. Opakované varianty máme připravené v&nbsp;programech i&nbsp;přípravcích, takže výroba startuje do dvou dnů od objednávky.</p>
+      <a class="more" href="reference.html">Další reference</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--top" aria-labelledby="proc-title">
+  <div class="wrap">
+    <div class="sec__head">
+      <h2 id="proc-title">Od výkresu k&nbsp;dodávce</h2>
+      <a class="more" href="poptavka.html#faq">Časté otázky</a>
+    </div>
+    <ol class="proc">
+      <li><p class="proc__when">1. den</p><h3>Pošlete výkres</h3><p>PDF a&nbsp;ideálně 3D model ve formátu STEP. NDA podepíšeme předem.</p></li>
+      <li><p class="proc__when">do 48&nbsp;hodin</p><h3>Dostanete nabídku</h3><p>Cena za kus, cena přípravy a&nbsp;závazný termín dodání.</p></li>
+      <li><p class="proc__when">2–4&nbsp;týdny</p><h3>Vyrobíme a&nbsp;změříme</h3><p>První kusy každé série kontrolujeme na 3D měřicím stroji.</p></li>
+      <li><p class="proc__when">potvrzený den</p><h3>Dodáme</h3><p>S&nbsp;měřicím protokolem a&nbsp;atestem materiálu, po jižní Moravě vlastní dodávkou.</p></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+</div>
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__cta" data-ftr-cta>
+      <p class="ftr__claim">Máte výkres? Cenu a&nbsp;termín znáte do 48&nbsp;hodin.</p>
+      <a class="btn btn--dark" href="poptavka.html">Nahrát výkres</a>
+    </div>
+    <div class="ftr__grid">
+      <div class="ftr__brand">
+        <a class="hdr__brand" href="index.html" aria-label="HRANOL, úvodní stránka"><svg class="logo" viewBox="0 -741 3871 753" aria-hidden="true"><g fill="currentColor"><path d="M0 -729H481L729 -481V0H248L0 -248Z"/><path transform="translate(859 0)" d="M60 0V-729H193V-431H200Q225 -485 277.0 -513.5Q329 -542 391 -542Q437 -542 475.5 -529.0Q514 -516 542.0 -488.5Q570 -461 585.5 -416.0Q601 -371 601 -305V0H467V-280Q467 -332 454.5 -366.5Q442 -401 414.5 -418.5Q387 -436 343 -436Q297 -436 263.5 -415.0Q230 -394 211.5 -359.0Q193 -324 193 -279V0Z M675.0 0V-532H796.0L801.0 -443H806.0Q824.0 -491 864.0 -515.5Q904.0 -540 956.0 -540Q968.0 -540 977.5 -539.5Q987.0 -539 995.0 -537V-414Q987.0 -416 976.0 -416.5Q965.0 -417 954.0 -417Q909.0 -417 877.0 -402.0Q845.0 -387 827.5 -356.5Q810.0 -326 808.0 -281V0Z M1246.0 9Q1193.0 9 1148.5 -10.0Q1104.0 -29 1072.0 -64.5Q1040.0 -100 1023.0 -151.0Q1006.0 -202 1006.0 -266Q1006.0 -352 1036.0 -413.5Q1066.0 -475 1120.5 -508.0Q1175.0 -541 1246.0 -541Q1294.0 -541 1331.5 -528.5Q1369.0 -516 1396.0 -493.0Q1423.0 -470 1436.0 -439H1443.0L1448.0 -532H1574.0V0H1444.0L1442.0 -96H1435.0Q1414.0 -48 1363.5 -19.5Q1313.0 9 1246.0 9ZM1289.0 -96Q1338.0 -96 1371.5 -116.5Q1405.0 -137 1423.0 -170.5Q1441.0 -204 1441.0 -245V-290Q1441.0 -331 1423.0 -364.0Q1405.0 -397 1371.5 -416.5Q1338.0 -436 1291.0 -436Q1245.0 -436 1211.5 -416.0Q1178.0 -396 1159.5 -358.0Q1141.0 -320 1141.0 -266Q1141.0 -214 1159.0 -175.5Q1177.0 -137 1210.0 -116.5Q1243.0 -96 1289.0 -96Z M1659.0 0V-532H1788.0L1792.0 -431H1799.0Q1824.0 -485 1876.5 -513.5Q1929.0 -542 1990.0 -542Q2036.0 -542 2074.5 -529.0Q2113.0 -516 2141.0 -488.5Q2169.0 -461 2184.5 -416.0Q2200.0 -371 2200.0 -305V0H2066.0V-280Q2066.0 -332 2053.5 -366.5Q2041.0 -401 2013.5 -418.5Q1986.0 -436 1942.0 -436Q1896.0 -436 1862.5 -415.0Q1829.0 -394 1810.5 -359.0Q1792.0 -324 1792.0 -279V0Z M2532.0 10Q2467.0 10 2414.0 -9.0Q2361.0 -28 2322.5 -64.0Q2284.0 -100 2263.0 -150.5Q2242.0 -201 2242.0 -266Q2242.0 -350 2278.0 -411.5Q2314.0 -473 2379.0 -507.5Q2444.0 -542 2532.0 -542Q2597.0 -542 2650.0 -523.0Q2703.0 -504 2741.0 -468.0Q2779.0 -432 2800.0 -381.0Q2821.0 -330 2821.0 -266Q2821.0 -183 2785.5 -121.0Q2750.0 -59 2685.5 -24.5Q2621.0 10 2532.0 10ZM2532.0 -97Q2580.0 -97 2614.5 -117.0Q2649.0 -137 2668.0 -175.0Q2687.0 -213 2687.0 -266Q2687.0 -306 2676.0 -337.5Q2665.0 -369 2645.0 -391.0Q2625.0 -413 2596.5 -424.0Q2568.0 -435 2532.0 -435Q2485.0 -435 2450.0 -415.5Q2415.0 -396 2396.0 -358.0Q2377.0 -320 2377.0 -266Q2377.0 -226 2387.5 -194.5Q2398.0 -163 2418.5 -141.5Q2439.0 -120 2467.5 -108.5Q2496.0 -97 2532.0 -97Z M2874.0 0V-729H3008.0V0Z"/></g><path class="logo__cut" d="M523 -729H622L729 -622V-523Z"/></svg></a>
+        <p>Přesné obrábění a&nbsp;svařence pro výrobce strojů. Rousínov u&nbsp;Brna, od roku 1994.</p>
+      </div>
+      <nav aria-label="Stránky"><h2 class="ftr__h">Stránky</h2><ul><li><a href="index.html">Úvod</a></li><li><a href="vyroba.html">Výroba</a></li><li><a href="stroje.html">Strojový park</a></li><li><a href="reference.html">Reference</a></li><li><a href="o-firme.html">O&nbsp;firmě</a></li><li><a href="poptavka.html">Poptávka</a></li></ul></nav>
+      <div><h2 class="ftr__h">Kontakt</h2><p><a href="tel:+420517000100">+420&nbsp;517&nbsp;000&nbsp;100</a><br><a href="mailto:poptavky@hranol-obrabeni.cz">poptavky@hranol-obrabeni.cz</a><br>Průmyslová 1187, 683&nbsp;01&nbsp;Rousínov</p></div>
+      <div><h2 class="ftr__h">Provoz</h2><p>Výroba Po–Pá 6:00–22:00<br>Kancelář Po–Pá 7:00–15:30</p></div>
+    </div>
+    <div class="ftr__legal">
+      <p>© 2026&nbsp;HRANOL s.r.o.</p>
+      <p>Ukázkový web fiktivní firmy. Návrh, texty a&nbsp;kód <a href="https://stepansynek.com" rel="author">Štěpán Synek</a>. Fotografie provozu Unsplash, rendery dílů vlastní.</p>
+    </div>
+  </div>
+</footer>
+<dialog class="palette" id="palette" aria-label="Hledat na webu">
+  <div class="palette__box">
+    <div class="palette__field">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg>
+      <input id="palette-q" type="text" placeholder="Hledat stroj, materiál, technologii…" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" aria-label="Hledat">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="palette__list" id="palette-list" role="listbox" aria-label="Výsledky"></ul>
+    <p class="palette__empty" id="palette-empty" hidden>Nic jsme nenašli. Zkuste třeba „hliník“, „soustružení“ nebo „DMU“.</p>
+    <p class="palette__foot"><span><kbd>↑</kbd><kbd>↓</kbd> výběr</span><span><kbd>Enter</kbd> otevřít</span></p>
+  </div>
+</dialog>
+<script type="application/json" id="search-index">[{"group": "Stránky", "title": "Úvod", "page": "domu", "anchor": "", "keys": "domů hlavní stránka"}, {"group": "Stránky", "title": "Výroba", "page": "vyroba", "anchor": "", "keys": "technologie služby"}, {"group": "Stránky", "title": "Strojový park", "page": "stroje", "anchor": "", "keys": "stroje vybavení"}, {"group": "Stránky", "title": "Reference", "page": "reference", "anchor": "", "keys": "zakázky případové studie"}, {"group": "Stránky", "title": "O firmě", "page": "o-firme", "anchor": "", "keys": "historie lidé"}, {"group": "Stránky", "title": "Poptávka", "page": "poptavka", "anchor": "", "keys": "nacenění cena výkres kontakt"}, {"group": "Technologie", "title": "Frézování", "page": "vyroba", "anchor": "frezovani", "keys": "cnc 5osé 3osé fréza obrábění hliník skříně"}, {"group": "Technologie", "title": "Soustružení", "page": "vyroba", "anchor": "soustruzeni", "keys": "cnc soustruh hřídel"}, {"group": "Technologie", "title": "Broušení na kulato", "page": "vyroba", "anchor": "brouseni", "keys": "bruska drsnost ra"}, {"group": "Technologie", "title": "Svařování", "page": "vyroba", "anchor": "svarovani", "keys": "mig mag tig svářeč rám"}, {"group": "Technologie", "title": "Montáž podsestav", "page": "vyroba", "anchor": "montaz", "keys": "sestava kompletace"}, {"group": "Technologie", "title": "Povrchové úpravy", "page": "vyroba", "anchor": "upravy", "keys": "elox zinek kalení lakování nikl hliník nitridace"}, {"group": "Technologie", "title": "Materiály", "page": "vyroba", "anchor": "materialy", "keys": "ocel nerez hliník mosaz bronz plast pom peek 7075 6082 1.4301 42crmo4"}, {"group": "Technologie", "title": "Kvalita a dokumentace", "page": "vyroba", "anchor": "kvalita", "keys": "protokol atest iso 3.1"}, {"group": "Nástroje", "title": "Vejde se váš díl?", "page": "stroje", "anchor": "overeni", "keys": "rozměry obálka pracovní prostor"}, {"group": "Nástroje", "title": "Volná kapacita", "page": "domu", "anchor": "kapacita", "keys": "vytížení termín volno týden"}, {"group": "Firma", "title": "Hala", "page": "o-firme", "anchor": "hala", "keys": "půdorys provoz obrobna svařovna měrovna sklad expedice"}, {"group": "Firma", "title": "Lidé a kontakty", "page": "o-firme", "anchor": "lide", "keys": "kalous svobodová hrubý kontakt technik kvalita telefon"}, {"group": "Firma", "title": "Kariéra", "page": "o-firme", "anchor": "kariera", "keys": "práce volná místa operátor svářeč"}, {"group": "Firma", "title": "Certifikace", "page": "o-firme", "anchor": "certifikace", "keys": "iso 9001 3834"}, {"group": "Firma", "title": "Časté otázky", "page": "poptavka", "anchor": "faq", "keys": "nda formáty minimální množství export"}, {"group": "Reference", "title": "Formátové díly z hliníku", "page": "reference", "anchor": "ref-baleni", "keys": "balicí linky hvězdice 7075"}, {"group": "Reference", "title": "Svařované rámy", "page": "reference", "anchor": "ref-ramy", "keys": "zemědělská technika rám s355"}, {"group": "Reference", "title": "Prototypy chapadel", "page": "reference", "anchor": "ref-chapadla", "keys": "robotika chapadlo elox pom"}, {"group": "Reference", "title": "Pístnice a víka válců", "page": "reference", "anchor": "ref-hydraulika", "keys": "hydraulika chrom broušení 42crmo4"}, {"group": "Stroje", "title": "DMG MORI DMU 65 monoBLOCK", "page": "stroje", "anchor": "stroj-dmu65", "keys": "5osé frézování Heidenhain TNC 640, sonda Renishaw"}, {"group": "Stroje", "title": "Hermle C 42 U", "page": "stroje", "anchor": "stroj-hermle", "keys": "5osé frézování paletový zásobník na 12 palet, provoz bez obsluhy"}, {"group": "Stroje", "title": "Kovosvit MAS MCV 1270", "page": "stroje", "anchor": "stroj-mcv1270", "keys": "3osé frézování 4. osa, otočný stůl"}, {"group": "Stroje", "title": "Mazak QUICK TURN 250MY", "page": "stroje", "anchor": "stroj-qt250", "keys": "soustružení osa Y, poháněné nástroje, podavač tyčí do Ø 65 mm"}, {"group": "Stroje", "title": "Kovosvit MAS SP 430 SY", "page": "stroje", "anchor": "stroj-sp430", "keys": "soustružení protivřeteno, osa Y"}, {"group": "Stroje", "title": "Studer S33", "page": "stroje", "anchor": "stroj-s33", "keys": "broušení na kulato vnější i vnitřní broušení"}, {"group": "Stroje", "title": "Fronius TPS 400i", "page": "stroje", "anchor": "stroj-tps400", "keys": "svařování MIG/MAG pulzní svařování, polohovadla do 2,5 t"}, {"group": "Stroje", "title": "Fronius MagicWave 230i", "page": "stroje", "anchor": "stroj-magicwave", "keys": "svařování TIG nerez a hliník"}, {"group": "Stroje", "title": "Zeiss CONTURA 10/12/6", "page": "stroje", "anchor": "stroj-contura", "keys": "3D měření MPE_E 1,8 + L/300 µm, měrovna 20 ± 1 °C"}]</script>
+</body>
+</html>

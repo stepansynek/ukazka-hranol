@@ -1,0 +1,163 @@
+<!-- {"title": "Poptávka | HRANOL", "description": "Pošlete výkres a do 48 hodin dostanete cenu a termín. Poptávku nacení technik, NDA podepíšeme předem."} -->
+<header class="phead">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Drobečková navigace"><a href="@domu">Úvod</a><span aria-hidden="true">/</span><span aria-current="page">Poptávka</span></nav>
+    <h1>Poptávka</h1>
+    <p class="lead">Pošlete výkres a do 48 hodin vám pošleme cenu a termín. Poptávku nacení technik, který rozumí výrobě.</p>
+  </div>
+</header>
+
+<section class="sec sec--tight" aria-label="Formulář poptávky">
+  <div class="wrap rfq-layout">
+    <form class="rfq" id="rfq" novalidate>
+      <ol class="stepper" aria-label="Kroky poptávky">
+        <li class="is-current" aria-current="step"><span class="stepper__no">1</span>Výkresy</li>
+        <li><span class="stepper__no">2</span>Parametry</li>
+        <li><span class="stepper__no">3</span>Kontakt</li>
+      </ol>
+
+      <div class="rfq__summary-err" id="rfq-error" role="alert" tabindex="-1" hidden></div>
+
+      <fieldset class="rfq__step" data-step="0">
+        <legend class="rfq__legend" tabindex="-1">Výkresy a 3D modely</legend>
+        <div class="drop" data-drop>
+          <svg class="drop__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5V4.5M7.5 9 12 4.5 16.5 9M4.5 15v3.5A1.5 1.5 0 0 0 6 20h12a1.5 1.5 0 0 0 1.5-1.5V15"/></svg>
+          <div class="drop__text">
+            <p><label class="drop__pick" for="rfq-files">Vybrat soubory</label> nebo je přetáhněte sem</p>
+            <p class="hint" id="rfq-files-hint">PDF, STEP, IGES, DXF, DWG nebo ZIP, celkem do 25 MB</p>
+          </div>
+          <input class="sr-only" id="rfq-files" type="file" multiple accept=".pdf,.step,.stp,.igs,.iges,.dxf,.dwg,.zip" aria-describedby="rfq-files-hint rfq-files-err" data-file-input>
+        </div>
+        <ul class="files" data-file-list></ul>
+        <p class="field__error" id="rfq-files-err" hidden></p>
+        <p class="hint">Nemáte výkres? Popište díl v dalším kroku, ozveme se.</p>
+        <div class="rfq__nav"><span></span><button class="btn btn--dark" type="button" data-next>Pokračovat</button></div>
+      </fieldset>
+
+      <fieldset class="rfq__step" data-step="1" hidden>
+        <legend class="rfq__legend" tabindex="-1">Parametry zakázky</legend>
+        <div class="form-row">
+          <div class="field">
+            <label for="rfq-qty">Počet kusů</label>
+            <input id="rfq-qty" name="qty" type="text" inputmode="numeric" required aria-describedby="rfq-qty-err" data-sum-source="qty">
+            <p class="field__error" id="rfq-qty-err" hidden>Napište počet kusů. Stačí odhad.</p>
+          </div>
+          <div class="field">
+            <span class="field__label" id="rfq-repeat-label">Opakování</span>
+            <div class="seg seg--field" role="radiogroup" aria-labelledby="rfq-repeat-label">
+              <button type="button" role="radio" aria-checked="true" data-value="jednorázově">Jednorázově</button>
+              <button type="button" role="radio" aria-checked="false" data-value="opakovaně">Opakovaně</button>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="rfq-material">Materiál</label>
+            <select id="rfq-material" name="material" data-sum-source="material">
+              <option value="podle výkresu">Podle výkresu</option>
+              <option>Konstrukční ocel</option>
+              <option>Nerezová ocel</option>
+              <option>Hliníková slitina</option>
+              <option>Mosaz nebo bronz</option>
+              <option>Technický plast</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="rfq-finish">Povrchová úprava</label>
+            <select id="rfq-finish" name="finish" data-sum-source="finish">
+              <option value="bez úpravy">Bez úpravy</option>
+              <option>Elox</option>
+              <option>Zinek</option>
+              <option>Kalení</option>
+              <option>Práškové lakování</option>
+              <option value="jiná">Jiná, upřesním v poznámce</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="rfq-date">Požadovaný termín <span class="opt">nepovinné</span></label>
+          <input id="rfq-date" name="date" type="date" data-sum-source="date" aria-describedby="rfq-date-hint">
+          <p class="hint" id="rfq-date-hint">Kdy máme volno, vidíte v <a href="@domu#kapacita">přehledu kapacity</a>.</p>
+        </div>
+        <div class="field">
+          <label for="rfq-note">Poznámka <span class="opt">nepovinné</span></label>
+          <textarea id="rfq-note" name="note" rows="4" aria-describedby="rfq-note-hint"></textarea>
+          <p class="hint" id="rfq-note-hint">Cokoli, co na výkresu není: kritické rozměry, balení, dodací místo.</p>
+        </div>
+        <div class="rfq__nav"><button class="btn btn--line" type="button" data-back>Zpět</button><button class="btn btn--dark" type="button" data-next>Pokračovat</button></div>
+      </fieldset>
+
+      <fieldset class="rfq__step" data-step="2" hidden>
+        <legend class="rfq__legend" tabindex="-1">Kontakt</legend>
+        <div class="form-row">
+          <div class="field">
+            <label for="rfq-name">Jméno a příjmení</label>
+            <input id="rfq-name" name="name" type="text" autocomplete="name" required aria-describedby="rfq-name-err">
+            <p class="field__error" id="rfq-name-err" hidden>Vyplňte jméno, ať víme, komu odpovědět.</p>
+          </div>
+          <div class="field">
+            <label for="rfq-company">Firma</label>
+            <input id="rfq-company" name="company" type="text" autocomplete="organization" required aria-describedby="rfq-company-err">
+            <p class="field__error" id="rfq-company-err" hidden>Vyplňte název firmy.</p>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="rfq-email">E-mail</label>
+            <input id="rfq-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="rfq-email-err">
+            <p class="field__error" id="rfq-email-err" hidden>Zadejte e-mail ve tvaru jmeno@firma.cz.</p>
+          </div>
+          <div class="field">
+            <label for="rfq-phone">Telefon <span class="opt">nepovinné</span></label>
+            <input id="rfq-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+          </div>
+        </div>
+        <label class="check"><input id="rfq-nda" type="checkbox" data-sum-source="nda"><span>Před zasláním výkresů chci podepsat NDA</span></label>
+        <div class="rfq__nav"><button class="btn btn--line" type="button" data-back>Zpět</button><button class="btn btn--dark" type="submit">Odeslat poptávku</button></div>
+      </fieldset>
+
+      <div class="rfq__done" id="rfq-done" hidden>
+        <svg class="rfq__done-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg>
+        <h2 tabindex="-1" id="rfq-done-title">Poptávka je připravená k odeslání</h2>
+        <p>Na skutečném webu by teď odešla technikovi Janu Kalousovi a vám by přišlo potvrzení e-mailem. Tohle je ukázkový web, takže se nic neodeslalo.</p>
+        <button class="btn btn--line" type="button" id="rfq-reset">Nová poptávka</button>
+      </div>
+    </form>
+
+    <aside class="rfq-aside" aria-label="Shrnutí a kontakt">
+      <div class="summary">
+        <h2 class="summary__title">Shrnutí</h2>
+        <dl>
+          <div><dt>Soubory</dt><dd data-sum="files">žádné</dd></div>
+          <div><dt>Počet kusů</dt><dd data-sum="qty">—</dd></div>
+          <div><dt>Opakování</dt><dd data-sum="repeat">jednorázově</dd></div>
+          <div><dt>Materiál</dt><dd data-sum="material">podle výkresu</dd></div>
+          <div><dt>Úprava</dt><dd data-sum="finish">bez úpravy</dd></div>
+          <div><dt>Termín</dt><dd data-sum="date">—</dd></div>
+          <div><dt>NDA</dt><dd data-sum="nda">ne</dd></div>
+        </dl>
+      </div>
+      <div class="contact-card">
+        <span class="people__avatar" aria-hidden="true">JK</span>
+        <div>
+          <p class="contact-card__name">Ing. Jan Kalous</p>
+          <p class="contact-card__role">nacení vaši zakázku</p>
+        </div>
+        <p class="contact-card__lines"><a href="tel:+420517000100">+420 517 000 100</a><br><a href="mailto:poptavky@hranol-obrabeni.cz">poptavky@hranol-obrabeni.cz</a></p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="sec sec--top" id="faq" aria-labelledby="faq-title">
+  <div class="wrap split">
+    <h2 id="faq-title">Časté otázky</h2>
+    <div class="faq">
+      <details id="faq-formaty"><summary>Jaké formáty výkresů přijímáte?</summary><p>PDF výkres s tolerancemi a k němu ideálně 3D model ve formátu STEP. Zvládneme i IGES, DXF a DWG. Větší data pošlete přes úschovnu na poptavky@hranol-obrabeni.cz.</p></details>
+      <details id="faq-mnozstvi"><summary>Jaké je minimální množství?</summary><p>Žádné. Vyrobíme i jeden prototyp. U kusových zakázek tvoří větší část ceny příprava, proto ji v nabídce uvádíme zvlášť.</p></details>
+      <details id="faq-nda"><summary>Podepíšete NDA?</summary><p>Ano, ještě před zasláním dokumentace. Použijeme vaši smlouvu, nebo pošleme vlastní vzor.</p></details>
+      <details id="faq-lhuta"><summary>Jak rychle dostanu nabídku?</summary><p>Do 48 hodin v pracovní dny. U složitých sestav nebo neúplných výkresů se technik ozve dřív s doplňujícími otázkami.</p></details>
+      <details id="faq-export"><summary>Dodáváte i do zahraničí?</summary><p>Ano, pravidelně do Německa a Rakouska. Dokumentaci a fakturaci připravíme v němčině nebo angličtině.</p></details>
+    </div>
+  </div>
+</section>

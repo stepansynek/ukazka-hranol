@@ -1,0 +1,109 @@
+<!-- {"title": "HRANOL | Přesné obrábění a svařence na zakázku, Rousínov u Brna", "description": "CNC frézování, soustružení, broušení, svařování a montáž podsestav pro výrobce strojů. Od prototypu po série v tisících kusů, cena a termín do 48 hodin."} -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <h1 id="hero-title">Přesné díly a svařence pro výrobce strojů.</h1>
+      <p class="lead">Frézujeme, soustružíme, svařujeme a montujeme v Rousínově u Brna. Od jednoho prototypu po série v tisících kusů, s měřicím protokolem ke každé dodávce.</p>
+      <div class="actions">
+        <a class="btn btn--dark" href="@poptavka">Nahrát výkres</a>
+        <a class="btn btn--line" href="@stroje">Strojový park</a>
+      </div>
+      {{status}}
+    </div>
+
+    <figure class="stage" id="stage">
+      <canvas class="stage__canvas" id="part-canvas" role="img" aria-label="3D model obrobené hliníkové příruby. Tažením ho otočíte."></canvas>
+      <figcaption class="stage__meta">
+        <p class="stage__id"><span>Příruba ložiska</span><span class="stage__no">HR-24-118</span></p>
+        <dl class="stage__specs">
+          <div><dt>Materiál</dt><dd>EN AW-6082 T6</dd></div>
+          <div><dt>Otvor</dt><dd>Ø40 H7</dd></div>
+          <div><dt>Obrábění</dt><dd>6 min 40 s</dd></div>
+          <div><dt>Stroj</dt><dd>DMU 65</dd></div>
+        </dl>
+      </figcaption>
+      <p class="stage__hint" aria-hidden="true">Tažením díl otočíte</p>
+    </figure>
+  </div>
+</section>
+
+<section class="clients" aria-label="Pro koho vyrábíme">
+  <div class="wrap">
+    <p>Dodáváme víc než 60 výrobcům strojů v Česku, Německu a Rakousku. Balicí linky, zemědělská technika, robotická pracoviště, hydraulika.</p>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="tech-title">
+  <div class="wrap">
+    <div class="sec__head">
+      <h2 id="tech-title">Co pro vás vyrobíme</h2>
+      <a class="more" href="@vyroba">Celá výroba</a>
+    </div>
+    <div class="techlist" data-techlist>
+      <ul class="techlist__items">
+        <li><a href="@vyroba#frezovani" data-img="frezovani"><span class="techlist__name">Frézování</span><span class="techlist__spec">3–5 os, do 1 270 × 610 × 720 mm</span></a></li>
+        <li><a href="@vyroba#soustruzeni" data-img="soustruzeni"><span class="techlist__name">Soustružení</span><span class="techlist__spec">Ø 430 × 1 100 mm</span></a></li>
+        <li><a href="@vyroba#brouseni" data-img="kotouce"><span class="techlist__name">Broušení</span><span class="techlist__spec">až Ra 0,2 µm</span></a></li>
+        <li><a href="@vyroba#svarovani" data-img="svarovani"><span class="techlist__name">Svařování</span><span class="techlist__spec">MIG/MAG, TIG, do 2,5 t</span></a></li>
+        <li><a href="@vyroba#montaz" data-img="montaz"><span class="techlist__name">Montáž podsestav</span><span class="techlist__spec">podle vašeho kusovníku</span></a></li>
+      </ul>
+      <div class="techlist__media" aria-hidden="true">
+        <img class="is-active" data-key="frezovani" src="assets/img/frezovani-900.webp" width="900" height="600" alt="" loading="lazy" decoding="async">
+        <img data-key="soustruzeni" src="assets/img/soustruzeni-900.webp" width="900" height="600" alt="" loading="lazy" decoding="async">
+        <img data-key="kotouce" src="assets/img/kotouce-900.webp" width="900" height="675" alt="" loading="lazy" decoding="async">
+        <img data-key="svarovani" src="assets/img/svarovani-900.webp" width="900" height="1125" alt="" loading="lazy" decoding="async">
+        <img data-key="montaz" src="assets/img/montaz-900.webp" width="900" height="1350" alt="" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--mist" id="kapacita" aria-labelledby="cap-title">
+  <div class="wrap">
+    <div class="sec__head">
+      <div class="sec__intro">
+        <h2 id="cap-title">Volná kapacita</h2>
+        <p>Vytížení výroby na příštích osm týdnů. Kde je volno, zvládneme i krátký termín.</p>
+      </div>
+      <p class="sec__note">Aktualizuje se každý pracovní den v 6:00</p>
+    </div>
+    <div class="cap" data-capacity>
+      <div class="table-scroll">{{capacity}}</div>
+      <div class="cap__tip" role="tooltip" hidden><strong></strong><span></span></div>
+      <div class="cap__foot">
+        <ul class="legend">
+          <li><span class="legend__key legend__key--busy" aria-hidden="true"></span>Obsazeno</li>
+          <li><span class="legend__key legend__key--free" aria-hidden="true"></span>Volno v týdnu s vytížením pod 75 %</li>
+        </ul>
+        <a class="more" href="@poptavka">Rezervovat termín</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="feat-title">
+  <div class="wrap feat">
+    <img class="feat__img render" src="assets/img/ref-hvezdice-1600.webp" srcset="assets/img/ref-hvezdice-900.webp 900w, assets/img/ref-hvezdice-1600.webp 1600w" sizes="(min-width: 960px) 55vw, 100vw" width="1600" height="1200" loading="lazy" decoding="async" alt="Hliníková hvězdice z balicí linky s deseti kapsami pro lahve a nábojem s drážkou pro pero.">
+    <div class="feat__text">
+      <p class="feat__client">Výrobce balicích linek, Brno</p>
+      <h2 id="feat-title">Dodací lhůta formátových dílů klesla z devíti týdnů na tři.</h2>
+      <p>Převzali jsme výrobu 1 400 hliníkových hvězdic a vodítek ročně ve 22 variantách od dodavatele z Bavorska. Opakované varianty máme připravené v programech i přípravcích, takže výroba startuje do dvou dnů od objednávky.</p>
+      <a class="more" href="@reference">Další reference</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--top" aria-labelledby="proc-title">
+  <div class="wrap">
+    <div class="sec__head">
+      <h2 id="proc-title">Od výkresu k dodávce</h2>
+      <a class="more" href="@poptavka#faq">Časté otázky</a>
+    </div>
+    <ol class="proc">
+      <li><p class="proc__when">1. den</p><h3>Pošlete výkres</h3><p>PDF a ideálně 3D model ve formátu STEP. NDA podepíšeme předem.</p></li>
+      <li><p class="proc__when">do 48 hodin</p><h3>Dostanete nabídku</h3><p>Cena za kus, cena přípravy a závazný termín dodání.</p></li>
+      <li><p class="proc__when">2–4 týdny</p><h3>Vyrobíme a změříme</h3><p>První kusy každé série kontrolujeme na 3D měřicím stroji.</p></li>
+      <li><p class="proc__when">potvrzený den</p><h3>Dodáme</h3><p>S měřicím protokolem a atestem materiálu, po jižní Moravě vlastní dodávkou.</p></li>
+    </ol>
+  </div>
+</section>

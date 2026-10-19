@@ -1,0 +1,4 @@
+.DS_Store
+__pycache__/
+# náhled v jednom souboru z build.py --spa
+nahled.html
