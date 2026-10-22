@@ -24,10 +24,11 @@ FILES = {"domu": "index.html", "vyroba": "vyroba.html", "stroje": "stroje.html",
          "reference": "reference.html", "o-firme": "o-firme.html", "poptavka": "poptavka.html"}
 NAV = [("vyroba", "Výroba"), ("stroje", "Strojový park"), ("reference", "Reference"), ("o-firme", "O firmě")]
 
-FONTS = "https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@100..125,300..700&display=swap"
-THREE = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+# Písmo Archivo a three.js jsou v assets/, web nenačítá nic z cizích serverů.
+FONTS = ["assets/fonts/archivo-latin.woff2", "assets/fonts/archivo-latin-ext.woff2"]
+THREE = "assets/vendor/three.min.js"
 # Kde web poběží (README, sekce Přidání do portfolia). Potřebují ho og:image a JSON-LD, které chtějí plné adresy.
-BASE_URL = "https://stepansynek.com/ukazky/hranol/"
+BASE_URL = "https://stepansynek.com/ukazka-hranol/"
 
 # ---------------------------------------------------------------- data
 
@@ -238,13 +239,14 @@ def hall_svg(portrait):
     for zid, name, x, y, w, h, area, ppl, _, land, tall in ZONES:
         rx, ry, rw, rh = tr(x, y, w, h)
         lx, ly = tall if portrait else land
-        out.append(f'<g class="hall__zone" data-zone="{zid}"><rect class="hall__area" x="{rx * k}" y="{ry * k}" width="{rw * k}" height="{rh * k}"/>')
+        out.append(f'<g class="hall__zone" data-zone="{zid}"><rect class="hall__area" x="{rx * k + 4}" y="{ry * k + 4}" '
+                   f'width="{rw * k - 8}" height="{rh * k - 8}"/>')
         for mid, label, ix, iy, iw, ih in HALL_ITEMS:
             if zone_of(ix, iy) != zid:
                 continue
             bx, by, bw, bh = tr(ix, iy, iw, ih)
             cls = "hall__machine" if mid else ("hall__fixture" if label else "hall__rack")
-            rect = f'<rect class="{cls}" x="{bx * k}" y="{by * k}" width="{bw * k}" height="{bh * k}" rx="3"/>'
+            rect = f'<rect class="{cls}" x="{bx * k}" y="{by * k}" width="{bw * k}" height="{bh * k}"/>'
             if mid:
                 text = (f'<text x="{(bx + bw / 2) * k}" y="{(by + bh) * k + fs_item * k * 1.35}" text-anchor="middle" '
                         f'font-size="{fs_item * k}">{label}</text>') if fs_item else ""
@@ -297,34 +299,42 @@ def logo_svg(label="HRANOL"):
 
 
 def header():
+    """Čelní panel stánku: logo, navigace, hledání a výzva k poptávce."""
     items = "".join(f'<li><a href="@{pid}" data-nav="{pid}">{label}</a></li>' for pid, label in NAV)
-    return f'''<header class="hdr">
-  <div class="wrap hdr__bar">
-    <a class="hdr__brand" href="@domu" aria-label="HRANOL, úvodní stránka">{logo_svg("")}</a>
+    return f'''<header class="fascia">
+  <div class="stand fascia__bar">
+    <a class="fascia__brand" href="@domu" aria-label="HRANOL, úvodní stránka">{logo_svg("")}</a>
     <nav class="nav" id="nav" aria-label="Hlavní navigace"><ul>{items}<li class="nav__cta"><a href="@poptavka" data-nav="poptavka">Poptávka</a></li></ul></nav>
-    <button class="search-btn" type="button" data-palette-open aria-haspopup="dialog" aria-keyshortcuts="Meta+K Control+K">
-      <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg>
-      <span>Hledat</span><kbd data-kbd>Ctrl K</kbd>
+    <button class="search-btn" type="button" data-palette-open aria-haspopup="dialog" aria-keyshortcuts="Meta+K Control+K" aria-label="Hledat na webu">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m12.5 12.5 5 5"/></svg>
+      <span class="search-btn__label">Hledat</span><kbd data-kbd>Ctrl K</kbd>
     </button>
-    <a class="btn btn--dark btn--sm hdr__cta" href="@poptavka" data-nav="poptavka">Poptávka</a>
+    <a class="btn btn--ink btn--sm fascia__cta" href="@poptavka" data-nav="poptavka">Poptávka</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
   </div>
 </header>'''
 
 
 def footer(page=None):
-    """Na stránce poptávky výzva k nahrání výkresu chybí, formulář je hned nad ní."""
+    """Závěrečná stěna s výzvou k nahrání výkresu a pod ní patička. Na stránce poptávky stěna chybí, formulář je hned nad ní."""
     pages = "".join(f'<li><a href="@{pid}">{label}</a></li>' for pid, label in [("domu", "Úvod")] + NAV + [("poptavka", "Poptávka")])
-    cta = "" if page == "poptavka" else '''
-    <div class="ftr__cta" data-ftr-cta>
-      <p class="ftr__claim">Máte výkres? Cenu a termín znáte do 48 hodin.</p>
-      <a class="btn btn--dark" href="@poptavka">Nahrát výkres</a>
-    </div>'''
-    return f'''<footer class="ftr">
-  <div class="wrap">{cta}
+    cta = "" if page == "poptavka" else '''<section class="close" aria-labelledby="close-title" data-ftr-cta>
+  <div class="stand">
+    <div class="wall close__wall">
+      <div class="panel panel--2 close__claim"><h2 class="letter close__title" id="close-title">Máte výkres? Cenu a termín znáte do 48 hodin.</h2></div>
+      <div class="panel close__act">
+        <a class="btn btn--ink" href="@poptavka">Nahrát výkres</a>
+        <p>Nebo zavolejte technikovi na <a href="tel:+420517000100">+420 517 000 100</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+'''
+    return f'''{cta}<footer class="ftr">
+  <div class="stand stand--inset">
     <div class="ftr__grid">
       <div class="ftr__brand">
-        <a class="hdr__brand" href="@domu" aria-label="HRANOL, úvodní stránka">{logo_svg("")}</a>
+        <a class="fascia__brand" href="@domu" aria-label="HRANOL, úvodní stránka">{logo_svg("")}</a>
         <p>Přesné obrábění a svařence pro výrobce strojů. Rousínov u Brna, od roku 1994.</p>
       </div>
       <nav aria-label="Stránky"><h2 class="ftr__h">Stránky</h2><ul>{pages}</ul></nav>
@@ -344,11 +354,10 @@ PALETTE = '''<dialog class="palette" id="palette" aria-label="Hledat na webu">
     <div class="palette__field">
       <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg>
       <input id="palette-q" type="text" placeholder="Hledat stroj, materiál, technologii…" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" aria-label="Hledat">
-      <kbd>Esc</kbd>
     </div>
     <ul class="palette__list" id="palette-list" role="listbox" aria-label="Výsledky"></ul>
     <p class="palette__empty" id="palette-empty" hidden>Nic jsme nenašli. Zkuste třeba „hliník“, „soustružení“ nebo „DMU“.</p>
-    <p class="palette__foot"><span><kbd>↑</kbd><kbd>↓</kbd> výběr</span><span><kbd>Enter</kbd> otevřít</span></p>
+    <p class="palette__foot"><span><kbd>↑</kbd> <kbd>↓</kbd> výběr</span><span><kbd>Enter</kbd> otevřít</span><span><kbd>Esc</kbd> zavřít</span></p>
   </div>
 </dialog>'''
 
@@ -402,7 +411,7 @@ def czech_nbsp(document):
 
 def chrome(mains, page=None):
     return (f'<a class="skip" href="#obsah">Přeskočit na obsah</a>\n'
-            f'<div class="demo"><p class="wrap">Ukázkový web fiktivní firmy HRANOL. Návrh, texty a kód: '
+            f'<div class="demo"><p class="stand stand--inset">Ukázkový web fiktivní firmy HRANOL. Návrh, texty a kód: '
             f'<a href="https://stepansynek.com" rel="author">Štěpán Synek</a></p></div>\n'
             f'{header()}\n<div id="obsah" tabindex="-1">\n{mains}\n</div>\n{footer(page)}\n{PALETTE}\n{search_json()}')
 
@@ -420,6 +429,7 @@ def build_static():
         page = mark_current(chrome(main, pid), pid)
         head_extra = JSONLD if pid == "domu" else ""
         scripts = f'<script defer src="{THREE}"></script>\n<script defer src="assets/part.js"></script>' if pid == "domu" else ""
+        preload = "\n".join(f'<link rel="preload" href="{f}" as="font" type="font/woff2" crossorigin>' for f in FONTS)
         document = f'''<!doctype html>
 <html lang="cs">
 <head>
@@ -443,9 +453,7 @@ def build_static():
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{FONTS}">
+{preload}
 <link rel="stylesheet" href="assets/styles.css">
 {head_extra}
 <script defer src="assets/main.js"></script>
@@ -466,7 +474,7 @@ def build_spa(out):
         meta, body = read_page(pid)
         hidden = "" if pid == "domu" else " hidden"
         mains.append(f'<main data-page="{pid}" data-title="{html.escape(meta["title"])}"{hidden}>\n{body}\n</main>')
-    css = (ROOT / "assets/styles.css").read_text(encoding="utf-8")
+    css = (ROOT / "assets/styles.css").read_text(encoding="utf-8").replace('url("fonts/', 'url("assets/fonts/')
     js = (ROOT / "assets/main.js").read_text(encoding="utf-8")
     part = (ROOT / "assets/part.js").read_text(encoding="utf-8")
     page = mark_current(chrome("\n".join(mains)), "domu")
@@ -474,9 +482,6 @@ def build_spa(out):
 <title>HRANOL přesné obrábění</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Ukázkový web fiktivní strojírenské firmy HRANOL s.r.o. Návrh, texty a kód: Štěpán Synek.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{FONTS}">
 <style>
 {css}
 </style>

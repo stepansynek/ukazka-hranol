@@ -2,3 +2,9 @@
 __pycache__/
 # náhled v jednom souboru z build.py --spa
 nahled.html
+
+# pracovní soubory návrhu (snímky, rozhodovací stránky)
+.impeccable/review/
+.impeccable/questions/
+.impeccable/mocks/
+.impeccable/*.html

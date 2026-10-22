@@ -1,15 +1,21 @@
 <!-- {"title": "Poptávka | HRANOL", "description": "Pošlete výkres a do 48 hodin dostanete cenu a termín. Poptávku nacení technik, NDA podepíšeme předem."} -->
-<header class="phead">
-  <div class="wrap">
-    <nav class="crumbs" aria-label="Drobečková navigace"><a href="@domu">Úvod</a><span aria-hidden="true">/</span><span aria-current="page">Poptávka</span></nav>
-    <h1>Poptávka</h1>
-    <p class="lead">Pošlete výkres a do 48 hodin vám pošleme cenu a termín. Poptávku nacení technik, který rozumí výrobě.</p>
+<header class="phead phead--counter">
+  <div class="stand">
+    <div class="wall wall--nobeam phead__wall">
+      <div class="panel panel--2 phead__main">
+        <nav class="crumbs" aria-label="Drobečková navigace"><a href="@domu">Úvod</a><span aria-hidden="true">/</span><span aria-current="page">Poptávka</span></nav>
+        <h1 class="letter">Poptávka</h1>
+      </div>
+      <div class="panel phead__side">
+        <p class="lead">Pošlete výkres a do 48 hodin vám pošleme cenu a termín. Poptávku nacení technik, který rozumí výrobě.</p>
+      </div>
+    </div>
   </div>
 </header>
 
-<section class="sec sec--tight" aria-label="Formulář poptávky">
-  <div class="wrap rfq-layout">
-    <form class="rfq" id="rfq" novalidate>
+<section class="front" aria-label="Formulář poptávky">
+  <div class="stand stand--inset rfq-layout">
+    <form class="counter rfq" id="rfq" novalidate>
       <ol class="stepper" aria-label="Kroky poptávky">
         <li class="is-current" aria-current="step"><span class="stepper__no">1</span>Výkresy</li>
         <li><span class="stepper__no">2</span>Parametry</li>
@@ -20,18 +26,19 @@
 
       <fieldset class="rfq__step" data-step="0">
         <legend class="rfq__legend" tabindex="-1">Výkresy a 3D modely</legend>
+        <p class="rfq__carried" data-carried hidden>Výkresy, které jste už nahráli, tu na vás čekají.</p>
         <div class="drop" data-drop>
-          <svg class="drop__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5V4.5M7.5 9 12 4.5 16.5 9M4.5 15v3.5A1.5 1.5 0 0 0 6 20h12a1.5 1.5 0 0 0 1.5-1.5V15"/></svg>
+          <svg class="drop__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5V4.5M7.5 9 12 4.5 16.5 9M4.5 15v4.5h15V15"/></svg>
           <div class="drop__text">
-            <p><label class="drop__pick" for="rfq-files">Vybrat soubory</label> nebo je přetáhněte sem</p>
-            <p class="hint" id="rfq-files-hint">PDF, STEP, IGES, DXF, DWG nebo ZIP, celkem do 25 MB</p>
+            <p class="drop__title"><label class="drop__pick" for="rfq-files">Vybrat soubory</label> nebo je přetáhněte sem</p>
+            <p class="drop__hint" id="rfq-files-hint">PDF, STEP, IGES, DXF, DWG nebo ZIP, celkem do 25 MB</p>
           </div>
           <input class="sr-only" id="rfq-files" type="file" multiple accept=".pdf,.step,.stp,.igs,.iges,.dxf,.dwg,.zip" aria-describedby="rfq-files-hint rfq-files-err" data-file-input>
         </div>
         <ul class="files" data-file-list></ul>
         <p class="field__error" id="rfq-files-err" hidden></p>
         <p class="hint">Nemáte výkres? Popište díl v dalším kroku, ozveme se.</p>
-        <div class="rfq__nav"><span></span><button class="btn btn--dark" type="button" data-next>Pokračovat</button></div>
+        <div class="rfq__nav"><span></span><button class="btn btn--sign" type="button" data-next>Pokračovat</button></div>
       </fieldset>
 
       <fieldset class="rfq__step" data-step="1" hidden>
@@ -84,7 +91,7 @@
           <textarea id="rfq-note" name="note" rows="4" aria-describedby="rfq-note-hint"></textarea>
           <p class="hint" id="rfq-note-hint">Cokoli, co na výkresu není: kritické rozměry, balení, dodací místo.</p>
         </div>
-        <div class="rfq__nav"><button class="btn btn--line" type="button" data-back>Zpět</button><button class="btn btn--dark" type="button" data-next>Pokračovat</button></div>
+        <div class="rfq__nav"><button class="btn btn--line" type="button" data-back>Zpět</button><button class="btn btn--sign" type="button" data-next>Pokračovat</button></div>
       </fieldset>
 
       <fieldset class="rfq__step" data-step="2" hidden>
@@ -113,19 +120,19 @@
           </div>
         </div>
         <label class="check"><input id="rfq-nda" type="checkbox" data-sum-source="nda"><span>Před zasláním výkresů chci podepsat NDA</span></label>
-        <div class="rfq__nav"><button class="btn btn--line" type="button" data-back>Zpět</button><button class="btn btn--dark" type="submit">Odeslat poptávku</button></div>
+        <div class="rfq__nav"><button class="btn btn--line" type="button" data-back>Zpět</button><button class="btn btn--sign" type="submit">Odeslat poptávku</button></div>
       </fieldset>
 
       <div class="rfq__done" id="rfq-done" hidden>
-        <svg class="rfq__done-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg>
-        <h2 tabindex="-1" id="rfq-done-title">Poptávka je připravená k odeslání</h2>
+        <svg class="rfq__done-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+        <h2 class="letter rfq__done-title" tabindex="-1" id="rfq-done-title">Poptávka je připravená k odeslání</h2>
         <p>Na skutečném webu by teď odešla technikovi Janu Kalousovi a vám by přišlo potvrzení e-mailem. Tohle je ukázkový web, takže se nic neodeslalo.</p>
         <button class="btn btn--line" type="button" id="rfq-reset">Nová poptávka</button>
       </div>
     </form>
 
     <aside class="rfq-aside" aria-label="Shrnutí a kontakt">
-      <div class="summary">
+      <div class="counter summary">
         <h2 class="summary__title">Shrnutí</h2>
         <dl>
           <div><dt>Soubory</dt><dd data-sum="files">žádné</dd></div>
@@ -138,7 +145,7 @@
         </dl>
       </div>
       <div class="contact-card">
-        <span class="people__avatar" aria-hidden="true">JK</span>
+        <span class="people__initials" aria-hidden="true">JK</span>
         <div>
           <p class="contact-card__name">Ing. Jan Kalous</p>
           <p class="contact-card__role">nacení vaši zakázku</p>
@@ -149,15 +156,19 @@
   </div>
 </section>
 
-<section class="sec sec--top" id="faq" aria-labelledby="faq-title">
-  <div class="wrap split">
-    <h2 id="faq-title">Časté otázky</h2>
-    <div class="faq">
-      <details id="faq-formaty"><summary>Jaké formáty výkresů přijímáte?</summary><p>PDF výkres s tolerancemi a k němu ideálně 3D model ve formátu STEP. Zvládneme i IGES, DXF a DWG. Větší data pošlete přes úschovnu na poptavky@hranol-obrabeni.cz.</p></details>
-      <details id="faq-mnozstvi"><summary>Jaké je minimální množství?</summary><p>Žádné. Vyrobíme i jeden prototyp. U kusových zakázek tvoří větší část ceny příprava, proto ji v nabídce uvádíme zvlášť.</p></details>
-      <details id="faq-nda"><summary>Podepíšete NDA?</summary><p>Ano, ještě před zasláním dokumentace. Použijeme vaši smlouvu, nebo pošleme vlastní vzor.</p></details>
-      <details id="faq-lhuta"><summary>Jak rychle dostanu nabídku?</summary><p>Do 48 hodin v pracovní dny. U složitých sestav nebo neúplných výkresů se technik ozve dřív s doplňujícími otázkami.</p></details>
-      <details id="faq-export"><summary>Dodáváte i do zahraničí?</summary><p>Ano, pravidelně do Německa a Rakouska. Dokumentaci a fakturaci připravíme v němčině nebo angličtině.</p></details>
+<section class="sec" id="faq" aria-labelledby="faq-title">
+  <div class="stand">
+    <div class="wall wall--white split">
+      <div class="panel split__head">
+        <h2 class="letter split__title" id="faq-title">Časté otázky</h2>
+      </div>
+      <div class="panel panel--2 faq">
+        <details id="faq-formaty"><summary>Jaké formáty výkresů přijímáte?</summary><p>PDF výkres s tolerancemi a k němu ideálně 3D model ve formátu STEP. Zvládneme i IGES, DXF a DWG. Větší data pošlete přes úschovnu na poptavky@hranol-obrabeni.cz.</p></details>
+        <details id="faq-mnozstvi"><summary>Jaké je minimální množství?</summary><p>Žádné. Vyrobíme i jeden prototyp. U kusových zakázek tvoří větší část ceny příprava, proto ji v nabídce uvádíme zvlášť.</p></details>
+        <details id="faq-nda"><summary>Podepíšete NDA?</summary><p>Ano, ještě před zasláním dokumentace. Použijeme vaši smlouvu, nebo pošleme vlastní vzor.</p></details>
+        <details id="faq-lhuta"><summary>Jak rychle dostanu nabídku?</summary><p>Do 48 hodin v pracovní dny. U složitých sestav nebo neúplných výkresů se technik ozve dřív s doplňujícími otázkami.</p></details>
+        <details id="faq-export"><summary>Dodáváte i do zahraničí?</summary><p>Ano, pravidelně do Německa a Rakouska. Dokumentaci a fakturaci připravíme v němčině nebo angličtině.</p></details>
+      </div>
     </div>
   </div>
 </section>

@@ -1,6 +1,7 @@
 /* HRANOL s.r.o. – ukázkový web.
-   Hlavička a menu, vyhledávání (⌘K), technologie, kapacita s týdny podle dnešního data, ověření rozměrů dílu,
-   filtr strojů, půdorys haly, poptávka po krocích. V náhledu v jednom souboru (window.HRANOL_SPA) navíc přepíná stránky přes #. */
+   Hlavička a menu, vyhledávání (⌘K), pult na výkresy v úvodu, technologie, kapacita s týdny podle dnešního data,
+   ověření rozměrů dílu, filtr strojů, půdorys haly, poptávka po krocích, směr přechodu mezi stránkami.
+   V náhledu v jednom souboru (window.HRANOL_SPA) navíc přepíná stránky přes #. */
 (() => {
   "use strict";
 
@@ -27,8 +28,86 @@
     return d.getMonth() === end.getMonth() ? `${d.getDate()}.–${shortDate(end)}` : `${shortDate(d)}–${shortDate(end)}`;
   };
 
+  /* ---------- Výkresy na pultu: soubory z úvodu se přenesou do poptávky (IndexedDB, jinak jen v paměti stránky) ---------- */
+  const tray = (() => {
+    let memory = [];
+    const open = () => new Promise((resolve, reject) => {
+      const req = indexedDB.open("hranol", 1);
+      req.onupgradeneeded = () => req.result.createObjectStore("tray");
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+    const run = async (mode, fn) => {
+      const db = await open();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction("tray", mode);
+        const req = fn(tx.objectStore("tray"));
+        tx.oncomplete = () => { db.close(); resolve(req.result); };
+        tx.onerror = () => { db.close(); reject(tx.error); };
+      });
+    };
+    return {
+      async get() {
+        try { const v = await run("readonly", (store) => store.get("files")); return Array.isArray(v) ? v : memory; } catch { return memory; }
+      },
+      set(files) {
+        memory = [...files];
+        run("readwrite", (store) => store.put(memory, "files")).catch(() => {});
+      },
+    };
+  })();
+
+  const MAX_BYTES = 25 * 1024 * 1024;
+  const formatSize = (bytes) => (bytes < 1048576 ? `${Math.max(1, Math.round(bytes / 1024))} kB` : `${(bytes / 1048576).toFixed(1).replace(".", ",")} MB`);
+  const sizeOf = (list) => list.reduce((s, f) => s + f.size, 0);
+  const tooBigText = (list) => `Soubory mají dohromady ${formatSize(sizeOf(list))}, limit je 25 MB. Větší data pošlete přes úschovnu na poptavky@hranol-obrabeni.cz.`;
+  const merge = (into, list) => { for (const f of list) if (!into.some((x) => x.name === f.name && x.size === f.size)) into.push(f); return into; };
+  const fileRow = (file, onRemove) => {
+    const li = document.createElement("li");
+    const name = Object.assign(document.createElement("span"), { className: "files__name", textContent: file.name });
+    const size = Object.assign(document.createElement("span"), { className: "files__size", textContent: formatSize(file.size) });
+    const remove = Object.assign(document.createElement("button"), { type: "button", textContent: "Odebrat" });
+    remove.setAttribute("aria-label", `Odebrat soubor ${file.name}`);
+    remove.addEventListener("click", onRemove);
+    li.append(name, size, remove);
+    return li;
+  };
+  const isVisible = (el) => Boolean(el && el.offsetParent !== null);
+  const carriesFiles = (e) => [...(e.dataTransfer?.types || [])].includes("Files");
+
+  /* Přetažení souboru kamkoli do okna: na úvodu skončí na pultu, v poptávce v prvním kroku formuláře. */
+  const dropTargets = [];
+  let dragDepth = 0;
+  const activeTarget = () => dropTargets.find((t) => isVisible(t.el));
+  window.addEventListener("dragenter", (e) => {
+    const t = carriesFiles(e) && activeTarget();
+    if (!t) return;
+    e.preventDefault();
+    dragDepth += 1;
+    t.arm(true);
+  });
+  window.addEventListener("dragover", (e) => {
+    if (!carriesFiles(e) || !activeTarget()) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "copy";
+  });
+  window.addEventListener("dragleave", (e) => {
+    const t = carriesFiles(e) && activeTarget();
+    if (!t) return;
+    dragDepth = Math.max(0, dragDepth - 1);
+    if (!dragDepth) t.arm(false);
+  });
+  window.addEventListener("drop", (e) => {
+    const t = carriesFiles(e) && activeTarget();
+    if (!t) return;
+    e.preventDefault();
+    dragDepth = 0;
+    t.arm(false);
+    if (e.dataTransfer.files.length) t.take(e.dataTransfer.files);
+  });
+
   /* ---------- Hlavička ---------- */
-  const header = $(".hdr");
+  const header = $(".fascia");
   const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 4);
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
@@ -50,6 +129,7 @@
 
     const show = (page, target) => {
       const current = pages.find((p) => !p.hidden);
+      const back = current && pages.indexOf(page) < pages.indexOf(current);
       const swap = () => {
         pages.forEach((p) => { p.hidden = p !== page; });
         document.title = page.dataset.title;
@@ -64,7 +144,9 @@
         document.dispatchEvent(new CustomEvent("hranol:page", { detail: page.dataset.page }));
       };
       if (current === page || reduceMotion || !document.startViewTransition) swap();
-      else document.startViewTransition(swap);
+      else {
+        try { document.startViewTransition({ update: swap, types: [back ? "back" : "forward"] }); } catch { document.startViewTransition(swap); }
+      }
     };
 
     const route = () => {
@@ -83,6 +165,22 @@
 
     window.addEventListener("hashchange", route);
     route();
+  }
+
+  /* ---------- Směr přechodu mezi stránkami: vpřed nebo zpět podél stánku ---------- */
+  if (!SPA) {
+    const order = Object.values(FILES);
+    const indexOf = (url) => {
+      try { return order.indexOf(new URL(url).pathname.split("/").pop() || "index.html"); } catch { return -1; }
+    };
+    const direction = (from, to) => (indexOf(to) < indexOf(from) ? "back" : "forward");
+    window.addEventListener("pageswap", (e) => {
+      if (e.viewTransition && e.activation?.entry) e.viewTransition.types.add(direction(location.href, e.activation.entry.url));
+    });
+    window.addEventListener("pagereveal", (e) => {
+      const from = window.navigation?.activation?.from?.url;
+      if (e.viewTransition && from) e.viewTransition.types.add(direction(from, location.href));
+    });
   }
 
   /* ---------- Vyhledávání ⌘K ---------- */
@@ -181,6 +279,44 @@
       else if (e.key === "/" && !typing && !palette.open) { e.preventDefault(); open(); }
       else if (e.key === "Escape" && nav.classList.contains("is-open")) { setMenu(false); menuBtn.focus(); }
     });
+  }
+
+  /* ---------- Pult na výkresy v úvodu ---------- */
+  const desk = $("[data-desk]");
+  if (desk) {
+    const input = $("[data-desk-input]", desk);
+    const zone = $("[data-desk-drop]", desk);
+    const list = $("[data-desk-files]", desk);
+    const err = $("[data-desk-err]", desk);
+    const pick = $("[data-desk-pick]", desk);
+    const go = $("[data-desk-go]", desk);
+    let held = [];
+
+    const render = () => {
+      list.replaceChildren(...held.map((file, i) => fileRow(file, () => { held.splice(i, 1); save(); pick.focus(); })));
+      const big = sizeOf(held) > MAX_BYTES;
+      desk.classList.toggle("has-files", held.length > 0);
+      err.hidden = !big;
+      err.textContent = big ? tooBigText(held) : "";
+      go.hidden = !held.length || big;
+      pick.textContent = held.length ? "Přidat další výkres" : "Nahrát výkres";
+      pick.classList.toggle("btn--sign", !held.length);
+      pick.classList.toggle("btn--line", held.length > 0);
+    };
+    const save = () => { render(); tray.set(held); };
+    const take = (files) => {
+      merge(held, files);
+      save();
+      if (desk.getBoundingClientRect().top < 0 || desk.getBoundingClientRect().bottom > window.innerHeight) {
+        desk.scrollIntoView({ block: "center", behavior: reduceMotion ? "auto" : "smooth" });
+      }
+    };
+
+    tray.get().then((files) => { held = merge(files.slice(), held); render(); });
+    pick.addEventListener("click", () => input.click());
+    zone.addEventListener("click", () => input.click());
+    input.addEventListener("change", () => { take(input.files); input.value = ""; });
+    dropTargets.push({ el: desk, arm: (on) => desk.classList.toggle("is-armed", on), take });
   }
 
   /* ---------- Technologie na úvodu ---------- */
@@ -377,7 +513,6 @@
   const today = new Date();
   dateInput.min = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
 
-  const MAX_BYTES = 25 * 1024 * 1024;
   const steps = $$(".rfq__step", rfq);
   const markers = $$(".stepper li", rfq);
   const error = $("#rfq-error");
@@ -388,43 +523,47 @@
   let files = [];
   let current = 0;
 
-  const formatSize = (bytes) => (bytes < 1048576 ? `${Math.max(1, Math.round(bytes / 1024))} kB` : `${(bytes / 1048576).toFixed(1).replace(".", ",")} MB`);
-  const totalSize = () => files.reduce((s, f) => s + f.size, 0);
+  const carried = $("[data-carried]", rfq);
 
   const checkFiles = () => {
-    const tooBig = totalSize() > MAX_BYTES;
+    const tooBig = sizeOf(files) > MAX_BYTES;
     fileError.hidden = !tooBig;
-    fileError.textContent = tooBig ? `Soubory mají dohromady ${formatSize(totalSize())}, limit je 25 MB. Větší data pošlete přes úschovnu na poptavky@hranol-obrabeni.cz.` : "";
+    fileError.textContent = tooBig ? tooBigText(files) : "";
     return !tooBig;
   };
 
   const renderFiles = () => {
-    fileList.replaceChildren(...files.map((file, i) => {
-      const li = document.createElement("li");
-      const name = Object.assign(document.createElement("span"), { className: "files__name", textContent: file.name });
-      const size = Object.assign(document.createElement("span"), { className: "files__size", textContent: formatSize(file.size) });
-      const remove = Object.assign(document.createElement("button"), { type: "button", textContent: "Odebrat" });
-      remove.setAttribute("aria-label", `Odebrat soubor ${file.name}`);
-      remove.addEventListener("click", () => { files.splice(i, 1); renderFiles(); });
-      li.append(name, size, remove);
-      return li;
-    }));
-    sum("files", files.length ? `${files.length} (${formatSize(totalSize())})` : "žádné");
+    fileList.replaceChildren(...files.map((file, i) => fileRow(file, () => { files.splice(i, 1); renderFiles(); $("#rfq-files").focus(); })));
+    sum("files", files.length ? `${files.length} (${formatSize(sizeOf(files))})` : "žádné");
+    if (!files.length) carried.hidden = true;
     checkFiles();
+    tray.set(files);
   };
 
   const addFiles = (list) => {
-    for (const f of list) if (!files.some((x) => x.name === f.name && x.size === f.size)) files.push(f);
+    merge(files, list);
     renderFiles();
   };
+
+  tray.get().then((stored) => {
+    if (!stored.length) return;
+    const before = files.length;
+    files = merge(stored.slice(), files);
+    renderFiles();
+    carried.hidden = before > 0;
+  });
+
+  const rfqDrop = $("[data-drop]", rfq);
+  dropTargets.push({
+    el: rfq,
+    arm: (on) => rfqDrop.classList.toggle("is-over", on && !steps[0].hidden),
+    take: (list) => { addFiles(list); if (current !== 0) sum("files", `${files.length} (${formatSize(sizeOf(files))})`); },
+  });
 
   $$("[data-drop]", rfq).forEach((zone) => {
     const input = $("[data-file-input]", zone);
     input.addEventListener("change", () => { addFiles(input.files); input.value = ""; });
     zone.addEventListener("click", (e) => { if (!e.target.closest("label, input")) input.click(); });
-    ["dragenter", "dragover"].forEach((t) => zone.addEventListener(t, (e) => { e.preventDefault(); zone.classList.add("is-over"); }));
-    ["dragleave", "dragend", "drop"].forEach((t) => zone.addEventListener(t, () => zone.classList.remove("is-over")));
-    zone.addEventListener("drop", (e) => { e.preventDefault(); if (e.dataTransfer?.files?.length) addFiles(e.dataTransfer.files); });
   });
 
   /* Živé shrnutí */
@@ -498,6 +637,7 @@
     steps.forEach((s) => { s.hidden = true; });
     $(".stepper", rfq).hidden = true;
     done.hidden = false;
+    tray.set([]);
     $("#rfq-done-title").focus();
   });
 

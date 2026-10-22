@@ -1,53 +1,72 @@
 <!-- {"title": "HRANOL | Přesné obrábění a svařence na zakázku, Rousínov u Brna", "description": "CNC frézování, soustružení, broušení, svařování a montáž podsestav pro výrobce strojů. Od prototypu po série v tisících kusů, cena a termín do 48 hodin."} -->
 <section class="hero" aria-labelledby="hero-title">
-  <div class="wrap hero__grid">
-    <div class="hero__copy">
-      <h1 id="hero-title">Přesné díly a svařence pro výrobce strojů.</h1>
-      <p class="lead">Frézujeme, soustružíme, svařujeme a montujeme v Rousínově u Brna. Od jednoho prototypu po série v tisících kusů, s měřicím protokolem ke každé dodávce.</p>
-      <div class="actions">
-        <a class="btn btn--dark" href="@poptavka">Nahrát výkres</a>
-        <a class="btn btn--line" href="@stroje">Strojový park</a>
+  <div class="stand">
+    <div class="wall wall--nobeam hero__wall">
+      <div class="panel panel--2 hero__claim">
+        <h1 class="letter hero__title" id="hero-title">Přesné díly a svařence pro výrobce strojů.</h1>
+        <div class="hero__text">
+          <p class="lead">Frézujeme, soustružíme, svařujeme a montujeme v Rousínově u Brna. Od jednoho prototypu po série v tisících kusů, s měřicím protokolem ke každé dodávce.</p>
+          <a class="btn btn--line" href="@stroje">Strojový park</a>
+        </div>
+        <figure class="exhibit hero__exhibit">
+          <div class="exhibit__stage" id="stage">
+            <canvas class="exhibit__canvas" id="part-canvas" role="img" aria-label="3D model obrobené hliníkové příruby. Tažením ho otočíte."></canvas>
+            <p class="exhibit__hint" aria-hidden="true">Tažením díl otočíte</p>
+          </div>
+          <figcaption class="plinth">
+            <p class="plinth__name">Příruba ložiska <span class="plinth__no">HR-24-118</span></p>
+            <dl class="plinth__specs">
+              <div><dt>Materiál</dt><dd>EN AW-6082 T6</dd></div>
+              <div><dt>Otvor</dt><dd>Ø40 H7</dd></div>
+              <div><dt>Obrábění</dt><dd>6 min 40 s</dd></div>
+              <div><dt>Stroj</dt><dd>DMU 65</dd></div>
+            </dl>
+          </figcaption>
+        </figure>
       </div>
-      {{status}}
+      <div class="panel hero__desk">
+        <section class="desk" aria-labelledby="desk-title" data-desk>
+          <h2 class="letter desk__title" id="desk-title">Máte výkres?</h2>
+          <div class="counter desk__counter">
+            <p class="desk__lead">Cenu a termín vám pošleme do 48 hodin.</p>
+            <div class="drop drop--desk" data-desk-drop>
+              <input class="sr-only" id="desk-files" type="file" multiple accept=".pdf,.step,.stp,.igs,.iges,.dxf,.dwg,.zip" tabindex="-1" aria-hidden="true" data-desk-input>
+              <svg class="drop__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5V4.5M7.5 9 12 4.5 16.5 9M4.5 15v4.5h15V15"/></svg>
+              <p class="drop__title"><span class="drop__idle">Přetáhněte sem PDF nebo STEP</span><span class="drop__armed" aria-hidden="true">Pusťte výkres na pult</span></p>
+              <p class="drop__hint" id="desk-hint">Výkresy se přenesou rovnou do poptávky.</p>
+            </div>
+            <ul class="files files--desk" data-desk-files aria-live="polite"></ul>
+            <p class="field__error" data-desk-err role="alert" hidden></p>
+            <div class="desk__actions">
+              <button class="btn btn--sign" type="button" aria-describedby="desk-hint" data-desk-pick>Nahrát výkres</button>
+              <a class="btn btn--sign" href="@poptavka" data-desk-go hidden>Pokračovat k poptávce</a>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
-
-    <figure class="stage" id="stage">
-      <canvas class="stage__canvas" id="part-canvas" role="img" aria-label="3D model obrobené hliníkové příruby. Tažením ho otočíte."></canvas>
-      <figcaption class="stage__meta">
-        <p class="stage__id"><span>Příruba ložiska</span><span class="stage__no">HR-24-118</span></p>
-        <dl class="stage__specs">
-          <div><dt>Materiál</dt><dd>EN AW-6082 T6</dd></div>
-          <div><dt>Otvor</dt><dd>Ø40 H7</dd></div>
-          <div><dt>Obrábění</dt><dd>6 min 40 s</dd></div>
-          <div><dt>Stroj</dt><dd>DMU 65</dd></div>
-        </dl>
-      </figcaption>
-      <p class="stage__hint" aria-hidden="true">Tažením díl otočíte</p>
-    </figure>
-  </div>
-</section>
-
-<section class="clients" aria-label="Pro koho vyrábíme">
-  <div class="wrap">
-    <p>Dodáváme víc než 60 výrobcům strojů v Česku, Německu a Rakousku. Balicí linky, zemědělská technika, robotická pracoviště, hydraulika.</p>
+    <div class="hero__floor">{{status}}</div>
   </div>
 </section>
 
 <section class="sec" aria-labelledby="tech-title">
-  <div class="wrap">
+  <div class="stand">
     <div class="sec__head">
-      <h2 id="tech-title">Co pro vás vyrobíme</h2>
-      <a class="more" href="@vyroba">Celá výroba</a>
+      <h2 class="sec__title" id="tech-title">Co pro vás vyrobíme</h2>
+      <p class="sec__aside">Dodáváme víc než 60 výrobcům strojů v Česku, Německu a Rakousku. Balicí linky, zemědělská technika, robotická pracoviště, hydraulika.</p>
     </div>
-    <div class="techlist" data-techlist>
-      <ul class="techlist__items">
-        <li><a href="@vyroba#frezovani" data-img="frezovani"><span class="techlist__name">Frézování</span><span class="techlist__spec">3–5 os, do 1 270 × 610 × 720 mm</span></a></li>
-        <li><a href="@vyroba#soustruzeni" data-img="soustruzeni"><span class="techlist__name">Soustružení</span><span class="techlist__spec">Ø 430 × 1 100 mm</span></a></li>
-        <li><a href="@vyroba#brouseni" data-img="kotouce"><span class="techlist__name">Broušení</span><span class="techlist__spec">až Ra 0,2 µm</span></a></li>
-        <li><a href="@vyroba#svarovani" data-img="svarovani"><span class="techlist__name">Svařování</span><span class="techlist__spec">MIG/MAG, TIG, do 2,5 t</span></a></li>
-        <li><a href="@vyroba#montaz" data-img="montaz"><span class="techlist__name">Montáž podsestav</span><span class="techlist__spec">podle vašeho kusovníku</span></a></li>
-      </ul>
-      <div class="techlist__media" aria-hidden="true">
+    <div class="wall wall--white techlist" data-techlist>
+      <div class="panel panel--2 techlist__panel">
+        <ul class="techlist__items">
+          <li><a href="@vyroba#frezovani" data-img="frezovani"><span class="techlist__name">Frézování</span><span class="techlist__spec">3–5 os, do 1 270 × 610 × 720 mm</span></a></li>
+          <li><a href="@vyroba#soustruzeni" data-img="soustruzeni"><span class="techlist__name">Soustružení</span><span class="techlist__spec">Ø 430 × 1 100 mm</span></a></li>
+          <li><a href="@vyroba#brouseni" data-img="kotouce"><span class="techlist__name">Broušení</span><span class="techlist__spec">až Ra 0,2 µm</span></a></li>
+          <li><a href="@vyroba#svarovani" data-img="svarovani"><span class="techlist__name">Svařování</span><span class="techlist__spec">MIG/MAG, TIG, do 2,5 t</span></a></li>
+          <li><a href="@vyroba#montaz" data-img="montaz"><span class="techlist__name">Montáž podsestav</span><span class="techlist__spec">podle vašeho kusovníku</span></a></li>
+        </ul>
+        <a class="more" href="@vyroba">Celá výroba</a>
+      </div>
+      <div class="panel panel--media techlist__media" aria-hidden="true">
         <img class="is-active" data-key="frezovani" src="assets/img/frezovani-900.webp" width="900" height="600" alt="" loading="lazy" decoding="async">
         <img data-key="soustruzeni" src="assets/img/soustruzeni-900.webp" width="900" height="600" alt="" loading="lazy" decoding="async">
         <img data-key="kotouce" src="assets/img/kotouce-900.webp" width="900" height="675" alt="" loading="lazy" decoding="async">
@@ -58,52 +77,65 @@
   </div>
 </section>
 
-<section class="sec sec--mist" id="kapacita" aria-labelledby="cap-title">
-  <div class="wrap">
-    <div class="sec__head">
-      <div class="sec__intro">
-        <h2 id="cap-title">Volná kapacita</h2>
-        <p>Vytížení výroby na příštích osm týdnů. Kde je volno, zvládneme i krátký termín.</p>
+<section class="sec" id="kapacita" aria-labelledby="cap-title">
+  <div class="stand stand--inset">
+    <div class="counter board" data-capacity>
+      <div class="board__head">
+        <div class="board__intro">
+          <h2 class="counter__title" id="cap-title">Volná kapacita</h2>
+          <p>Vytížení výroby na příštích osm týdnů. Kde je volno, zvládneme i krátký termín.</p>
+        </div>
+        <p class="board__note">Aktualizuje se každý pracovní den v 6:00</p>
       </div>
-      <p class="sec__note">Aktualizuje se každý pracovní den v 6:00</p>
-    </div>
-    <div class="cap" data-capacity>
       <div class="table-scroll">{{capacity}}</div>
       <div class="cap__tip" role="tooltip" hidden><strong></strong><span></span></div>
-      <div class="cap__foot">
+      <div class="board__foot">
         <ul class="legend">
           <li><span class="legend__key legend__key--busy" aria-hidden="true"></span>Obsazeno</li>
           <li><span class="legend__key legend__key--free" aria-hidden="true"></span>Volno v týdnu s vytížením pod 75 %</li>
         </ul>
-        <a class="more" href="@poptavka">Rezervovat termín</a>
+        <a class="btn btn--sign" href="@poptavka">Rezervovat termín</a>
       </div>
     </div>
   </div>
 </section>
 
 <section class="sec" aria-labelledby="feat-title">
-  <div class="wrap feat">
-    <img class="feat__img render" src="assets/img/ref-hvezdice-1600.webp" srcset="assets/img/ref-hvezdice-900.webp 900w, assets/img/ref-hvezdice-1600.webp 1600w" sizes="(min-width: 960px) 55vw, 100vw" width="1600" height="1200" loading="lazy" decoding="async" alt="Hliníková hvězdice z balicí linky s deseti kapsami pro lahve a nábojem s drážkou pro pero.">
-    <div class="feat__text">
-      <p class="feat__client">Výrobce balicích linek, Brno</p>
-      <h2 id="feat-title">Dodací lhůta formátových dílů klesla z devíti týdnů na tři.</h2>
-      <p>Převzali jsme výrobu 1 400 hliníkových hvězdic a vodítek ročně ve 22 variantách od dodavatele z Bavorska. Opakované varianty máme připravené v programech i přípravcích, takže výroba startuje do dvou dnů od objednávky.</p>
-      <a class="more" href="@reference">Další reference</a>
+  <div class="stand">
+    <div class="wall feat">
+      <div class="panel feat__text">
+        <h2 class="letter feat__title" id="feat-title">Dodací lhůta formátových dílů klesla z devíti týdnů na tři.</h2>
+        <p class="feat__client">Výrobce balicích linek, Brno</p>
+        <p>Převzali jsme výrobu 1 400 hliníkových hvězdic a vodítek ročně ve 22 variantách od dodavatele z Bavorska. Opakované varianty máme připravené v programech i přípravcích, takže výroba startuje do dvou dnů od objednávky.</p>
+        <a class="more" href="@reference">Další reference</a>
+      </div>
+      <figure class="panel panel--2 exhibit feat__exhibit">
+        <img class="exhibit__img" src="assets/img/ref-hvezdice-1600.webp" srcset="assets/img/ref-hvezdice-900.webp 900w, assets/img/ref-hvezdice-1600.webp 1600w" sizes="(min-width: 1080px) 60vw, 100vw" width="1600" height="1200" loading="lazy" decoding="async" alt="Hliníková hvězdice z balicí linky s deseti kapsami pro lahve a nábojem s drážkou pro pero.">
+        <figcaption class="plinth">
+          <p class="plinth__name">Hvězdice balicí linky</p>
+          <dl class="plinth__specs">
+            <div><dt>Materiál</dt><dd>EN AW-7075</dd></div>
+            <div><dt>Varianty</dt><dd>22</dd></div>
+            <div><dt>Objem</dt><dd>1 400 ks/rok</dd></div>
+            <div><dt>Lhůta</dt><dd>3 týdny</dd></div>
+          </dl>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<section class="sec sec--top" aria-labelledby="proc-title">
-  <div class="wrap">
+<section class="sec" aria-labelledby="proc-title">
+  <div class="stand">
     <div class="sec__head">
-      <h2 id="proc-title">Od výkresu k dodávce</h2>
+      <h2 class="sec__title" id="proc-title">Od výkresu k dodávce</h2>
       <a class="more" href="@poptavka#faq">Časté otázky</a>
     </div>
-    <ol class="proc">
-      <li><p class="proc__when">1. den</p><h3>Pošlete výkres</h3><p>PDF a ideálně 3D model ve formátu STEP. NDA podepíšeme předem.</p></li>
-      <li><p class="proc__when">do 48 hodin</p><h3>Dostanete nabídku</h3><p>Cena za kus, cena přípravy a závazný termín dodání.</p></li>
-      <li><p class="proc__when">2–4 týdny</p><h3>Vyrobíme a změříme</h3><p>První kusy každé série kontrolujeme na 3D měřicím stroji.</p></li>
-      <li><p class="proc__when">potvrzený den</p><h3>Dodáme</h3><p>S měřicím protokolem a atestem materiálu, po jižní Moravě vlastní dodávkou.</p></li>
+    <ol class="wall wall--white wall--4 proc">
+      <li class="panel"><h3><span class="proc__when">1. den</span> Pošlete výkres</h3><p>PDF a ideálně 3D model ve formátu STEP. NDA podepíšeme předem.</p></li>
+      <li class="panel"><h3><span class="proc__when">do 48 hodin</span> Dostanete nabídku</h3><p>Cena za kus, cena přípravy a závazný termín dodání.</p></li>
+      <li class="panel"><h3><span class="proc__when">2–4 týdny</span> Vyrobíme a změříme</h3><p>První kusy každé série kontrolujeme na 3D měřicím stroji.</p></li>
+      <li class="panel"><h3><span class="proc__when">potvrzený den</span> Dodáme</h3><p>S měřicím protokolem a atestem materiálu, po jižní Moravě vlastní dodávkou.</p></li>
     </ol>
   </div>
 </section>

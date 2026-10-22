@@ -1,6 +1,6 @@
-/* HRANOL s.r.o. – 3D model obrobené příruby v úvodu (three.js r128).
+/* HRANOL s.r.o. – 3D model obrobené příruby nad podstavcem v úvodu (three.js r128).
    Studiové prostředí pro odlesky hliníku, pomalé otáčení, otáčení tažením se setrvačností.
-   Bez WebGL zůstane v rámečku statický render stejné příruby, popisky dílu tak platí dál. */
+   Bez WebGL zůstane nad podstavcem statický render stejné příruby s průhledným pozadím, štítek tak platí dál. */
 (() => {
   "use strict";
 
@@ -137,25 +137,6 @@
   turntable.add(holder);
   scene.add(turntable);
 
-  /* Měkký stín pod dílem */
-  const shadow = (() => {
-    const c = document.createElement("canvas");
-    c.width = c.height = 256;
-    const g = c.getContext("2d");
-    const grad = g.createRadialGradient(128, 128, 0, 128, 128, 128);
-    grad.addColorStop(0, "rgba(21,33,43,0.34)");
-    grad.addColorStop(0.45, "rgba(21,33,43,0.14)");
-    grad.addColorStop(1, "rgba(21,33,43,0)");
-    g.fillStyle = grad;
-    g.fillRect(0, 0, 256, 256);
-    const m = new T.Mesh(new T.PlaneGeometry(300, 300), new T.MeshBasicMaterial({ map: new T.CanvasTexture(c), transparent: true, depthWrite: false }));
-    m.rotation.x = -Math.PI / 2;
-    m.position.y = -82;
-    m.scale.set(1, 0.62, 1);
-    return m;
-  })();
-  scene.add(shadow);
-
   /* Velikost a kamera */
   let width = 0;
   let height = 0;
@@ -166,7 +147,7 @@
     if (!width || !height) return;
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
-    const distance = camera.aspect < 0.95 ? 520 : 430;
+    const distance = camera.aspect < 0.95 ? 430 : 330;
     camera.position.set(0, 46, distance);
     camera.lookAt(0, -6, 0);
     camera.updateProjectionMatrix();
@@ -182,6 +163,7 @@
 
   canvas.addEventListener("pointerdown", (e) => {
     dragging = true;
+    stage.classList.add("is-turned");
     lastX = e.clientX;
     velocity = 0;
     canvas.setPointerCapture(e.pointerId);

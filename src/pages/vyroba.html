@@ -1,14 +1,20 @@
 <!-- {"title": "Výroba | HRANOL", "description": "Frézování, soustružení, broušení, svařování, montáž podsestav a povrchové úpravy. Parametry, stroje a materiály, které zpracováváme."} -->
 <header class="phead">
-  <div class="wrap">
-    <nav class="crumbs" aria-label="Drobečková navigace"><a href="@domu">Úvod</a><span aria-hidden="true">/</span><span aria-current="page">Výroba</span></nav>
-    <h1>Výroba</h1>
-    <p class="lead">Obrábíme, svařujeme a kompletujeme podle vaší dokumentace, všechno pod jednou střechou. Povrchové úpravy zajistíme u ověřených partnerů v okolí, takže díl dostanete hotový.</p>
+  <div class="stand">
+    <div class="wall wall--nobeam phead__wall">
+      <div class="panel panel--2 phead__main">
+        <nav class="crumbs" aria-label="Drobečková navigace"><a href="@domu">Úvod</a><span aria-hidden="true">/</span><span aria-current="page">Výroba</span></nav>
+        <h1 class="letter">Výroba</h1>
+      </div>
+      <div class="panel phead__side">
+        <p class="lead">Obrábíme, svařujeme a kompletujeme podle vaší dokumentace, všechno pod jednou střechou. Povrchové úpravy zajistíme u ověřených partnerů v okolí, takže díl dostanete hotový.</p>
+      </div>
+    </div>
   </div>
 </header>
 
-<nav class="subnav" aria-label="Technologie" data-subnav>
-  <div class="wrap">
+<nav class="rail" aria-label="Technologie" data-subnav>
+  <div class="stand">
     <ul>
       <li><a href="@vyroba#frezovani">Frézování</a></li>
       <li><a href="@vyroba#soustruzeni">Soustružení</a></li>
@@ -22,11 +28,11 @@
   </div>
 </nav>
 
-<section class="tech" id="frezovani" aria-labelledby="t-frez">
-  <div class="wrap tech__grid">
-    <img class="tech__img" src="assets/img/frezovani-1600.webp" srcset="assets/img/frezovani-900.webp 900w, assets/img/frezovani-1600.webp 1600w" sizes="(min-width: 960px) 50vw, 100vw" width="1600" height="1066" loading="lazy" decoding="async" alt="Kulová fréza obrábí kapsu v hliníkovém dílu.">
-    <div class="tech__body">
-      <h2 id="t-frez">Frézování</h2>
+<div class="stand techwall">
+  <section class="wall wall--white tech tech--wide" id="frezovani" aria-labelledby="t-frez">
+    <div class="panel panel--2 panel--media"><img src="assets/img/frezovani-1600.webp" srcset="assets/img/frezovani-900.webp 900w, assets/img/frezovani-1600.webp 1600w" sizes="(min-width: 1080px) 66vw, 100vw" width="1600" height="1066" loading="lazy" decoding="async" alt="Kulová fréza obrábí kapsu v hliníkovém dílu."></div>
+    <div class="panel tech__body">
+      <h2 class="letter tech__title" id="t-frez">Frézování</h2>
       <p>Na pětiosých centrech obrobíme díl z více stran na jedno upnutí. Vzájemná poloha děr a ploch tak drží i u složitých skříní. Hermle s paletovým zásobníkem obrábí série přes noc bez obsluhy.</p>
       <dl class="specs">
         <div><dt>Osy</dt><dd class="data">3 až 5</dd></div>
@@ -36,14 +42,12 @@
       </dl>
       <p class="tech__parts">Typicky skříně převodovek, upínací desky, příruby a tvarové díly z hliníku.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="tech tech--flip" id="soustruzeni" aria-labelledby="t-sou">
-  <div class="wrap tech__grid">
-    <img class="tech__img" src="assets/img/soustruzeni-1600.webp" srcset="assets/img/soustruzeni-900.webp 900w, assets/img/soustruzeni-1600.webp 1600w" sizes="(min-width: 960px) 50vw, 100vw" width="1600" height="1066" loading="lazy" decoding="async" alt="Ocelová tyč upnutá ve sklíčidle soustruhu, k ní se blíží nástroj.">
-    <div class="tech__body">
-      <h2 id="t-sou">Soustružení</h2>
+  <section class="wall wall--white tech tech--wide tech--flip" id="soustruzeni" aria-labelledby="t-sou">
+    <div class="panel panel--2 panel--media"><img src="assets/img/soustruzeni-1600.webp" srcset="assets/img/soustruzeni-900.webp 900w, assets/img/soustruzeni-1600.webp 1600w" sizes="(min-width: 1080px) 66vw, 100vw" width="1600" height="1066" loading="lazy" decoding="async" alt="Ocelová tyč upnutá ve sklíčidle soustruhu, k ní se blíží nástroj."></div>
+    <div class="panel tech__body">
+      <h2 class="letter tech__title" id="t-sou">Soustružení</h2>
       <p>Hřídele, pouzdra, čepy a příruby z tyčí i přířezů. Soustruhy s poháněnými nástroji, osou Y a protivřetenem udělají díl včetně frézovaných ploch a příčných děr. Díl tak nemusí na další stroj.</p>
       <dl class="specs">
         <div><dt>Max. průměr</dt><dd class="data">Ø 430 mm</dd></div>
@@ -53,13 +57,11 @@
       </dl>
       <p class="tech__parts">Typicky pístnice, hřídele převodovek, pouzdra ložisek a těsnicí víka.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="tech tech--pair" aria-label="Broušení a povrchové úpravy">
-  <div class="wrap pair">
-    <div class="pair__item" id="brouseni">
-      <h2>Broušení na kulato</h2>
+  <section class="wall wall--white wall--2 tech tech--pair" aria-label="Broušení a povrchové úpravy">
+    <div class="panel tech__body" id="brouseni">
+      <h2 class="letter tech__title">Broušení na kulato</h2>
       <p>Uložení ložisek, těsnicí a kluzné plochy. Brousíme i po kalení a po chromování.</p>
       <dl class="specs">
         <div><dt>Drsnost</dt><dd class="data">až Ra 0,2 µm</dd></div>
@@ -68,8 +70,8 @@
         <div><dt>Stroj</dt><dd><a href="@stroje#stroj-s33">Studer S33</a></dd></div>
       </dl>
     </div>
-    <div class="pair__item" id="upravy">
-      <h2>Povrchové úpravy</h2>
+    <div class="panel tech__body" id="upravy">
+      <h2 class="letter tech__title">Povrchové úpravy</h2>
       <p>Zajistíme u partnerů do 40 km od Rousínova. Díly vozíme sami a za kvalitu celého dílu odpovídáme my.</p>
       <dl class="specs">
         <div><dt>Tepelné</dt><dd>kalení, cementování, nitridace</dd></div>
@@ -78,16 +80,14 @@
         <div><dt>Barvy</dt><dd>práškové lakování podle RAL</dd></div>
       </dl>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="tech" id="svarovani" aria-labelledby="t-sva">
-  <div class="wrap tech__grid">
-    <img class="tech__img tech__img--tall" src="assets/img/svarovani-1600.webp" srcset="assets/img/svarovani-900.webp 900w, assets/img/svarovani-1600.webp 1600w" sizes="(min-width: 960px) 50vw, 100vw" width="1600" height="2000" loading="lazy" decoding="async" alt="Svářeč v rukavicích svařuje nerezový díl metodou TIG.">
-    <div class="tech__body">
-      <h2 id="t-sva">Svařování</h2>
+  <section class="wall wall--white tech tech--tall" id="svarovani" aria-labelledby="t-sva">
+    <div class="panel panel--media"><img src="assets/img/svarovani-1600.webp" srcset="assets/img/svarovani-900.webp 900w, assets/img/svarovani-1600.webp 1600w" sizes="(min-width: 1080px) 33vw, 100vw" width="1600" height="2000" loading="lazy" decoding="async" alt="Svářeč v rukavicích svařuje nerezový díl metodou TIG."></div>
+    <div class="panel panel--2 tech__body">
+      <h2 class="letter tech__title" id="t-sva">Svařování</h2>
       <p>Svařované rámy, konzoly a konstrukce z oceli i nerezu. Po svaření je žíháme a obrábíme na jedno upnutí, takže uložení ložisek a dosedací plochy sedí bez rovnání.</p>
-      <dl class="specs">
+      <dl class="specs specs--2">
         <div><dt>Metody</dt><dd class="data">MIG/MAG 135, TIG 141</dd></div>
         <div><dt>Materiály</dt><dd class="data">S235–S355, 1.4301, 1.4404</dd></div>
         <div><dt>Max. hmotnost</dt><dd class="data">2 500 kg</dd></div>
@@ -95,60 +95,60 @@
       </dl>
       <p class="tech__parts">Typicky rámy strojů, nosné konzoly, svařované skříně a nerezové díly pro potravinářství.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="tech tech--flip" id="montaz" aria-labelledby="t-mon">
-  <div class="wrap tech__grid">
-    <img class="tech__img tech__img--tall" src="assets/img/montaz-1600.webp" srcset="assets/img/montaz-900.webp 900w, assets/img/montaz-1600.webp 1600w" sizes="(min-width: 960px) 50vw, 100vw" width="1600" height="2400" loading="lazy" decoding="async" alt="Technik kontroluje zapojení smontovaného rámu zkušebního zařízení.">
-    <div class="tech__body">
-      <h2 id="t-mon">Montáž podsestav</h2>
+  <section class="wall wall--white tech tech--tall tech--flip" id="montaz" aria-labelledby="t-mon">
+    <div class="panel panel--media"><img src="assets/img/montaz-1600.webp" srcset="assets/img/montaz-900.webp 900w, assets/img/montaz-1600.webp 1600w" sizes="(min-width: 1080px) 33vw, 100vw" width="1600" height="2400" loading="lazy" decoding="async" alt="Technik kontroluje zapojení smontovaného rámu zkušebního zařízení."></div>
+    <div class="panel panel--2 tech__body">
+      <h2 class="letter tech__title" id="t-mon">Montáž podsestav</h2>
       <p>Obrobené díly smontujeme, doplníme nakupované komponenty podle vašeho kusovníku a sestavu vyzkoušíme. K vám přijede hotový celek s dokumentací, ne krabice dílů.</p>
-      <dl class="specs">
+      <dl class="specs specs--2">
         <div><dt>Rozsah</dt><dd class="data">podsestavy do 800 kg</dd></div>
         <div><dt>Nákup</dt><dd>ložiska, pneumatika, spojovací materiál</dd></div>
         <div><dt>Zkoušky</dt><dd>funkční zkouška a protokol</dd></div>
       </dl>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
-<section class="sec sec--mist" id="materialy" aria-labelledby="mat-title">
-  <div class="wrap">
-    <div class="sec__head">
-      <div class="sec__intro">
-        <h2 id="mat-title">Materiály</h2>
-        <p>Materiál nakupujeme u ověřených hutí a skladů, vždy s inspekčním certifikátem 3.1. Nenašli jste ten svůj? Napište nám.</p>
+<section class="sec" id="materialy" aria-labelledby="mat-title">
+  <div class="stand stand--inset">
+    <div class="counter board">
+      <div class="board__head">
+        <div class="board__intro">
+          <h2 class="counter__title" id="mat-title">Materiály</h2>
+          <p>Materiál nakupujeme u ověřených hutí a skladů, vždy s inspekčním certifikátem 3.1. Nenašli jste ten svůj? Napište nám.</p>
+        </div>
       </div>
-    </div>
-    <div class="table-scroll panel">
-      <table class="matrix">
-        <caption class="sr-only">Materiály a technologie, kterými je zpracováváme</caption>
-        <thead><tr><th scope="col">Skupina</th><th scope="col">Příklady</th><th scope="col">Frézování</th><th scope="col">Soustružení</th><th scope="col">Broušení</th><th scope="col">Svařování</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Konstrukční oceli</th><td class="data">S235, S355, C45</td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td></tr>
-          <tr><th scope="row">Zušlechtěné a cementační</th><td class="data">42CrMo4, 34CrNiMo6, 16MnCr5</td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="no">ne</span></td></tr>
-          <tr><th scope="row">Nástrojové oceli</th><td class="data">1.2379, 1.2842</td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="no">ne</span></td></tr>
-          <tr><th scope="row">Nerezové oceli</th><td class="data">1.4301, 1.4404, 1.4305</td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td></tr>
-          <tr><th scope="row">Hliníkové slitiny</th><td class="data">EN AW-6082, 7075, 5083</td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="no">ne</span></td><td><span class="yes">jen 6082, 5083</span></td></tr>
-          <tr><th scope="row">Mosaz a bronz</th><td class="data">CuZn39Pb3, CuSn12</td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="no">ne</span></td><td><span class="no">ne</span></td></tr>
-          <tr><th scope="row">Technické plasty</th><td class="data">POM-C, PA6, PEEK</td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="no">ne</span></td><td><span class="no">ne</span></td></tr>
-        </tbody>
-      </table>
+      <div class="table-scroll">
+        <table class="matrix">
+          <caption class="sr-only">Materiály a technologie, kterými je zpracováváme</caption>
+          <thead><tr><th scope="col">Skupina</th><th scope="col">Příklady</th><th scope="col">Frézování</th><th scope="col">Soustružení</th><th scope="col">Broušení</th><th scope="col">Svařování</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Konstrukční oceli</th><td class="data">S235, S355, C45</td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td></tr>
+            <tr><th scope="row">Zušlechtěné a cementační</th><td class="data">42CrMo4, 34CrNiMo6, 16MnCr5</td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="no">ne</span></td></tr>
+            <tr><th scope="row">Nástrojové oceli</th><td class="data">1.2379, 1.2842</td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="no">ne</span></td></tr>
+            <tr><th scope="row">Nerezové oceli</th><td class="data">1.4301, 1.4404, 1.4305</td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td></tr>
+            <tr><th scope="row">Hliníkové slitiny</th><td class="data">EN AW-6082, 7075, 5083</td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="no">ne</span></td><td><span class="yes">jen 6082, 5083</span></td></tr>
+            <tr><th scope="row">Mosaz a bronz</th><td class="data">CuZn39Pb3, CuSn12</td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="no">ne</span></td><td><span class="no">ne</span></td></tr>
+            <tr><th scope="row">Technické plasty</th><td class="data">POM-C, PA6, PEEK</td><td><span class="yes">ano</span></td><td><span class="yes">ano</span></td><td><span class="no">ne</span></td><td><span class="no">ne</span></td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="sec" id="kvalita" aria-labelledby="q-title">
-  <div class="wrap">
+  <div class="stand">
     <div class="sec__head">
-      <h2 id="q-title">Kvalita a dokumentace</h2>
+      <h2 class="sec__title" id="q-title">Kvalita a dokumentace</h2>
       <a class="more" href="@stroje#merovna">Měrovna</a>
     </div>
-    <ul class="cols">
-      <li><h3>Měření</h3><p>První kus každé série a pak podle kontrolního plánu. 3D měřicí stroj v měrovně se stálou teplotou 20 °C.</p></li>
-      <li><h3>Dokumentace</h3><p>Ke každé dodávce měřicí protokol a inspekční certifikát materiálu 3.1. Na přání protokol prvního vzorku.</p></li>
-      <li><h3>Certifikace</h3><p>Systém řízení kvality ISO 9001:2015 a jakost svařování podle EN ISO 3834-2.</p></li>
+    <ul class="wall wall--white cols">
+      <li class="panel"><h3 class="panel__title">Měření</h3><p>První kus každé série a pak podle kontrolního plánu. 3D měřicí stroj v měrovně se stálou teplotou 20 °C.</p></li>
+      <li class="panel"><h3 class="panel__title">Dokumentace</h3><p>Ke každé dodávce měřicí protokol a inspekční certifikát materiálu 3.1. Na přání protokol prvního vzorku.</p></li>
+      <li class="panel"><h3 class="panel__title">Certifikace</h3><p>Systém řízení kvality ISO 9001:2015 a jakost svařování podle EN ISO 3834-2.</p></li>
     </ul>
   </div>
 </section>
