@@ -482,7 +482,6 @@ def build_spa(out):
     page = mark_current(chrome("\n".join(mains)), "domu")
     document = f'''<meta charset="utf-8">
 <title>HRANOL přesné obrábění</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Ukázkový web fiktivní strojírenské firmy HRANOL s.r.o. Návrh, texty a kód: Štěpán Synek.">
 <style>
 {css}

@@ -260,9 +260,19 @@ a:hover { text-decoration-thickness: 3px; }
 }
 .demo p { padding-block: 8px; }
 
+/* Pás nad lepicí hlavičkou na telefonech s výřezem displeje */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 41;
+  background: var(--white);
+}
+
 .fascia {
   position: sticky;
-  top: 0;
+  top: env(safe-area-inset-top, 0px);
   z-index: 40;
   padding-block: 6px;
   background:
@@ -465,7 +475,8 @@ kbd {
 .is-ready .exhibit__canvas { opacity: 1; }
 .plinth__hint { margin-top: 14px; font-size: 0.8125rem; font-weight: 600; color: var(--ink-2); }
 .exhibit:has(.stage--fallback) .plinth__hint { display: none; }
-.hero__exhibit .plinth { min-height: calc(var(--sink) + 92px); }
+.hero__exhibit .plinth { display: flex; flex-direction: column; min-height: calc(var(--sink) + 92px); }
+.hero__exhibit .plinth__hint { margin-top: auto; padding-top: 14px; }
 
 .hero__desk {
   display: flex;
@@ -779,7 +790,7 @@ kbd {
 /* Lišta s technologiemi pod záhlavím výroby */
 .rail {
   position: sticky;
-  top: var(--fascia-h);
+  top: calc(var(--fascia-h) + env(safe-area-inset-top, 0px));
   z-index: 30;
   background: var(--alu);
   border-bottom: 1px solid var(--alu-lo);
@@ -1177,7 +1188,7 @@ details[open] > summary::after { background: linear-gradient(var(--ink), var(--i
 .summary dd { font-weight: 600; text-align: right; overflow-wrap: anywhere; }
 
 .contact-card { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 16px; row-gap: 14px; align-items: center; padding-inline: 4px; }
-.contact-card .people__initials { grid-row: auto; }
+.contact-card .people__initials { grid-row: auto; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
 .contact-card__name { font-weight: 700; font-stretch: 112%; font-size: 1.125rem; }
 .contact-card__role { color: var(--ink-2); }
 .contact-card__lines { grid-column: 1 / -1; line-height: 1.7; font-weight: 600; }

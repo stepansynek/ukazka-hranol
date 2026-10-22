@@ -1,0 +1,475 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-22T18:41:38+00:00",
+  "title": "Design System: HRANOL s.r.o.",
+  "extensions": {
+    "colorMeta": {
+      "wall": {
+        "role": "primary",
+        "displayName": "Signal Yellow",
+        "canonical": "oklch(84.0% 0.172 90.4)",
+        "tonalRamp": [
+          "#1d0200",
+          "#3c1f00",
+          "#683a00",
+          "#8b5d00",
+          "#b18100",
+          "#d7a700",
+          "#fccb1b",
+          "#ffec8d"
+        ]
+      },
+      "wall-ink-2": {
+        "role": "primary",
+        "displayName": "Yellow-Wall Ink",
+        "canonical": "oklch(37.6% 0.078 97.3)",
+        "tonalRamp": [
+          "#150900",
+          "#312500",
+          "#514505",
+          "#72662e",
+          "#968a51",
+          "#bbaf75",
+          "#dfd297",
+          "#fdf0b4"
+        ]
+      },
+      "wall-pale": {
+        "role": "primary",
+        "displayName": "Pale Yellow",
+        "canonical": "oklch(96.4% 0.065 97.1)",
+        "tonalRamp": [
+          "#130900",
+          "#302600",
+          "#4f4517",
+          "#706639",
+          "#948a5b",
+          "#b9af7f",
+          "#ddd2a1",
+          "#faefbe"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "oklch(23.4% 0.007 258.4)",
+        "tonalRamp": [
+          "#090b0e",
+          "#24272a",
+          "#434549",
+          "#64666a",
+          "#87898d",
+          "#abaeb2",
+          "#ced1d5",
+          "#eceff3"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Soft Graphite",
+        "canonical": "oklch(42.5% 0.012 252.9)",
+        "tonalRamp": [
+          "#080b10",
+          "#22272c",
+          "#41464b",
+          "#61676d",
+          "#848a90",
+          "#a9afb5",
+          "#ccd2d9",
+          "#e9eff6"
+        ]
+      },
+      "floor": {
+        "role": "neutral",
+        "displayName": "Hall Floor",
+        "canonical": "oklch(91.7% 0.007 106.5)",
+        "tonalRamp": [
+          "#0b0b08",
+          "#272723",
+          "#454541",
+          "#666662",
+          "#898985",
+          "#aeaea9",
+          "#d1d1cc",
+          "#efefea"
+        ]
+      },
+      "floor-deep": {
+        "role": "neutral",
+        "displayName": "Deep Floor",
+        "canonical": "oklch(86.5% 0.010 106.6)",
+        "tonalRamp": [
+          "#0c0b07",
+          "#272722",
+          "#454540",
+          "#666660",
+          "#8a8a83",
+          "#aeaea8",
+          "#d1d1ca",
+          "#efefe8"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Counter White",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#262626",
+          "#454545",
+          "#666666",
+          "#898989",
+          "#aeaeae",
+          "#d1d1d1",
+          "#eeeeee"
+        ]
+      },
+      "alu": {
+        "role": "neutral",
+        "displayName": "Aluminium",
+        "canonical": "oklch(84.9% 0.009 247.9)",
+        "tonalRamp": [
+          "#080c0f",
+          "#23272b",
+          "#41464a",
+          "#62676b",
+          "#858a8e",
+          "#aaaeb3",
+          "#cdd2d7",
+          "#eaeff4"
+        ]
+      },
+      "alu-lo": {
+        "role": "neutral",
+        "displayName": "Low Aluminium",
+        "canonical": "oklch(73.5% 0.013 248.0)",
+        "tonalRamp": [
+          "#070c10",
+          "#22272d",
+          "#40464c",
+          "#60676d",
+          "#838a91",
+          "#a8afb6",
+          "#cbd2d9",
+          "#e8eff7"
+        ]
+      },
+      "groove": {
+        "role": "neutral",
+        "displayName": "Groove",
+        "canonical": "oklch(67.0% 0.013 248.0)",
+        "tonalRamp": [
+          "#070c10",
+          "#21272d",
+          "#40464c",
+          "#60676d",
+          "#838a91",
+          "#a8afb6",
+          "#cad2d9",
+          "#e8eff7"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "oklch(90.2% 0.005 247.9)",
+        "tonalRamp": [
+          "#090b0d",
+          "#242729",
+          "#434548",
+          "#646669",
+          "#87898c",
+          "#abaeb1",
+          "#ced1d4",
+          "#eceff2"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Field Edge",
+        "canonical": "oklch(66.0% 0.013 248.0)",
+        "tonalRamp": [
+          "#070c11",
+          "#21272d",
+          "#40464c",
+          "#60676d",
+          "#838a91",
+          "#a8afb6",
+          "#cad2d9",
+          "#e8eff7"
+        ]
+      },
+      "error": {
+        "role": "error",
+        "displayName": "Fault Red",
+        "canonical": "oklch(50.0% 0.182 29.5)",
+        "tonalRamp": [
+          "#2d0000",
+          "#520000",
+          "#8e0000",
+          "#b7271c",
+          "#e25242",
+          "#ff7966",
+          "#ff9e88",
+          "#ffd0bf"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Home hero claim on the yellow wall."
+      },
+      "headline-page": {
+        "displayName": "Page headline",
+        "purpose": "Inner-page H1 on the page-head wall."
+      },
+      "headline-wall": {
+        "displayName": "Wall headline",
+        "purpose": "Closing wall claim; feature, tech and case titles in the same lettering."
+      },
+      "headline-section": {
+        "displayName": "Section headline",
+        "purpose": "Section heads standing on the floor."
+      },
+      "title-counter": {
+        "displayName": "Counter title",
+        "purpose": "Titles on white counters."
+      },
+      "title-panel": {
+        "displayName": "Panel title",
+        "purpose": "Titles inside panels, certificates, sectors, mobile nav."
+      },
+      "title-item": {
+        "displayName": "Item title",
+        "purpose": "Plinth names, steps, machine names, FAQ and job titles."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "The one paragraph under a headline, max 34em."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, 1rem on mobile."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Button labels."
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "Tabular figures at width 87 for every compared number."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-wall",
+        "value": "0 1px 2px rgb(64 50 0 / 0.14), 0 20px 36px -16px rgb(64 50 0 / 0.42)",
+        "purpose": "Plinths, hero counter, fit checker, request form and summary standing in front of the yellow wall."
+      },
+      {
+        "name": "shadow-floor",
+        "value": "0 1px 2px rgb(28 30 33 / 0.08), 0 24px 44px -24px rgb(28 30 33 / 0.38)",
+        "purpose": "Counters standing on the hall floor."
+      },
+      {
+        "name": "shadow-armed",
+        "value": "0 2px 4px rgb(64 50 0 / 0.14), 0 34px 50px -18px rgb(64 50 0 / 0.5)",
+        "purpose": "Hero counter lifted 8px while a file is dragged over the window."
+      },
+      {
+        "name": "shadow-fascia",
+        "value": "0 14px 28px -20px rgb(28 30 33 / 0.5)",
+        "purpose": "Sticky header after scroll."
+      },
+      {
+        "name": "shadow-palette",
+        "value": "0 2px 6px rgb(0 0 0 / 0.12), 0 40px 70px -24px rgb(0 0 0 / 0.55)",
+        "purpose": "Search dialog over a rgb(28 30 33 / 0.5) backdrop."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "House exponential ease-out for every state transition."
+      },
+      {
+        "name": "state-fast",
+        "value": "0.25s",
+        "purpose": "Button, chip, segment and rail colour changes."
+      },
+      {
+        "name": "state",
+        "value": "0.3s to 0.35s",
+        "purpose": "Row and zone highlights, nav underline wipe, drop zone."
+      },
+      {
+        "name": "counter-arm",
+        "value": "0.45s",
+        "purpose": "Hero counter lift when a file is dragged in."
+      },
+      {
+        "name": "page-step",
+        "value": "out 0.38s translateX(-5vw), in 0.62s from translateX(7vw); reversed on back navigation",
+        "purpose": "Cross-document view transition: a sideways step along the stand."
+      },
+      {
+        "name": "desk-in",
+        "value": "0.35s to 0.4s from opacity 0, translateY(16px)",
+        "purpose": "Search palette and mobile menu entrance."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "1279px"
+      },
+      {
+        "name": "nav",
+        "value": "1240px"
+      },
+      {
+        "name": "tablet",
+        "value": "1079px"
+      },
+      {
+        "name": "mobile",
+        "value": "719px"
+      },
+      {
+        "name": "low-desktop",
+        "value": "min-width 1080px and max-height 820px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Sign Button",
+      "kind": "button",
+      "refersTo": "button-sign",
+      "description": "Yellow call to action: drawing upload, capacity booking.",
+      "html": "<a class=\"ds-btn ds-btn-sign\" href=\"#\">Nahrát výkres</a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border:2px solid transparent;font-family:Archivo,system-ui,sans-serif;font-weight:700;font-stretch:112%;font-size:1.0625rem;line-height:1.1;text-decoration:none;white-space:nowrap;border-radius:0;transition:background-color .25s cubic-bezier(0.16, 1, 0.3, 1),color .25s cubic-bezier(0.16, 1, 0.3, 1),border-color .25s cubic-bezier(0.16, 1, 0.3, 1);} .ds-btn-sign{background:#f5c400;color:#1c1e21;border-color:#f5c400;} .ds-btn-sign:hover{background:#1c1e21;color:#f5c400;border-color:#1c1e21;} .ds-btn:focus-visible{outline:3px solid #1c1e21;outline-offset:3px;}"
+    },
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Graphite action, including the header Poptávka (small size).",
+      "html": "<a class=\"ds-btn-ink\" href=\"#\">Poptávka</a>",
+      "css": ".ds-btn-ink{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;background:#1c1e21;color:#fff;border:2px solid #1c1e21;border-radius:0;font-family:Archivo,system-ui,sans-serif;font-weight:700;font-stretch:112%;font-size:1.0625rem;line-height:1.1;text-decoration:none;transition:background-color .25s cubic-bezier(0.16, 1, 0.3, 1),border-color .25s cubic-bezier(0.16, 1, 0.3, 1);} .ds-btn-ink:hover{background:#3a3e44;border-color:#3a3e44;} .ds-btn-ink:focus-visible{outline:3px solid #1c1e21;outline-offset:3px;}"
+    },
+    {
+      "name": "Line Button",
+      "kind": "button",
+      "refersTo": "button-line",
+      "description": "Secondary outlined action; on a yellow wall the hover label turns yellow.",
+      "html": "<div class=\"ds-wallbg\"><a class=\"ds-btn-line\" href=\"#\">Strojový park</a></div>",
+      "css": ".ds-wallbg{background:#f5c400;padding:24px;} .ds-btn-line{display:inline-flex;align-items:center;min-height:52px;padding:0 24px;background:transparent;color:#1c1e21;border:2px solid #1c1e21;border-radius:0;font-family:Archivo,system-ui,sans-serif;font-weight:700;font-stretch:112%;font-size:1.0625rem;text-decoration:none;transition:background-color .25s cubic-bezier(0.16, 1, 0.3, 1),color .25s cubic-bezier(0.16, 1, 0.3, 1);} .ds-btn-line:hover{background:#1c1e21;color:#f5c400;} .ds-btn-line:focus-visible{outline:3px solid #1c1e21;outline-offset:3px;}"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Square white field with Field Edge border and graphite focus.",
+      "html": "<label class=\"ds-field\"><span>E-mail</span><input type=\"email\" placeholder=\"jmeno@firma.cz\"></label>",
+      "css": ".ds-field{display:grid;gap:8px;font-family:Archivo,system-ui,sans-serif;color:#1c1e21;} .ds-field span{font-weight:600;} .ds-field input{min-height:52px;padding:12px 14px;background:#fff;border:1.5px solid #8c939a;border-radius:0;font:inherit;font-size:1.0625rem;transition:border-color .2s cubic-bezier(0.16, 1, 0.3, 1);} .ds-field input::placeholder{color:#4a4f55;} .ds-field input:hover{border-color:#1c1e21;} .ds-field input:focus-visible{outline:3px solid #1c1e21;outline-offset:2px;border-color:#1c1e21;}"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Machine filter; pressed fills graphite.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\">Frézování <span>4</span></button><button class=\"ds-chip\" aria-pressed=\"false\">Soustružení <span>3</span></button></div>",
+      "css": ".ds-chips{display:flex;gap:8px;} .ds-chip{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;background:#fff;color:#1c1e21;border:1.5px solid #8c939a;border-radius:0;font-family:Archivo,system-ui,sans-serif;font-weight:600;cursor:pointer;transition:background-color .25s cubic-bezier(0.16, 1, 0.3, 1),border-color .25s cubic-bezier(0.16, 1, 0.3, 1);} .ds-chip span{font-stretch:87%;font-variant-numeric:tabular-nums;font-size:.875rem;color:#4a4f55;} .ds-chip:hover{border-color:#1c1e21;} .ds-chip[aria-pressed=true]{background:#1c1e21;border-color:#1c1e21;color:#fff;} .ds-chip[aria-pressed=true] span{color:#d5d8db;} .ds-chip:focus-visible{outline:3px solid #1c1e21;outline-offset:3px;}"
+    },
+    {
+      "name": "Fascia Navigation",
+      "kind": "nav",
+      "refersTo": "rail-link-current",
+      "description": "White header band between aluminium rails; yellow wipe on hover, graphite bar on current.",
+      "html": "<nav class=\"ds-fascia\"><a href=\"#\" aria-current=\"page\">Výroba</a><a href=\"#\">Stroje</a><a href=\"#\">Reference</a><a href=\"#\">O firmě</a></nav>",
+      "css": ".ds-fascia{display:flex;gap:2px;padding:18px 16px;background:linear-gradient(#c9ced3 0 2px,#8f969d 2px 4px,#c9ced3 4px 6px,transparent 6px calc(100% - 6px),#c9ced3 calc(100% - 6px) calc(100% - 4px),#8f969d calc(100% - 4px) calc(100% - 2px),#c9ced3 calc(100% - 2px)),#fff;font-family:Archivo,system-ui,sans-serif;} .ds-fascia a{position:relative;padding:10px 12px;font-weight:600;color:#1c1e21;text-decoration:none;} .ds-fascia a::after{content:'';position:absolute;left:12px;right:12px;bottom:2px;height:4px;background:#f5c400;transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(0.16, 1, 0.3, 1);} .ds-fascia a:hover::after{transform:scaleX(1);} .ds-fascia a[aria-current=page]::after{transform:scaleX(1);background:#1c1e21;} .ds-fascia a:focus-visible{outline:3px solid #1c1e21;outline-offset:3px;}"
+    },
+    {
+      "name": "Wall with Panels",
+      "kind": "card",
+      "refersTo": "panel-wall",
+      "description": "Aluminium post-and-rail wall holding yellow panels, each outlined by the groove line.",
+      "html": "<div class=\"ds-wall\"><div class=\"ds-panel\"><h3>Frézování</h3><p>Pětiosé centrum, 1200 × 800 × 600 mm.</p></div><div class=\"ds-panel\"><h3>Svařování</h3><p>Žíhání a obrobení na jedno upnutí.</p></div></div>",
+      "css": ".ds-wall{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:10px;background:#c9ced3;box-shadow:inset 0 0 0 1px #a3aab1;font-family:Archivo,system-ui,sans-serif;color:#1c1e21;} .ds-panel{position:relative;padding:28px;background:#f5c400;box-shadow:0 0 0 1px #a3aab1;} .ds-panel::before{content:'';position:absolute;inset:-6px;border:2px solid #8f969d;pointer-events:none;} .ds-panel h3{margin:0 0 12px;font-weight:800;font-stretch:118%;font-size:1.5rem;line-height:1.05;} .ds-panel p{margin:0;}"
+    },
+    {
+      "name": "Counter",
+      "kind": "card",
+      "refersTo": "counter",
+      "description": "White working surface with a 10px graphite top, standing on the floor.",
+      "html": "<div class=\"ds-floor\"><div class=\"ds-counter\"><h3>Volná kapacita</h3><p>Osm týdnů dopředu, po technologiích.</p></div></div>",
+      "css": ".ds-floor{background:#e4e4df;padding:32px;} .ds-counter{background:#fff;border-top:10px solid #1c1e21;padding:28px;box-shadow:0 1px 2px rgb(28 30 33 / .08),0 24px 44px -24px rgb(28 30 33 / .38);font-family:Archivo,system-ui,sans-serif;color:#1c1e21;} .ds-counter h3{margin:0 0 10px;font-weight:800;font-stretch:125%;font-size:2rem;line-height:1;letter-spacing:-.01em;} .ds-counter p{margin:0;color:#4a4f55;}"
+    },
+    {
+      "name": "Capacity Cells",
+      "kind": "custom",
+      "description": "Week cells: floor grey with a load bar, yellow when free.",
+      "html": "<div class=\"ds-cap\"><span class=\"ds-cell\" style=\"--v:80\" tabindex=\"0\"><i></i></span><span class=\"ds-cell\" style=\"--v:95\" tabindex=\"0\"><i></i></span><span class=\"ds-cell ds-free\" style=\"--v:45\" tabindex=\"0\"><i></i></span><span class=\"ds-cell ds-free\" style=\"--v:20\" tabindex=\"0\"><i></i></span></div>",
+      "css": ".ds-cap{display:flex;gap:5px;background:#fff;padding:16px;} .ds-cell{position:relative;width:64px;height:58px;background:#e4e4df;overflow:hidden;} .ds-cell.ds-free{background:#f5c400;} .ds-cell i{position:absolute;left:0;right:0;bottom:0;height:calc(var(--v) * 1%);background:#4a4f55;} .ds-cell:hover,.ds-cell:focus-visible{outline:3px solid #1c1e21;outline-offset:1px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Fair Stand",
+    "overview": "The site is a machine shop's own stand at the Brno engineering fair, seen in frontal elevation. Signal-yellow system walls are framed by aluminium posts and rails; claims are lettered onto the panels in wide, heavy Archivo; delivered parts stand as exhibits on white plinths; work happens at white counters with graphite tops (capacity, fit check, machine table, request form). The page ground is the warm grey of the hall floor. Everything is square, built from equal panels, and lit by real, soft shadows only where an object physically stands in front of the wall.\n\nThe governing split is home and away: yellow walls persuade, white counters work. On white, yellow is no longer a surface but a signal, marking what is free (capacity weeks), what is selected (palette item, rail position, segmented choice) and what is actionable (the drawing upload). Density is moderate and factual: big lettering on walls, tight tabular data on counters, nothing decorative that is not a piece of stand hardware.\n\nIt must read as a believable Moravian job shop, never as an art piece, a dark \"tech\" site, or a blueprint pastiche, and it shares no grammar with the sibling SETINA demo.",
+    "keyCharacteristics": [
+      "Yellow wall panels in an aluminium post-and-rail grid, every panel outlined by a groove line.",
+      "White counters (10px graphite top) and white plinths stand in front of the wall with soft, warm shadows.",
+      "One family, Archivo variable, carried by width: 125 for lettering, 112 for labels and names, 87 with tabular figures for data.",
+      "Square corners everywhere; borders and solid fills instead of rounding.",
+      "One authored motion: a sideways step along the stand between pages, exponential ease-out."
+    ],
+    "rules": [
+      {
+        "name": "The Home and Away Rule",
+        "body": "Yellow walls persuade, white counters work. On a white surface, yellow means free, selected or actionable; it is never decoration there.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ink-on-Yellow Rule",
+        "body": "Text on yellow is graphite or Yellow-Wall Ink, nothing else; white text never sits on yellow.",
+        "section": "colors"
+      },
+      {
+        "name": "The Lettering Rule",
+        "body": "Headlines are lettered, not typeset: weight 800, width 125, slightly negative tracking, balanced wrapping. Display tops out at 6rem.",
+        "section": "typography"
+      },
+      {
+        "name": "The Spec-Sheet Rule",
+        "body": "Every number a buyer compares (dimensions, tolerances, dates, capacity, sizes) is set at width 87 with tabular figures. No monospace, no all-caps labels.",
+        "section": "typography"
+      },
+      {
+        "name": "The Standing Object Rule",
+        "body": "Only something that physically stands in front of the wall or floor (plinth, counter, open menu, dialog) casts a shadow; wall panels never do.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** build every persuasive block as yellow panels inside an aluminium wall with 10px posts and the 2px groove line.",
+      "**Do** put every working tool (tables, forms, checkers) on a white counter with the 10px graphite top.",
+      "**Do** use yellow on white only to mean free, selected or actionable.",
+      "**Do** set headlines at Archivo 800, width 125, line-height about 0.94 to 1, and keep display at or below 6rem.",
+      "**Do** set comparable numbers at width 87 with tabular figures.",
+      "**Do** keep every edge square and draw focus as a 3px graphite outline.",
+      "**Do** keep motion to state changes on `cubic-bezier(0.16, 1, 0.3, 1)` plus the sideways page step, and honour reduced motion."
+    ],
+    "donts": [
+      "**Don't** give a wall panel a shadow; shadows belong to plinths, counters and overlays only.",
+      "**Don't** use hard offset shadows or rounded corners.",
+      "**Don't** set white text on yellow, or use yellow as decoration on a white surface.",
+      "**Don't** add a second typeface, monospace, or all-caps label lines.",
+      "**Don't** add eyebrows or kickers above headlines.",
+      "**Don't** use blueprint devices (title blocks, stamps, dimension-line ornament), a dark \"tech\" look, or any SETINA grammar (white protocol pages, blue/green measurement accents).",
+      "**Don't** use glyph or emoji icons; icons are stroked SVG with square caps."
+    ]
+  }
+}
