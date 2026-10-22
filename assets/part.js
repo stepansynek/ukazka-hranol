@@ -163,7 +163,6 @@
 
   canvas.addEventListener("pointerdown", (e) => {
     dragging = true;
-    stage.classList.add("is-turned");
     lastX = e.clientX;
     velocity = 0;
     canvas.setPointerCapture(e.pointerId);

@@ -86,13 +86,13 @@ FILTERS = [("all", "Vše"), ("frezovani", "Frézování"), ("soustruzeni", "Sous
 ZONES = [
     ("sklad", "Sklad a dělení", 0, 0, 12, 40, 480, 3,
      "Tyče, desky a jekly s atestem 3.1. Pásová pila nařeže přířezy na míru, zbytky evidujeme podle tavby.",
-     (3.4, 29.5), (22, 6.4)),
+     (1.6, 29.5), (22, 6.4)),
     ("obrobna", "Obrobna", 12, 0, 36, 26, 936, 14,
      "Jedenáct CNC strojů ve dvou řadách: pětiosá centra, tříosé frézky, soustruhy a bruska na kulato.",
      (13.6, 11.6), (8, 21)),
     ("svarovna", "Svařovna", 48, 0, 18, 24, 432, 8,
      "Šest svařovacích pracovišť s odsáváním a žíhací pec. Svařenec po žíhání jede rovnou do obrobny.",
-     (59.4, 18.6), (13, 60.6)),
+     (58.4, 18.6), (13, 60.6)),
     ("montaz", "Montáž", 66, 0, 14, 24, 336, 6,
      "Montážní stoly a zkušební stanoviště pro podsestavy do 800 kg.",
      (67.6, 13.8), (11.2, 72)),
@@ -159,7 +159,7 @@ SEARCH = [
 def build_capacity():
     """Tabulka vytížení. Data týdnů a texty bublin dopočítá main.js podle dnešního data."""
     head = "".join(
-        f'<th scope="col" data-week="{i}"><span class="cap__wk">T{week_start(i).isocalendar()[1]}</span>'
+        f'<th scope="col" role="columnheader" data-week="{i}"><span class="cap__wk">T{week_start(i).isocalendar()[1]}</span>'
         f'<span class="cap__date">{short_date(week_start(i))}</span></th>'
         for i in range(8))
     rows = []
@@ -172,14 +172,15 @@ def build_capacity():
             free = v < FREE_BELOW
             free_h = round(hours * (100 - v) / 100)
             cells.append(
-                f'<td class="cap__cell{" is-free" if free else ""}" tabindex="0" data-week="{i}" '
+                f'<td role="cell" class="cap__cell{" is-free" if free else ""}" tabindex="0" data-week="{i}" '
                 f'data-v="{v}" data-free-h="{free_h}">'
                 f'<span class="cap__bar" style="--v:{v}"></span>'
                 f'<span class="sr-only">{v} %{", volno" if free else ""}</span></td>')
-        rows.append(f'<tr><th scope="row"><span class="cap__name">{name}</span>{when}</th>{"".join(cells)}</tr>')
-    return (f'<table class="cap__table"><caption class="sr-only">Vytížení výroby podle technologie '
-            f'a týdne v procentech</caption><thead><tr><th scope="col" class="cap__corner">Technologie</th>'
-            f'{head}</tr></thead><tbody>{"".join(rows)}</tbody></table>')
+        rows.append(f'<tr role="row"><th scope="row" role="rowheader"><span class="cap__name">{name}</span>{when}</th>{"".join(cells)}</tr>')
+    # Role zůstávají i na mobilu, kde se tabulka přeskládá do mřížky (jinak by prohlížeč zahodil sémantiku tabulky).
+    return (f'<table class="cap__table" role="table"><caption class="sr-only">Vytížení výroby podle technologie '
+            f'a týdne v procentech</caption><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader" class="cap__corner">Technologie</th>'
+            f'{head}</tr></thead><tbody role="rowgroup">{"".join(rows)}</tbody></table>')
 
 
 def build_status():
@@ -234,7 +235,8 @@ def hall_svg(portrait):
     k = 10  # jednotek na metr
     tr = (lambda x, y, w, h: (y, x, h, w)) if portrait else (lambda x, y, w, h: (x, y, w, h))
     W, H = (40, 80) if portrait else (80, 40)
-    fs_name, fs_meta, fs_item = (1.55, 1.15, 0) if portrait else (1.15, 0.9, 0.72)
+    # Velikosti v metrech půdorysu: na šířku se plán kreslí zhruba 0,8–1 px na jednotku, popisky strojů tak mají aspoň 11 px.
+    fs_name, fs_meta, fs_item = (1.6, 1.3, 0) if portrait else (1.3, 1.15, 1.3)
     out = [f'<svg class="hall__svg hall__svg--{"tall" if portrait else "wide"}" viewBox="-6 -6 {W * k + 12} {H * k + 12}" aria-hidden="true">']
     for zid, name, x, y, w, h, area, ppl, _, land, tall in ZONES:
         rx, ry, rw, rh = tr(x, y, w, h)
@@ -248,7 +250,7 @@ def hall_svg(portrait):
             cls = "hall__machine" if mid else ("hall__fixture" if label else "hall__rack")
             rect = f'<rect class="{cls}" x="{bx * k}" y="{by * k}" width="{bw * k}" height="{bh * k}"/>'
             if mid:
-                text = (f'<text x="{(bx + bw / 2) * k}" y="{(by + bh) * k + fs_item * k * 1.35}" text-anchor="middle" '
+                text = (f'<text class="hall__label" x="{(bx + bw / 2) * k}" y="{(by + bh) * k + fs_item * k * 1.15}" text-anchor="middle" '
                         f'font-size="{fs_item * k}">{label}</text>') if fs_item else ""
                 out.append(f'<a href="@stroje#stroj-{mid}" tabindex="-1" class="hall__link"><title>{label}</title>{rect}{text}</a>')
             else:

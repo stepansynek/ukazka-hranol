@@ -37,11 +37,13 @@
   --white: #fff;
   --alu: #c9ced3;           /* hliníkové sloupky a lišty */
   --alu-lo: #a3aab1;
+  --groove: #8f969d;        /* drážka v hliníkovém profilu */
   --line: #dcdfe2;          /* tenké linky na bílé */
   --line-strong: #8c939a;   /* okraje polí, 3:1 vůči bílé */
   --error: #b42318;
 
   --post: 10px;
+  --plinth-top: 26px;       /* hloubka horní desky podstavce v pohledu */
   --gut: clamp(16px, 3.4vw, 48px);
   --pad: clamp(20px, 2.8vw, 44px);
   --stand-max: 1680px;
@@ -157,12 +159,20 @@ a:hover { text-decoration-thickness: 3px; }
   background: var(--wall);
   box-shadow: 0 0 0 1px var(--alu-lo);
 }
+/* Drážka profilu: každý panel nakreslí obrys uprostřed sloupků a lišt kolem sebe, u sousedů se čáry kryjí. */
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--post) / -2 - 1px);
+  border: 2px solid var(--groove);
+  pointer-events: none;
+}
 .wall--white .panel { background: var(--white); }
 .wall .panel--yellow { background: var(--wall); }
 .panel--2 { grid-column: span 2; }
 .panel--3 { grid-column: 1 / -1; }
-.panel--media { padding: 0; overflow: hidden; background: var(--ink); }
-.panel--media img { width: 100%; height: 100%; object-fit: cover; }
+.panel--media { padding: 0; background: var(--ink); }
+.panel--media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
 .letter {
   font-weight: 800;
@@ -176,12 +186,38 @@ a:hover { text-decoration-thickness: 3px; }
 
 /* Exponát: díl nad bílým podstavcem se štítkem */
 .exhibit { position: relative; margin: 0; }
+/* Podstavec: horní deska (vidíme ji mírně shora) a čelo se štítkem. Díl stojí na zadní hraně desky. */
 .plinth {
   position: relative;
+  z-index: 2;
+  margin-top: var(--plinth-top);
   background: var(--white);
-  border-top: 8px solid var(--alu);
-  padding: 20px 22px 22px;
+  padding: 18px 22px 22px;
   box-shadow: var(--shadow-wall);
+}
+.plinth::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 100%;
+  height: var(--plinth-top);
+  background:
+    radial-gradient(38% 60% at 50% 12%, rgb(64 50 0 / 0.3), rgb(64 50 0 / 0.08) 60%, transparent 78%),
+    linear-gradient(#f2f2ee, #e5e5e0);
+  box-shadow: inset 0 -2px 0 var(--alu-lo);
+  clip-path: polygon(4% 0, 96% 0, 100% 100%, 0 100%);
+}
+.plinth__line { margin-top: 6px; font-size: 0.9375rem; color: var(--ink-2); font-stretch: 87%; font-variant-numeric: tabular-nums; }
+.plinth--wide { justify-self: center; width: min(80%, 620px); }
+.exhibit__img--on-plinth {
+  --w: min(100%, 860px);
+  --foot: 0.2;
+  position: relative;
+  z-index: 1;
+  width: var(--w);
+  justify-self: center;
+  align-self: end;
+  margin-bottom: calc(var(--w) * -0.75 * var(--foot) - 8px - var(--plinth-top));
+  pointer-events: none;
 }
 .plinth__name { font-weight: 700; font-stretch: 112%; font-size: 1.1875rem; line-height: 1.2; }
 .plinth__no { white-space: nowrap; }
@@ -228,8 +264,11 @@ a:hover { text-decoration-thickness: 3px; }
   position: sticky;
   top: 0;
   z-index: 40;
-  background: var(--white);
-  border-block: 6px solid var(--alu);
+  padding-block: 6px;
+  background:
+    linear-gradient(var(--alu) 0 2px, var(--groove) 2px 4px, var(--alu) 4px 6px, transparent 6px calc(100% - 6px),
+      var(--alu) calc(100% - 6px) calc(100% - 4px), var(--groove) calc(100% - 4px) calc(100% - 2px), var(--alu) calc(100% - 2px)),
+    var(--white);
   transition: box-shadow 0.3s var(--ease);
   view-transition-name: fascia;
 }
@@ -406,17 +445,10 @@ kbd {
 }
 .exhibit__stage {
   position: relative;
+  z-index: 1;
   aspect-ratio: 1.22;
+  margin-bottom: calc(-8% - var(--plinth-top));
   background: center / 100% 100% no-repeat;
-}
-/* Měkký stín dílu na desce podstavce */
-.exhibit__stage::after {
-  content: "";
-  position: absolute;
-  left: 20%; right: 20%; bottom: 7%;
-  height: 13%;
-  background: radial-gradient(closest-side, rgb(64 50 0 / 0.36), rgb(64 50 0 / 0.12) 55%, transparent);
-  pointer-events: none;
 }
 .exhibit__canvas {
   position: absolute;
@@ -431,17 +463,8 @@ kbd {
 .exhibit__canvas:active { cursor: grabbing; }
 .stage--fallback .exhibit__canvas { display: none; }
 .is-ready .exhibit__canvas { opacity: 1; }
-.exhibit__hint {
-  position: absolute;
-  left: 0; right: 0; bottom: 6px;
-  text-align: center;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--wall-ink-2);
-  pointer-events: none;
-  transition: opacity 0.4s var(--ease);
-}
-.stage--fallback .exhibit__hint, .is-turned .exhibit__hint { opacity: 0; }
+.plinth__hint { margin-top: 14px; font-size: 0.8125rem; font-weight: 600; color: var(--ink-2); }
+.exhibit:has(.stage--fallback) .plinth__hint { display: none; }
 .hero__exhibit .plinth { min-height: calc(var(--sink) + 92px); }
 
 .hero__desk {
@@ -571,10 +594,9 @@ kbd {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transform: scale(1.04);
-  transition: opacity 0.5s var(--ease), transform 0.9s var(--ease);
+  transition: opacity 0.5s var(--ease);
 }
-.techlist__media img.is-active { opacity: 1; transform: none; }
+.techlist__media img.is-active { opacity: 1; }
 
 /* ---------------------------------------------------------------- úvod: kapacita */
 
@@ -665,29 +687,40 @@ kbd {
   place-items: center;
   padding: clamp(16px, 2vw, 32px);
 }
-.feat__exhibit { grid-template-rows: 1fr auto; padding-bottom: 0; }
-.feat__exhibit .exhibit__img, .case__exhibit img { width: min(100%, 860px); }
-.feat__exhibit .plinth {
-  justify-self: end;
-  width: min(100%, 420px);
-  margin: -24px 0 calc(-1 * var(--post) - 28px);
-  z-index: 2;
-}
+.feat__exhibit, .case__exhibit { grid-template-rows: 1fr auto; align-content: end; }
+.feat__exhibit { padding-bottom: 0; }
+.feat__exhibit .plinth { margin-bottom: calc(-1 * var(--post) - 28px); }
+.case__exhibit { padding-bottom: 0; }
+.case__exhibit .plinth { margin-bottom: 0; box-shadow: 0 -1px 0 rgb(64 50 0 / 0.06), 0 -12px 28px -18px rgb(64 50 0 / 0.4); }
+#ref-ramy .exhibit__img--on-plinth { --foot: 0.18; }
+#ref-chapadla .exhibit__img--on-plinth { --foot: 0; }
+#ref-hydraulika .exhibit__img--on-plinth { --foot: 0.25; }
 
-/* ---------------------------------------------------------------- úvod: postup */
+/* ---------------------------------------------------------------- řada s datem: postup a historie */
 
-.proc .panel { display: flex; flex-direction: column; gap: 12px; min-height: 250px; }
-.proc h3 { font-weight: 700; font-stretch: 112%; font-size: 1.1875rem; line-height: 1.25; }
-.proc__when {
-  display: block;
-  padding-bottom: clamp(32px, 4vw, 56px);
-  font-weight: 800;
-  font-stretch: 125%;
-  font-size: var(--fs-panel);
-  line-height: 1;
-  letter-spacing: -0.01em;
+.seq {
+  --n: 4;
+  --mark: var(--fs-panel);
+  --gap: clamp(20px, 2.6vw, 40px);
+  display: grid;
+  grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+  gap: 40px var(--gap);
+  padding-block: clamp(32px, 3.6vw, 52px);
 }
-.proc .panel p { color: var(--ink-2); }
+.seq--6 { --n: 6; }
+.seq li { position: relative; display: flex; flex-direction: column; gap: 10px; }
+.seq h3 { display: flex; flex-direction: column; gap: 34px; font-weight: 700; font-stretch: 112%; font-size: 1.1875rem; line-height: 1.25; }
+.seq__mark { font-weight: 800; font-stretch: 125%; font-size: var(--mark); line-height: 1; letter-spacing: -0.01em; white-space: nowrap; }
+/* Osa: souvislá čára přes celou řadu, u každé položky ryska */
+.seq li::after { content: ""; position: absolute; left: 0; right: calc(-1 * var(--gap)); top: calc(var(--mark) + 16px); height: 2px; background: var(--ink); }
+.seq li:last-child::after { right: 0; }
+.seq li::before { content: ""; position: absolute; left: 0; top: calc(var(--mark) + 11px); width: 2px; height: 12px; background: var(--ink); }
+.seq p { color: var(--ink-2); max-width: 34ch; }
+.timeline { --mark: clamp(1.75rem, 2.4vw, 2.5rem); }
+.timeline h3 { margin-bottom: 24px; }
+.timeline p { font-size: 0.9375rem; line-height: 1.5; }
+/* Poslední rok je dnešek: místo rysky plný čtverec na konci osy */
+.timeline li:last-child::before { width: 12px; height: 12px; top: calc(var(--mark) + 11px); }
 
 /* ---------------------------------------------------------------- závěrečná stěna a patička */
 
@@ -936,15 +969,15 @@ kbd {
 .quote__text { font-size: clamp(1.75rem, 3.4vw, 3.125rem); line-height: 1.04; max-width: 24em; text-indent: -0.42em; }
 .quote__by { margin-top: 28px; font-weight: 600; color: var(--wall-ink-2); }
 
-.sectors .panel {
-  display: flex;
-  align-items: flex-end;
-  min-height: 140px;
+.sectors { columns: 2; column-gap: clamp(32px, 5vw, 80px); padding-block: clamp(20px, 2.6vw, 40px); }
+.sectors li {
+  break-inside: avoid;
+  padding: 16px 0 18px;
+  border-top: 1px solid var(--line);
   font-weight: 800;
   font-stretch: 118%;
-  font-size: clamp(1.1875rem, 1.6vw, 1.5rem);
+  font-size: clamp(1.375rem, 2.3vw, 2.125rem);
   line-height: 1.1;
-  text-wrap: balance;
 }
 
 /* ---------------------------------------------------------------- o firmě */
@@ -966,6 +999,7 @@ kbd {
 .hall__svg .hall__name { fill: var(--ink); font-weight: 800; font-stretch: 112%; }
 .hall__svg .hall__meta { fill: var(--ink-2); font-weight: 500; }
 .hall__svg .hall__fixture-label { fill: var(--ink); }
+.hall__svg .hall__label { font-stretch: 68%; font-weight: 600; fill: var(--ink); }
 .hall__zone.is-active text { fill: var(--ink); }
 
 .zones li {
@@ -981,10 +1015,6 @@ kbd {
 .zones li > p:not(.zones__meta) { margin-top: 4px; font-size: 0.9375rem; color: var(--ink-2); }
 .zones__machines a { color: var(--ink); font-weight: 600; }
 
-.timeline .panel { display: flex; flex-direction: column; gap: 12px; min-height: 240px; }
-.timeline__year { font-weight: 800; font-stretch: 125%; font-size: clamp(1.75rem, 2.6vw, 2.5rem); line-height: 1; letter-spacing: -0.01em; margin-bottom: auto; padding-bottom: 28px; font-variant-numeric: lining-nums; }
-.timeline .panel:last-child { background: var(--wall); }
-.timeline .panel p:not(.timeline__year) { font-size: 0.9375rem; line-height: 1.5; }
 
 .people .panel { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto 1fr; column-gap: 18px; align-items: start; }
 .people__initials, .contact-card .people__initials {
@@ -992,7 +1022,7 @@ kbd {
   display: grid;
   place-items: center;
   width: 56px; height: 56px;
-  background: var(--wall);
+  background: var(--floor);
   font-weight: 800;
   font-stretch: 125%;
   font-size: 1.125rem;
@@ -1211,6 +1241,13 @@ details[open] > summary::after { background: linear-gradient(var(--ink), var(--i
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
+/* ---------------------------------------------------------------- nízké obrazovky: pult s tlačítkem zůstane v prvním pohledu */
+
+@media (min-width: 1080px) and (max-height: 820px) {
+  .hero__desk { justify-content: flex-start; padding-bottom: var(--pad); }
+  .desk__counter { margin-bottom: 0; }
+}
+
 /* ---------------------------------------------------------------- menší obrazovky */
 
 @media (max-width: 1240px) {
@@ -1221,6 +1258,12 @@ details[open] > summary::after { background: linear-gradient(var(--ink), var(--i
 
 @media (max-width: 1279px) {
   .wall--6 { --cols: 3; }
+  .seq--6 { --n: 3; }
+  .seq--6 li:nth-child(3n)::after { right: 0; }
+  .hall { grid-template-columns: minmax(0, 1fr); }
+  .hall__plan { position: static; }
+  .zones { columns: 2; column-gap: 40px; }
+  .zones li { break-inside: avoid; }
 }
 
 @media (max-width: 1079px) {
@@ -1258,6 +1301,8 @@ details[open] > summary::after { background: linear-gradient(var(--ink), var(--i
   .hero__floor { padding-right: calc(var(--post) + var(--pad)); min-height: calc(var(--sink) + 72px); }
 
   .wall--4 { --cols: 2; }
+  .seq--4 { --n: 2; }
+  .seq--4 li:nth-child(2n)::after { right: 0; }
   .techlist { --cols: 1; }
   .techlist .panel--2 { grid-column: auto; }
   .techlist__media { min-height: 0; aspect-ratio: 16 / 9; }
@@ -1293,6 +1338,8 @@ details[open] > summary::after { background: linear-gradient(var(--ink), var(--i
   .close__act { padding-top: var(--pad); }
   .close__wall { row-gap: 0; }
   .close__wall .panel + .panel { box-shadow: none; }
+  /* Sloučené panely bez mezery: drážka by přeškrtla text */
+  .close__wall .panel::before, .phead__wall .panel::before { display: none; }
 
   .phead__wall { --cols: 1; }
   .phead__wall .panel--2 { grid-column: auto; }
@@ -1325,10 +1372,40 @@ details[open] > summary::after { background: linear-gradient(var(--ink), var(--i
   .wall--2, .wall--4, .wall--6, .wall { --cols: 1; }
   .panel--2 { grid-column: auto; }
   .tech--pair { --cols: 1; }
-  .proc .panel, .cols .panel, .timeline .panel, .certs .panel { min-height: 0; }
-  .proc__when, .timeline__year, .certs__name { padding-bottom: 16px; }
-  .sectors { --cols: 2; }
-  .sectors .panel { min-height: 104px; font-size: 1.0625rem; }
+  .cols .panel, .certs .panel { min-height: 0; }
+  .certs__name { padding-bottom: 16px; }
+  .sectors { columns: 1; }
+  .sectors li { font-size: 1.25rem; padding: 12px 0 14px; }
+
+  .seq { grid-template-columns: minmax(0, 1fr); gap: 0; padding-block: 8px; }
+  .seq li { padding: 0 0 28px 30px; }
+  .seq li::after { left: 5px; right: auto; top: calc(var(--mark) / 2); bottom: calc(var(--mark) / -2); width: 2px; height: auto; }
+  .seq li:last-child::after { display: none; }
+  .seq li::before { left: 0; top: calc(var(--mark) / 2 - 1px); width: 12px; height: 2px; }
+  .seq h3 { gap: 8px; }
+  .timeline h3 { margin-bottom: 0; }
+  .timeline li:last-child::before { top: calc(var(--mark) / 2 - 6px); height: 12px; }
+  .zones { columns: 1; }
+
+  /* Kapacita na mobilu: všech osm týdnů vedle sebe, název technologie nad řádkem */
+  .cap__table, .cap__table thead, .cap__table tbody { display: block; min-width: 0; margin: 0; }
+  .cap__table tr { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 4px; }
+  .cap__corner, .cap__date { display: none !important; }
+  .cap__table thead th { padding: 0 0 2px; font-size: 0.75rem; }
+  .cap__wk { font-size: 0.8125rem; }
+  .cap__table tbody tr { margin-top: 14px; }
+  .cap__table tbody th { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 12px; padding: 0 0 4px; white-space: normal; }
+  .cap__cell { display: block; height: 40px; min-width: 0; }
+
+  /* Široké tabulky: první sloupec drží na místě, pravý okraj naznačí, že tabulka pokračuje */
+  .mtable td:first-child, .mtable th:first-child, .matrix th:first-child {
+    position: sticky; left: 0; z-index: 1;
+    background: var(--white);
+    box-shadow: 1px 0 0 var(--line);
+  }
+  .mtable td:first-child { min-width: 170px; max-width: 190px; }
+  .mtable tr.is-fit td:first-child { background: var(--wall-pale); }
+  .matrix tbody tr:hover th { background: #f6f6f3; }
 
   .sec__head { flex-direction: column; align-items: flex-start; gap: 12px; }
 
@@ -1363,6 +1440,15 @@ details[open] > summary::after { background: linear-gradient(var(--ink), var(--i
   .hall__svg--tall { display: block; max-width: 340px; margin-inline: auto; }
 
   .palette { margin-top: 8vh; }
+}
+
+@property --edge { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@keyframes edge-out { 0%, 92% { --edge: 40px; } 100% { --edge: 0px; } }
+@media (max-width: 719px) {
+  @supports (animation-timeline: scroll()) {
+    .table-scroll { --edge: 40px; mask-image: linear-gradient(90deg, #000 calc(100% - var(--edge)), transparent); animation: edge-out linear both; animation-timeline: scroll(self inline); }
+    [data-capacity] .table-scroll { mask-image: none; animation: none; }
+  }
 }
 
 @media (hover: none) {

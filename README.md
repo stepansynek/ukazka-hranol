@@ -3,6 +3,11 @@
 Web fiktivní strojírenské firmy z Rousínova: zakázkové CNC obrábění, svařence a montáž podsestav.
 Šest stránek, vlastní logo a na každé stránce jeden pracovní prvek místo dekorace.
 
+Vzhled „Veletržní stánek“: firma se představuje jako vlastní stánek na strojírenském veletrhu. Žlutá systémová stěna
+s nápisem, hliníkové sloupky mezi stejnými panely, exponáty na bílých podstavcích a bílé pulty s grafitovou deskou pro
+pracovní nástroje. Žlutá stěna přesvědčuje, bílý pult pracuje; na bílé žlutá znamená volno a akci. Pravidla vzhledu
+jsou v `DESIGN.md`.
+
 **HRANOL je fiktivní firma.** Zakázky, citace, čísla, lidé, telefony, adresa i půdorys haly jsou smyšlené. Název není
 v obchodním rejstříku (ARES, říjen 2026) a doména `hranol-obrabeni.cz` neexistuje. Web má `noindex`.
 
@@ -18,30 +23,37 @@ v obchodním rejstříku (ARES, říjen 2026) a doména `hranol-obrabeni.cz` nee
 | `poptavka.html` | Poptávka ve třech krocích, časté otázky | Nahrání výkresů, živé shrnutí, validace po krocích |
 
 Na všech stránkách funguje vyhledávání přes ⌘K / Ctrl K (nebo „/“): stránky, technologie, stroje, materiály, reference, lidé.
-Přechody mezi stránkami používají View Transitions, kde je prohlížeč podporuje.
+Přechod mezi stránkami je krok podél stánku do strany podle pořadí v menu (View Transitions, kde je prohlížeč podporuje).
+
+### Pult na výkresy
+
+V úvodu stojí pult „Máte výkres?“. Soubor jde přetáhnout kamkoli do okna, pult se rozsvítí a výkres na něm zůstane.
+„Pokračovat k poptávce“ otevře formulář, kde už výkresy čekají v prvním kroku. Soubory se mezi stránkami drží v IndexedDB
+prohlížeče (v náhledu v jednom souboru jen v paměti) a smažou se po odeslání nebo nové poptávce.
 
 ### Kapacita nestárne
 
 Data kapacity v `build.py` jsou relativní: týden 0 je aktuální týden. Build zapíše data ke dni sestavení a `main.js`
 je v prohlížeči přepočítá od pondělí aktuálního týdne (čísla týdnů, data, „volno od“, bubliny, řádek pod tlačítky v úvodu).
-Ukázka tak ani za půl roku neukazuje prošlé termíny. Šedá část sloupce je obsazená kapacita, oranžová volná rezerva
-v týdnech s vytížením pod 75 %.
+Ukázka tak ani za půl roku neukazuje prošlé termíny. Grafitový sloupec je obsazená kapacita, žlutá plocha nad ním
+volná rezerva v týdnech s vytížením pod 75 %.
 
 ## Logo
 
-`assets/brand/`: blok se dvěma sraženými hranami 45° (obrys hranolu i obrobku), jedna hrana oranžová jako čerstvě
-obrobená plocha. Wordmark „hranol“ je převedený do křivek z Mona Sans SemiExpanded SemiBold, logo tedy nezávisí na písmu.
+`assets/brand/`: čelo čtyřhranné tyče se sraženou hranou 45°, sražení je žlutá plocha čerstvě obrobeného kovu.
+Wordmark HRANOL je převedený do křivek z Archivo ExtraBold na šířce 125 %, logo tedy nezávisí na písmu
+(křivky jsou v `src/logo.json`).
 
 - `hranol-logo.svg`: barevné logo
 - `hranol-logo-white.svg`: na tmavé pozadí
 - `hranol-mark.svg`: samotná značka
-- `../favicon.svg`: favicon, v tmavé liště prohlížeče se přebarví; `../apple-touch-icon.png` pro iOS
+- `../favicon.svg`: favicon na žlutém čtverci; `../apple-touch-icon.png` pro iOS
 
-Barvy: grafit `#15212b`, oranžová hrana `#ff5a1f`, mlha `#f3f4f5`. Oranžová znamená jen dvě věci: volnou kapacitu
-a aktivní stav (aktuální stránka, krok formuláře, zvýrazněná zóna haly).
+Barvy: signální žlutá `#f5c400`, grafit `#1c1e21`, hliník `#c9ced3`, bílá a podlaha haly `#e4e4df`.
 
-Písmo: jen Mona Sans, nadpisy rozšířené na 112,5 %. Číslice zůstávají proporcionální: tabulkové mají v Mona Sans
-přeškrtnutou nulu, která by se u strojírny pletla se znakem průměru (Ø40).
+Písmo: jen Archivo (OFL), uložené v `assets/fonts/` (latinka a latinka rozšířená, variabilní váha i šířka). Nápisy
+mají šířku 125 % a váhu 800, data a tabulky šířku 87 % s tabulkovými číslicemi; nula v Archivu není přeškrtnutá,
+takže se neplete se znakem průměru (Ø40). Web nenačítá nic z cizích serverů, three.js r128 je v `assets/vendor/`.
 
 ## Úpravy a sestavení
 
@@ -62,16 +74,16 @@ ji změňte a sestavte znovu.
 
 ## Přidání do portfolia
 
-Zkopírujte složku bez `src/` a `build.py` do `stepansynek.github.io/public/ukazky/hranol/`. Next.js ji při exportu
-přenese beze změny a web poběží na `stepansynek.com/ukazky/hranol/`.
+Web běží z tohoto repozitáře přes GitHub Pages (větev `main`, `.nojekyll`) na `stepansynek.com/ukazka-hranol/`.
 
 ## Obrázky
 
-Fotky ukazují provoz, rendery na mlze díly, které firma dodala.
+Fotky ukazují provoz, rendery na žlutých panelech díly, které firma dodala. Každý rastr má v metadatech zapsaný
+původ (fotka z Unsplash, vlastní render nebo snímek z kódu).
 
 Rendery (`ref-hvezdice`, `ref-ram`, `ref-celisti`, `ref-pistnice`, `priruba`) jsou vlastní: modely dílů v three.js
 nasvícené stejným studiem jako 3D příruba v úvodu. `priruba-1200.webp` se ukáže v úvodu místo 3D modelu, když prohlížeč
-nemá WebGL. `og.jpg` je složený z loga, nadpisu a stejné příruby.
+nemá WebGL; je to snímek ze stejné scény s průhledným pozadím. `og.jpg` je složený z loga, nadpisu a stejné příruby.
 
 Fotografie jsou z Unsplash (Unsplash License: komerční použití zdarma, bez nutnosti uvádět autora), mírně sjednocené
 a převedené do WebP:
