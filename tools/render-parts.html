@@ -1,0 +1,305 @@
+<!doctype html>
+<meta charset="utf-8">
+<body style="margin:0;background:#edb93c">
+<canvas id="c"></canvas>
+<script src="vendor/three.min.js"></script>
+<script>
+/* Rendery dodaných dílů pro reference (node tools/render-parts.js). ?part=hvezdice|ram|celisti|pistnice&w=3200&h=2400
+   Studio „náběhové barvy“: hlavní světlo a horní softbox slámové, protisvětlo a boční softbox modré jako písmo webu,
+   zespodu teplý odraz od slámové plochy, na které díl na webu stojí. Stín je tónovaný do modré. */
+const q = new URLSearchParams(location.search);
+const W = +q.get("w") || 3200, H = +q.get("h") || 2400;
+const T = THREE;
+const canvas = document.getElementById("c");
+const renderer = new T.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1);
+renderer.setSize(W, H, false);
+renderer.setClearColor(0x000000, 0);
+renderer.outputEncoding = T.sRGBEncoding;
+renderer.toneMapping = T.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 0.95;
+renderer.physicallyCorrectLights = true;
+
+const scene = new T.Scene();
+const camera = new T.PerspectiveCamera(24, W / H, 10, 20000);
+
+const pmrem = new T.PMREMGenerator(renderer);
+const studio = new T.Scene();
+studio.add(new T.Mesh(new T.BoxGeometry(10, 10, 10), new T.MeshBasicMaterial({ color: 0x141a2e, side: T.BackSide })));
+const softbox = (w, h, pos, rgb, k) => {
+  const m = new T.Mesh(new T.PlaneGeometry(w, h), new T.MeshBasicMaterial({ color: new T.Color(rgb[0] * k, rgb[1] * k, rgb[2] * k), side: T.DoubleSide }));
+  m.position.set(...pos); m.lookAt(0, 0, 0); studio.add(m);
+};
+const STRAW = [1, 0.72, 0.3], BLUE = [0.3, 0.42, 1], WHITE = [1, 0.84, 0.58];
+softbox(6, 1.4, [0, 4.9, 0.8], WHITE, 5);         // horní softbox, teplé světlo
+softbox(3.2, 6, [-4.9, 1.2, 1.8], STRAW, 22);     // levý boční, sláma: hlavní světlo
+softbox(1.4, 6, [4.9, 0.8, -0.6], BLUE, 16);      // pravý boční, modrá: protisvětlo
+softbox(5, 0.7, [0, 2.2, -4.9], BLUE, 6);         // zadní linka, modrá
+softbox(5, 0.8, [0, -2.4, 4.9], STRAW, 6);        // přední spodní linka
+softbox(10, 4, [0, -4.9, 0], STRAW, 4);           // odraz od slámové plochy
+scene.environment = pmrem.fromScene(studio, 0.035).texture;
+const key = new T.DirectionalLight(0xffc266, 3.2);
+key.position.set(-180, 260, 220);
+scene.add(key);
+const rim = new T.DirectionalLight(0x5a78ff, 3.0);
+rim.position.set(260, 120, -240);
+scene.add(rim);
+
+/* ---------- textures ---------- */
+const rnd = (() => { let s = 7; return () => (s = (s * 16807) % 2147483647) / 2147483647; })();
+const canvasTex = (draw, size = 1024) => {
+  const c = document.createElement("canvas"); c.width = c.height = size;
+  draw(c.getContext("2d"), size);
+  const t = new T.CanvasTexture(c);
+  t.anisotropy = renderer.capabilities.getMaxAnisotropy();
+  return t;
+};
+// turned face: concentric rings
+const facingTex = () => canvasTex((g, s) => {
+  g.fillStyle = "rgb(104,104,104)"; g.fillRect(0, 0, s, s);
+  for (let r = 4; r < s * 0.72; r += 3) {
+    const v = 88 + Math.round(rnd() * 34);
+    g.strokeStyle = `rgb(${v},${v},${v})`; g.lineWidth = 1.4;
+    g.beginPath(); g.arc(s / 2, s / 2, r, 0, Math.PI * 2); g.stroke();
+  }
+});
+// face-milled: overlapping fly-cutter arcs in passes
+const milledTex = () => canvasTex((g, s) => {
+  g.fillStyle = "rgb(96,96,96)"; g.fillRect(0, 0, s, s);
+  const R = s * 0.42;
+  for (let pass = -1; pass < 4; pass++) {
+    const cy = pass * R * 0.9;
+    for (let x = -R; x < s + R; x += 2.2) {
+      const v = 80 + Math.round(rnd() * 40);
+      g.strokeStyle = `rgba(${v},${v},${v},0.9)`; g.lineWidth = 1.1;
+      g.beginPath(); g.arc(x, cy, R, 0.15 * Math.PI, 0.85 * Math.PI); g.stroke();
+    }
+  }
+});
+// ground: fine axial lines
+const groundTex = () => canvasTex((g, s) => {
+  g.fillStyle = "rgb(40,40,40)"; g.fillRect(0, 0, s, s);
+  for (let y = 0; y < s; y += 1) {
+    const v = 26 + Math.round(rnd() * 26);
+    g.fillStyle = `rgb(${v},${v},${v})`; g.fillRect(0, y, s, 1);
+  }
+});
+// blasted / mill scale: noise
+const noiseTex = (base, spread) => canvasTex((g, s) => {
+  const img = g.createImageData(s, s);
+  for (let i = 0; i < s * s; i++) {
+    const v = base + (rnd() - 0.5) * spread;
+    img.data[i * 4] = img.data[i * 4 + 1] = img.data[i * 4 + 2] = v; img.data[i * 4 + 3] = 255;
+  }
+  g.putImageData(img, 0, 0);
+}, 512);
+
+const mapTex = (tex, size) => { const t = tex.clone(); t.needsUpdate = true; t.repeat.set(1 / size, 1 / size); t.offset.set(0.5, 0.5); return t; };
+
+/* ---------- helpers ---------- */
+const circlePath = (x, y, r, cw = true) => { const p = new T.Path(); p.absarc(x, y, r, 0, Math.PI * 2, cw); return p; };
+const extrude = (shape, depth, bevel = 0.8, segs = 2) => new T.ExtrudeGeometry(shape, {
+  depth, bevelEnabled: bevel > 0, bevelThickness: bevel, bevelSize: bevel, bevelSegments: segs, curveSegments: 128,
+});
+const ringShape = (outer, inner, holes = []) => {
+  const s = new T.Shape(); s.absarc(0, 0, outer, 0, Math.PI * 2, false);
+  if (inner) s.holes.push(circlePath(0, 0, inner));
+  holes.forEach(([x, y, r]) => s.holes.push(circlePath(x, y, r)));
+  return s;
+};
+
+const part = new T.Group();
+const name = q.get("part") || "hvezdice";
+let view = { dir: [0, 0.55, 1], tilt: 0 };
+
+/* ---------- 1 · hvězdice (formátový díl balicí linky), EN AW-7075 ---------- */
+if (name === "hvezdice") {
+  const R = 120, N = 10, pr = 21;
+  const pts = [];
+  const M = 3600;
+  for (let i = 0; i < M; i++) {
+    const t = (i / M) * Math.PI * 2;
+    let rho = R;
+    for (let k = 0; k < N; k++) {
+      const th = (k / N) * Math.PI * 2;
+      let d = Math.atan2(Math.sin(t - th), Math.cos(t - th));
+      const s = R * Math.sin(d);
+      if (Math.abs(d) < Math.PI / 2 && Math.abs(s) < pr) rho = Math.min(rho, R * Math.cos(d) - Math.sqrt(pr * pr - s * s));
+    }
+    pts.push(new T.Vector2(rho * Math.cos(t), rho * Math.sin(t)));
+  }
+  const shape = new T.Shape(pts);
+  // bore Ø40 with keyway, 5 lightening holes
+  const bore = new T.Path();
+  const br = 20, kw = 6, kd = 24.5;
+  const a0 = Math.asin(kw / br);
+  bore.moveTo(br * Math.cos(a0), br * Math.sin(a0));
+  bore.lineTo(kd, kw); bore.lineTo(kd, -kw); bore.lineTo(br * Math.cos(-a0), br * Math.sin(-a0));
+  bore.absarc(0, 0, br, -a0, -2 * Math.PI + a0, true);
+  shape.holes.push(bore);
+  for (let k = 0; k < 5; k++) {
+    const a = (k / 5) * Math.PI * 2 + Math.PI / 5;
+    shape.holes.push(circlePath(62 * Math.cos(a), 62 * Math.sin(a), 15));
+  }
+  const alu = (tex, size, rough = 1) => new T.MeshStandardMaterial({ color: 0xd9d4ca, metalness: 1, roughness: rough, roughnessMap: mapTex(tex, size), envMapIntensity: 1.05 });
+  const side = new T.MeshStandardMaterial({ color: 0xe0dbd1, metalness: 1, roughness: 0.3, envMapIntensity: 1.2 });
+  const plate = new T.Mesh(extrude(shape, 16, 2.6, 3), [alu(milledTex(), 300), side]);
+  // hub Ø80 × 18 with same bore
+  const hubShape = new T.Shape(); hubShape.absarc(0, 0, 40, 0, Math.PI * 2, false); hubShape.holes.push(bore);
+  const hub = new T.Mesh(extrude(hubShape, 18, 2, 3), [alu(facingTex(), 84), side]);
+  hub.position.z = 17.2;
+  // 3 set-screw counterbores on hub face -> small dark discs
+  part.add(plate, hub);
+  part.rotation.x = -Math.PI / 2;
+  view = { dir: [0.0, 0.62, 1], tilt: 0.22 };
+}
+
+/* ---------- 2 · svařovaný rám s obrobenými plochami, S355J2 ---------- */
+if (name === "ram") {
+  const steel = new T.MeshStandardMaterial({ color: 0x646b72, metalness: 0.85, roughness: 0.66, roughnessMap: noiseTex(160, 120), envMapIntensity: 0.95 });
+  const steelSide = steel;
+  const bright = (tex, size) => new T.MeshStandardMaterial({ color: 0xc9ced3, metalness: 1, roughness: 1, roughnessMap: mapTex(tex, size), envMapIntensity: 1.1 });
+  const brightSide = new T.MeshStandardMaterial({ color: 0xd2d7db, metalness: 1, roughness: 0.28 });
+  const weldMat = new T.MeshStandardMaterial({ color: 0x6a5a48, metalness: 0.85, roughness: 0.5, roughnessMap: noiseTex(140, 120) });
+  const tube = (len) => {
+    const s = new T.Shape(); const a = 40, b = 35;
+    s.moveTo(-a, -a); s.lineTo(a, -a); s.lineTo(a, a); s.lineTo(-a, a); s.lineTo(-a, -a);
+    const h = new T.Path(); h.moveTo(-b, -b); h.lineTo(-b, b); h.lineTo(b, b); h.lineTo(b, -b); h.lineTo(-b, -b);
+    s.holes.push(h);
+    const g = extrude(s, len, 2.5, 2);
+    g.translate(0, 0, -len / 2);
+    return new T.Mesh(g, steel);
+  };
+  const L = 1100, Wd = 560;
+  [-1, 1].forEach((sz) => { const r = tube(L); r.rotation.y = Math.PI / 2; r.position.z = sz * Wd / 2; part.add(r); });
+  const cl = Wd - 80;
+  [-470, -60, 470].forEach((x) => {
+    const c = tube(cl); c.position.x = x; part.add(c);
+    // fillet welds around both joints
+    [-1, 1].forEach((sz) => {
+      const z = sz * (Wd / 2 - 40);
+      const bead = (len, axis, px, py) => {
+        const g = new T.CylinderGeometry(4.5, 4.5, len, 12); const m = new T.Mesh(g, weldMat);
+        if (axis === "x") m.rotation.z = Math.PI / 2;
+        m.position.set(x + px, py, z); part.add(m);
+      };
+      bead(84, "x", 0, 40); bead(84, "x", 0, -40); bead(84, "y", 40, 0); bead(84, "y", -40, 0);
+    });
+  });
+  // bearing housings: welded boss Ø150 on top of each rail, machined face + bore Ø72
+  [-1, 1].forEach((sz) => {
+    const boss = new T.Mesh(extrude(ringShape(75, 36, [0, 1, 2, 3].map((k) => { const a = k * Math.PI / 2 + Math.PI / 4; return [56 * Math.cos(a), 56 * Math.sin(a), 6.5]; })), 46, 1.2), [bright(facingTex(), 156), steel]);
+    boss.rotation.x = -Math.PI / 2; boss.position.set(-60, 40, sz * Wd / 2); part.add(boss);
+    const bore = new T.Mesh(new T.CylinderGeometry(36.2, 36.2, 46, 96, 1, true), new T.MeshStandardMaterial({ color: 0xd8dde1, metalness: 1, roughness: 0.18, side: T.BackSide }));
+    bore.position.set(-60, 63, sz * Wd / 2); part.add(bore);
+    const ring = new T.Mesh(new T.TorusGeometry(76, 4.5, 10, 96), weldMat); ring.rotation.x = Math.PI / 2; ring.position.set(-60, 42, sz * Wd / 2); part.add(ring);
+  });
+  // machined mounting pads at the four corners
+  [[-500, -1], [-500, 1], [500, -1], [500, 1]].forEach(([x, sz]) => {
+    const g = new T.BoxGeometry(110, 16, 110);
+    const mats = [brightSide, brightSide, bright(milledTex(), 130), steel, brightSide, brightSide];
+    const pad = new T.Mesh(g, mats); pad.position.set(x, -48, sz * Wd / 2); part.add(pad);
+  });
+  view = { dir: [0.75, 0.62, 1], tilt: 0 };
+}
+
+/* ---------- 3 · čelisti chapadla, EN AW-6082 černý elox + POM-C ---------- */
+if (name === "celisti") {
+  const anod = new T.MeshStandardMaterial({ color: 0x23262c, metalness: 0.6, roughness: 1, roughnessMap: noiseTex(110, 70), envMapIntensity: 1.2 });
+  const pom = new T.MeshStandardMaterial({ color: 0xf1efe9, metalness: 0, roughness: 0.55, envMapIntensity: 0.6 });
+  const screw = new T.MeshStandardMaterial({ color: 0x2b2e31, metalness: 0.9, roughness: 0.35 });
+  // left jaw: base reaches outward (-x), finger inner face at x = 0 carries the POM pad
+  const jaw = () => {
+    const g = new T.Group();
+    const s = new T.Shape();
+    s.moveTo(-72, 0); s.lineTo(0, 0); s.lineTo(0, 132); s.lineTo(-12, 140); s.lineTo(-24, 140); s.lineTo(-24, 28); s.lineTo(-72, 28); s.lineTo(-72, 0);
+    s.holes.push(circlePath(-60, 14, 3.4), circlePath(-36, 14, 3.4));
+    const w = new T.Path(); w.moveTo(-16, 40); w.lineTo(-8, 40); w.lineTo(-8, 70); w.lineTo(-16, 70); w.lineTo(-16, 40); s.holes.push(w);
+    const body = new T.Mesh(extrude(s, 36, 3, 3), anod);
+    body.position.z = -18;
+    g.add(body);
+    // POM pad 12 thick with V-notch facing +x
+    const ps = new T.Shape(); ps.moveTo(0, 0); ps.lineTo(12, 0); ps.lineTo(12, 22); ps.lineTo(5, 34); ps.lineTo(12, 46); ps.lineTo(12, 68); ps.lineTo(0, 68); ps.lineTo(0, 0);
+    const pad = new T.Mesh(extrude(ps, 32, 1.6, 3), pom); pad.position.set(0.6, 62, -16); g.add(pad);
+    [70, 122].forEach((y) => { const h = new T.Mesh(new T.CylinderGeometry(3.6, 3.6, 1.6, 24), screw); h.rotation.z = Math.PI / 2; h.position.set(13.2, y - 6, 9); g.add(h); });
+    return g;
+  };
+  const a = jaw(); a.position.set(-26, 3, 0); part.add(a);
+  const b = jaw(); b.rotation.y = Math.PI; b.position.set(26, 3, 0); part.add(b);
+  // customer's parallel gripper body (bought-in), matte natural anodised, jaws sit on its slides
+  const gb = new T.MeshStandardMaterial({ color: 0xbfbbb3, metalness: 0.7, roughness: 1, roughnessMap: noiseTex(120, 60), envMapIntensity: 0.9 });
+  const gbody = new T.Mesh(new T.BoxGeometry(190, 64, 64), gb); gbody.position.set(0, -32.5, 0); part.add(gbody);
+  const slide = new T.Mesh(new T.BoxGeometry(180, 6, 26), new T.MeshStandardMaterial({ color: 0x8d949b, metalness: 0.9, roughness: 0.3 }));
+  slide.position.set(0, -0.2, 0); part.add(slide);
+  [-1, 1].forEach((sx) => { const port = new T.Mesh(new T.CylinderGeometry(5, 5, 4, 24), screw); port.rotation.x = Math.PI / 2; port.position.set(sx * 60, -34, 33); part.add(port); });
+  // held part: turned aluminium pin sitting in both V-notches
+  const pin = new T.Mesh(new T.CylinderGeometry(15.5, 15.5, 60, 72), new T.MeshStandardMaterial({ color: 0xd8dce0, metalness: 1, roughness: 0.2 }));
+  pin.rotation.x = Math.PI / 2; pin.position.set(0, 99, 0); part.add(pin);
+  part.rotation.y = 0.62;
+  view = { dir: [0.2, 0.38, 1], tilt: 0 };
+}
+
+/* ---------- 4 · pístnice a víko válce, 42CrMo4 tvrdochrom ---------- */
+if (name === "pistnice") {
+  const chrome = new T.MeshStandardMaterial({ color: 0xeef1f4, metalness: 1, roughness: 0.06, envMapIntensity: 1.25 });
+  const turned = new T.MeshStandardMaterial({ color: 0xc8cdd2, metalness: 1, roughness: 0.3, envMapIntensity: 1.1 });
+  const prof = [];
+  const P = (r, y) => prof.push(new T.Vector2(r, y));
+  // thread M30 at y 0..45 (grooves), relief, rod Ø50 to 620, chamfer, end spigot with thread
+  P(0, 0); P(13.5, 0); P(15, 1.5);
+  for (let y = 3; y < 44; y += 2.5) { P(15, y - 1.2); P(13.6, y); }
+  P(15, 45); P(13, 48); P(13, 54); P(24, 56); P(25, 57.5);
+  P(25, 440); P(24, 441.5); P(20, 442); P(20, 460);
+  for (let y = 462; y < 496; y += 2.5) { P(20, y - 1.2); P(18.6, y); }
+  P(20, 498); P(18.5, 500); P(0, 500);
+  const rod = new T.Mesh(new T.LatheGeometry(prof, 160), chrome);
+  // cap (víko): flange Ø160 × 22 with 6 holes + spigot Ø110 with two seal grooves
+  const cap = new T.Group();
+  const holes = Array.from({ length: 6 }, (_, k) => { const a = k * Math.PI / 3 + Math.PI / 6; return [64 * Math.cos(a), 64 * Math.sin(a), 6.6]; });
+  const fl = new T.Mesh(extrude(ringShape(80, 26, holes), 22, 1.2), [new T.MeshStandardMaterial({ color: 0xc8cdd2, metalness: 1, roughness: 1, roughnessMap: mapTex(facingTex(), 164) }), turned]);
+  fl.rotation.x = -Math.PI / 2;
+  cap.add(fl);
+  const sp = [];
+  const S = (r, y) => sp.push(new T.Vector2(r, y));
+  S(26, 0); S(55, 0); S(55, 6); S(51, 6); S(51, 12); S(55, 12); S(55, 18); S(51, 18); S(51, 24); S(55, 24); S(55, 30); S(53, 32); S(26, 32);
+  const spigot = new T.Mesh(new T.LatheGeometry(sp, 160), turned);
+  spigot.position.y = 1.2; cap.add(spigot);
+  cap.position.y = 210;
+  part.add(rod, cap);
+  part.rotation.z = -1.25; part.rotation.y = -0.42;
+  view = { dir: [0.1, 0.5, 1], tilt: 0, look: 0.1 };
+}
+
+scene.add(part);
+
+/* ---------- framing + shadow ---------- */
+part.updateMatrixWorld(true);
+const box = new T.Box3().setFromObject(part);
+const center = box.getCenter(new T.Vector3());
+part.position.sub(center);
+part.updateMatrixWorld(true);
+box.setFromObject(part);
+const sphere = box.getBoundingSphere(new T.Sphere());
+const dir = new T.Vector3(...view.dir).normalize();
+const fov = (camera.fov * Math.PI) / 180;
+const dist = (sphere.radius / Math.sin(fov / 2)) * (+q.get("fit") || 0.9);
+camera.position.copy(dir.multiplyScalar(dist));
+camera.lookAt(0, sphere.radius * (view.look ?? -0.06), 0);
+camera.near = dist / 20; camera.far = dist * 10; camera.updateProjectionMatrix();
+
+const shadow = (() => {
+  const c = document.createElement("canvas"); c.width = c.height = 256;
+  const g = c.getContext("2d");
+  const grad = g.createRadialGradient(128, 128, 0, 128, 128, 128);
+  grad.addColorStop(0, "rgba(21,27,51,0.34)"); grad.addColorStop(0.5, "rgba(21,27,51,0.14)"); grad.addColorStop(1, "rgba(21,27,51,0)");
+  g.fillStyle = grad; g.fillRect(0, 0, 256, 256);
+  const sx = (box.max.x - box.min.x) * 1.25, sz = (box.max.z - box.min.z) * 1.25;
+  const m = new T.Mesh(new T.PlaneGeometry(Math.max(sx, 60), Math.max(sz, 60)), new T.MeshBasicMaterial({ map: new T.CanvasTexture(c), transparent: true, depthWrite: false }));
+  m.rotation.x = -Math.PI / 2; m.position.y = box.min.y - sphere.radius * 0.06;
+  return m;
+})();
+scene.add(shadow);
+
+renderer.render(scene, camera);
+window.DONE = true;
+</script>

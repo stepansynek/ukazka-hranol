@@ -1,69 +1,54 @@
 <!-- {"title": "Strojový park | HRANOL", "description": "Jedenáct CNC strojů, šest svařovacích pracovišť a klimatizovaná měrovna. Ověřte si, jestli se váš díl vejde do našich strojů."} -->
-<header class="phead phead--counter">
-  <div class="stand">
-    <div class="wall wall--nobeam phead__wall">
-      <div class="panel panel--2 phead__main">
-        <nav class="crumbs" aria-label="Drobečková navigace"><a href="@domu">Úvod</a><span aria-hidden="true">/</span><span aria-current="page">Strojový park</span></nav>
-        <h1 class="letter">Strojový park</h1>
-      </div>
-      <div class="panel phead__side">
-        <p class="lead">Jedenáct CNC strojů, šest svařovacích pracovišť a klimatizovaná měrovna. Pracujeme ve dvou směnách, pětiosé centrum s paletami obrábí i v noci.</p>
-      </div>
-    </div>
+<header class="phead">
+  <nav class="crumbs" aria-label="Drobečková navigace"><a href="@domu">Úvod</a><span aria-hidden="true">/</span><span aria-current="page">Strojový park</span></nav>
+  <div class="phead__row">
+    <h1 class="display phead__title">Strojový park</h1>
+    <p class="lead phead__lead">Jedenáct CNC strojů, šest svařovacích pracovišť a klimatizovaná měrovna. Pracujeme ve dvou směnách, pětiosé centrum s paletami obrábí i v noci.</p>
   </div>
 </header>
 
-<section class="front" id="overeni" aria-labelledby="fit-title">
-  <div class="stand stand--inset">
-    <div class="counter fit" data-fit>
-      <div class="fit__ask">
-        <h2 class="counter__title" id="fit-title">Vejde se váš díl?</h2>
-        <p>Zadejte rozměry polotovaru. Hned uvidíte, na kterých strojích ho obrobíme, a v tabulce se stroje označí.</p>
-        <div class="seg" role="radiogroup" aria-label="Tvar dílu">
-          <button type="button" role="radio" aria-checked="true" data-shape="box">Hranolový</button>
-          <button type="button" role="radio" aria-checked="false" data-shape="round">Rotační</button>
-        </div>
-        <div class="fit__inputs" data-inputs="box">
-          <label class="dim"><span class="dim__label">Délka</span><input id="fit-x" type="text" inputmode="decimal" value="420" data-dim="x"><span class="dim__unit">mm</span></label>
-          <label class="dim"><span class="dim__label">Šířka</span><input id="fit-y" type="text" inputmode="decimal" value="260" data-dim="y"><span class="dim__unit">mm</span></label>
-          <label class="dim"><span class="dim__label">Výška</span><input id="fit-z" type="text" inputmode="decimal" value="180" data-dim="z"><span class="dim__unit">mm</span></label>
-        </div>
-        <div class="fit__inputs" data-inputs="round" hidden>
-          <label class="dim"><span class="dim__label">Průměr</span><input id="fit-d" type="text" inputmode="decimal" value="120" data-dim="d"><span class="dim__unit">mm</span></label>
-          <label class="dim"><span class="dim__label">Délka</span><input id="fit-l" type="text" inputmode="decimal" value="600" data-dim="l"><span class="dim__unit">mm</span></label>
-        </div>
-      </div>
-      <div class="fit__result" aria-live="polite" data-fit-result></div>
+<section class="tool fit" id="overeni" aria-labelledby="fit-title" data-fit>
+  <div class="fit__ask">
+    <h2 class="h2" id="fit-title">Vejde se váš díl?</h2>
+    <p>Zadejte rozměry polotovaru. Hned uvidíte, na kterých strojích ho obrobíme, a v seznamu níže se stroje označí.</p>
+    <div class="seg" role="radiogroup" aria-label="Tvar dílu">
+      <button type="button" role="radio" aria-checked="true" data-shape="box">Hranolový</button>
+      <button type="button" role="radio" aria-checked="false" data-shape="round">Rotační</button>
+    </div>
+    <div class="fit__inputs" data-inputs="box">
+      <label class="dim"><span class="dim__label">Délka</span><input id="fit-x" type="text" inputmode="decimal" value="420" data-dim="x"><span class="dim__unit">mm</span></label>
+      <label class="dim"><span class="dim__label">Šířka</span><input id="fit-y" type="text" inputmode="decimal" value="260" data-dim="y"><span class="dim__unit">mm</span></label>
+      <label class="dim"><span class="dim__label">Výška</span><input id="fit-z" type="text" inputmode="decimal" value="180" data-dim="z"><span class="dim__unit">mm</span></label>
+    </div>
+    <div class="fit__inputs" data-inputs="round" hidden>
+      <label class="dim"><span class="dim__label">Průměr</span><input id="fit-d" type="text" inputmode="decimal" value="120" data-dim="d"><span class="dim__unit">mm</span></label>
+      <label class="dim"><span class="dim__label">Délka</span><input id="fit-l" type="text" inputmode="decimal" value="600" data-dim="l"><span class="dim__unit">mm</span></label>
     </div>
   </div>
+  <div class="fit__result" aria-live="polite" data-fit-result></div>
 </section>
 
-<section class="sec sec--near" aria-labelledby="park-title">
-  <div class="stand stand--inset">
-    <div class="counter board board--flush">
-      <div class="board__head">
-        <h2 class="counter__title" id="park-title">Seznam strojů</h2>
-      </div>
-      {{machines}}
+<div class="sheet">
+  <section class="sec" aria-labelledby="park-title">
+    <div class="sec__head">
+      <h2 class="h2" id="park-title">Seznam strojů</h2>
+      <p class="sec__aside">Pracovní rozsah je největší obrobek, který stroj upne. U svařovacích zdrojů je to hmotnost svařence na polohovadle.</p>
     </div>
-  </div>
-</section>
+    {{machines}}
+  </section>
 
-<section class="sec" id="merovna" aria-labelledby="m-title">
-  <div class="stand">
-    <div class="wall wall--white tech tech--wide">
-      <div class="panel panel--2 panel--media"><img src="assets/img/mereni-1600.webp" srcset="assets/img/mereni-900.webp 900w, assets/img/mereni-1600.webp 1600w" sizes="(min-width: 1080px) 66vw, 100vw" width="1600" height="1066" loading="lazy" decoding="async" alt="Ruce měří obrobený díl digitálním posuvným měřítkem."></div>
-      <div class="panel tech__body">
-        <h2 class="letter tech__title" id="m-title">Měrovna</h2>
-        <p>Rozměry kontrolujeme v klimatizované místnosti při 20 °C. Teplota rozhoduje: ocelový díl dlouhý 100 mm se při ohřátí o 5 °C prodlouží zhruba o 6 µm, a to je víc než třetina tolerance H6.</p>
-        <dl class="specs">
-          <div><dt>3D měřicí stroj</dt><dd class="data">Zeiss CONTURA 10/12/6</dd></div>
-          <div><dt>Přesnost</dt><dd class="data">MPE_E 1,8 + L/300 µm</dd></div>
-          <div><dt>Teplota</dt><dd class="data">20 ± 1 °C</dd></div>
-          <div><dt>Drsnoměr</dt><dd class="data">Mitutoyo SJ-410</dd></div>
-          <div><dt>Kontrola</dt><dd>první kus každé série, dál podle kontrolního plánu</dd></div>
-        </dl>
-      </div>
+  <section class="sec tech tech--wide" id="merovna" aria-labelledby="m-title">
+    <figure class="tech__media"><img src="assets/img/foto/mereni.webp" srcset="assets/img/foto/mereni-900.webp 900w, assets/img/foto/mereni.webp 2400w" sizes="(min-width: 1080px) 55vw, 100vw" width="2400" height="1350" loading="lazy" decoding="async" alt="Ruce kontrolují rozměr dílu číselníkovým úchylkoměrem."><figcaption class="credit">Kontrola dílu úchylkoměrem. Foto Sandin Redzo, Pexels</figcaption></figure>
+    <div class="tech__body">
+      <h2 class="h2" id="m-title">Měrovna</h2>
+      <p>Rozměry kontrolujeme v klimatizované místnosti při 20 °C. Ocelový díl dlouhý 100 mm se při ohřátí o 5 °C prodlouží zhruba o 6 µm, a to je víc než třetina tolerance H6.</p>
+      <dl class="specs">
+        <div><dt>3D měřicí stroj</dt><dd>Zeiss CONTURA 10/12/6</dd></div>
+        <div><dt>Přesnost</dt><dd>MPE_E 1,8 + L/300 µm</dd></div>
+        <div><dt>Teplota</dt><dd>20 ± 1 °C</dd></div>
+        <div><dt>Drsnoměr</dt><dd>Mitutoyo SJ-410</dd></div>
+        <div><dt>Kontrola</dt><dd>první kus každé série, dál podle kontrolního plánu</dd></div>
+      </dl>
     </div>
-  </div>
-</section>
+  </section>
+</div>

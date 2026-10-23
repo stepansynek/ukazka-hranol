@@ -167,7 +167,7 @@
     route();
   }
 
-  /* ---------- Směr přechodu mezi stránkami: vpřed nebo zpět podél stánku ---------- */
+  /* ---------- Směr přechodu mezi stránkami: vpřed nebo zpět podle pořadí v menu ---------- */
   if (!SPA) {
     const order = Object.values(FILES);
     const indexOf = (url) => {
@@ -319,9 +319,9 @@
     dropTargets.push({ el: desk, arm: (on) => desk.classList.toggle("is-armed", on), take });
   }
 
-  /* ---------- Technologie na úvodu ---------- */
+  /* ---------- Technologie na úvodu: fotka podle řádku, na který ukazuje myš nebo fokus ---------- */
   $$("[data-techlist]").forEach((block) => {
-    const images = $$(".techlist__media img", block);
+    const images = $$(".techs__media [data-key]", block);
     const set = (key) => images.forEach((img) => img.classList.toggle("is-active", img.dataset.key === key));
     $$("a[data-img]", block).forEach((a) => {
       a.addEventListener("mouseenter", () => set(a.dataset.img));
@@ -357,34 +357,47 @@
       tip.style.left = `${x}px`;
       tip.style.top = `${c.top - b.top + 6}px`;
     };
-    const hideTip = () => { tip.hidden = true; };
-    $$(".cap__cell", board).forEach((cell) => {
-      cell.addEventListener("mouseenter", () => showTip(cell));
-      cell.addEventListener("focus", () => showTip(cell));
+    /* Najetí na buňku zvýrazní její technologii a týden, ostatní buňky ustoupí. */
+    const cells = $$(".cap__cell", board);
+    const isolate = (cell) => {
+      board.classList.toggle("is-isolating", Boolean(cell));
+      cells.forEach((c) => c.classList.toggle("is-on", Boolean(cell) && (c.parentElement === cell.parentElement || c.dataset.week === cell.dataset.week)));
+      $$("tbody th", board).forEach((th) => th.classList.toggle("is-on", Boolean(cell) && th.parentElement === cell.parentElement));
+    };
+    const hideTip = () => { tip.hidden = true; isolate(null); };
+    cells.forEach((cell) => {
+      cell.addEventListener("mouseenter", () => { showTip(cell); isolate(cell); });
+      cell.addEventListener("focus", () => { showTip(cell); isolate(cell); });
       cell.addEventListener("mouseleave", hideTip);
       cell.addEventListener("blur", hideTip);
     });
     $(".table-scroll", board)?.addEventListener("scroll", hideTip, { passive: true });
   });
 
-  /* ---------- Výroba: aktivní položka podmenu ---------- */
+  /* ---------- Výroba: aktivní položka podmenu podle sekce, která právě přešla horní třetinu okna ---------- */
   $$("[data-subnav]").forEach((sub) => {
     const links = $$("a", sub);
-    const targets = links.map((a) => document.getElementById(a.getAttribute("href").split("#")[1])).filter(Boolean);
-    if (!("IntersectionObserver" in window) || !targets.length) return;
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        links.forEach((a) => {
-          const match = a.getAttribute("href").endsWith(`#${entry.target.id}`);
-          if (match) {
-            a.setAttribute("aria-current", "true");
-            a.scrollIntoView({ block: "nearest", inline: "nearest" });
-          } else a.removeAttribute("aria-current");
-        });
+    const targets = links.map((a) => document.getElementById(a.getAttribute("href").split("#")[1]));
+    if (targets.some((t) => !t)) return;
+    let current = -1;
+    let queued = false;
+    const update = () => {
+      queued = false;
+      const line = window.innerHeight * 0.4;
+      let i = -1;
+      targets.forEach((t, n) => { if (t.getBoundingClientRect().top <= line) i = n; });
+      if (i === current) return;
+      current = i;
+      if (i < 0) $("ul", sub).scrollLeft = 0;
+      links.forEach((a, n) => {
+        if (n === i) {
+          a.setAttribute("aria-current", "true");
+          a.scrollIntoView({ block: "nearest", inline: "nearest" });
+        } else a.removeAttribute("aria-current");
       });
-    }, { rootMargin: "-35% 0px -60% 0px" });
-    targets.forEach((t) => observer.observe(t));
+    };
+    window.addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+    update();
   });
 
   /* ---------- Strojový park: vejde se díl, filtr ---------- */
@@ -567,8 +580,8 @@
   });
 
   /* Živé shrnutí */
-  const dateFmt = (v) => { const [y, m, d] = v.split("-"); return y ? `${Number(d)}. ${Number(m)}. ${y}` : "—"; };
-  $("#rfq-qty").addEventListener("input", (e) => sum("qty", e.target.value.trim() || "—"));
+  const dateFmt = (v) => { const [y, m, d] = v.split("-"); return y ? `${Number(d)}. ${Number(m)}. ${y}` : "nevyplněno"; };
+  $("#rfq-qty").addEventListener("input", (e) => sum("qty", e.target.value.trim() || "nevyplněno"));
   $("#rfq-material").addEventListener("change", (e) => sum("material", e.target.value.toLowerCase()));
   $("#rfq-finish").addEventListener("change", (e) => sum("finish", e.target.value.toLowerCase()));
   $("#rfq-date").addEventListener("change", (e) => sum("date", dateFmt(e.target.value)));
@@ -645,7 +658,7 @@
     rfq.reset();
     files = [];
     renderFiles();
-    ["qty", "date"].forEach((k) => sum(k, "—"));
+    ["qty", "date"].forEach((k) => sum(k, "nevyplněno"));
     sum("material", "podle výkresu");
     sum("finish", "bez úpravy");
     sum("nda", "ne");

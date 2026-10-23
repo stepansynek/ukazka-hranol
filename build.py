@@ -24,9 +24,8 @@ FILES = {"domu": "index.html", "vyroba": "vyroba.html", "stroje": "stroje.html",
          "reference": "reference.html", "o-firme": "o-firme.html", "poptavka": "poptavka.html"}
 NAV = [("vyroba", "Výroba"), ("stroje", "Strojový park"), ("reference", "Reference"), ("o-firme", "O firmě")]
 
-# Písmo Archivo a three.js jsou v assets/, web nenačítá nic z cizích serverů.
-FONTS = ["assets/fonts/archivo-latin.woff2", "assets/fonts/archivo-latin-ext.woff2"]
-THREE = "assets/vendor/three.min.js"
+# Písma Anybody (nápisy) a Archivo (text a data) jsou v assets/fonts/, web nenačítá nic z cizích serverů.
+FONTS = ["assets/fonts/anybody.woff2", "assets/fonts/archivo-latin.woff2"]
 # Kde web poběží (README, sekce Přidání do portfolia). Potřebují ho og:image a JSON-LD, které chtějí plné adresy.
 BASE_URL = "https://stepansynek.com/ukazka-hranol/"
 
@@ -42,6 +41,11 @@ CAPACITY = [
     ("Montáž", 160, [70, 78, 84, 80, 72, 64, 56, 48]),
 ]
 FREE_BELOW = 75
+
+
+def temper(v):
+    """Stupeň náběhové barvy podle vytížení: 1 světlá sláma (volno) … 6 modrá (plno). Pořadí je skutečné pořadí barev při ohřevu oceli."""
+    return 1 if v < 45 else 2 if v < 60 else 3 if v < FREE_BELOW else 4 if v < 85 else 5 if v < 93 else 6
 MONTHS = ["ledna", "února", "března", "dubna", "května", "června", "července", "srpna", "září", "října", "listopadu", "prosince"]
 
 
@@ -151,7 +155,7 @@ SEARCH = [
     ("Reference", "Formátové díly z hliníku", "reference", "ref-baleni", "balicí linky hvězdice 7075"),
     ("Reference", "Svařované rámy", "reference", "ref-ramy", "zemědělská technika rám s355"),
     ("Reference", "Prototypy chapadel", "reference", "ref-chapadla", "robotika chapadlo elox pom"),
-    ("Reference", "Pístnice a víka válců", "reference", "ref-hydraulika", "hydraulika chrom broušení 42crmo4"),
+    ("Reference", "Pístnice s drsností Ra 0,2 µm", "reference", "ref-hydraulika", "hydraulika chrom broušení 42crmo4 víko válce"),
 ] + [("Stroje", name, "stroje", f"stroj-{mid}", f"{tech} {kw}")
      for mid, name, _, tech, _, _, kw, _, _ in MACHINES]
 
@@ -172,10 +176,10 @@ def build_capacity():
             free = v < FREE_BELOW
             free_h = round(hours * (100 - v) / 100)
             cells.append(
-                f'<td role="cell" class="cap__cell{" is-free" if free else ""}" tabindex="0" data-week="{i}" '
+                f'<td role="cell" class="cap__cell{" is-free" if free else ""}" tabindex="0" data-week="{i}" data-t="{temper(v)}" '
                 f'data-v="{v}" data-free-h="{free_h}">'
-                f'<span class="cap__bar" style="--v:{v}"></span>'
-                f'<span class="sr-only">{v} %{", volno" if free else ""}</span></td>')
+                f'<span class="cap__v">{v}<span class="cap__pct">&nbsp;%</span></span>'
+                f'<span class="sr-only">{", volno" if free else ", obsazeno"}</span></td>')
         rows.append(f'<tr role="row"><th scope="row" role="rowheader"><span class="cap__name">{name}</span>{when}</th>{"".join(cells)}</tr>')
     # Role zůstávají i na mobilu, kde se tabulka přeskládá do mřížky (jinak by prohlížeč zahodil sémantiku tabulky).
     return (f'<table class="cap__table" role="table"><caption class="sr-only">Vytížení výroby podle technologie '
@@ -184,14 +188,12 @@ def build_capacity():
 
 
 def build_status():
-    """Řádek v úvodu: nejbližší volno na pětiosém frézování a jeho vytížení na osm týdnů."""
+    """Odkaz v úvodu: nejbližší volno na pětiosém frézování. Datum přepočítá main.js podle dnešního dne."""
     name, _, values = CAPACITY[0]
     ff = first_free(values)
     d = week_start(ff)
-    bars = "".join(f'<i{" class=is-free" if v < FREE_BELOW else ""} style="--v:{v}"></i>' for v in values)
     return (f'<a class="status" href="@domu#kapacita" data-status data-week="{ff}">'
-            f'<span class="status__bars" aria-hidden="true">{bars}</span>'
-            f'<span>Volno na pětiosém frézování od <span data-status-date>{d.day}.&nbsp;{MONTHS[d.month - 1]}</span></span></a>')
+            f'Volno na pětiosém frézování od <span data-status-date>{d.day}.&nbsp;{MONTHS[d.month - 1]}</span></a>')
 
 
 def fmt_env(kind, env):
@@ -301,10 +303,10 @@ def logo_svg(label="HRANOL"):
 
 
 def header():
-    """Čelní panel stánku: logo, navigace, hledání a výzva k poptávce."""
+    """Hlavička na slámové ploše: logo, navigace, hledání a výzva k poptávce."""
     items = "".join(f'<li><a href="@{pid}" data-nav="{pid}">{label}</a></li>' for pid, label in NAV)
     return f'''<header class="fascia">
-  <div class="stand fascia__bar">
+  <div class="fascia__bar">
     <a class="fascia__brand" href="@domu" aria-label="HRANOL, úvodní stránka">{logo_svg("")}</a>
     <nav class="nav" id="nav" aria-label="Hlavní navigace"><ul>{items}<li class="nav__cta"><a href="@poptavka" data-nav="poptavka">Poptávka</a></li></ul></nav>
     <button class="search-btn" type="button" data-palette-open aria-haspopup="dialog" aria-keyshortcuts="Meta+K Control+K" aria-label="Hledat na webu">
@@ -318,35 +320,29 @@ def header():
 
 
 def footer(page=None):
-    """Závěrečná stěna s výzvou k nahrání výkresu a pod ní patička. Na stránce poptávky stěna chybí, formulář je hned nad ní."""
+    """Patička na slámové ploše. Nahoře výzva k nahrání výkresu, na stránce poptávky chybí, formulář je hned nad ní."""
     pages = "".join(f'<li><a href="@{pid}">{label}</a></li>' for pid, label in [("domu", "Úvod")] + NAV + [("poptavka", "Poptávka")])
-    cta = "" if page == "poptavka" else '''<section class="close" aria-labelledby="close-title" data-ftr-cta>
-  <div class="stand">
-    <div class="wall close__wall">
-      <div class="panel panel--2 close__claim"><h2 class="letter close__title" id="close-title">Máte výkres? Cenu a termín znáte do 48 hodin.</h2></div>
-      <div class="panel close__act">
-        <a class="btn btn--ink" href="@poptavka">Nahrát výkres</a>
-        <p>Nebo zavolejte technikovi na <a href="tel:+420517000100">+420 517 000 100</a>.</p>
-      </div>
+    cta = "" if page == "poptavka" else '''
+  <section class="close" aria-labelledby="close-title" data-ftr-cta>
+    <h2 class="display close__title" id="close-title">Máte výkres? Cenu a termín znáte do 48 hodin.</h2>
+    <div class="close__act">
+      <a class="btn btn--ink" href="@poptavka">Nahrát výkres</a>
+      <p>Nebo zavolejte technikovi Janu Kalousovi na <a href="tel:+420517000100">+420 517 000 100</a>.</p>
     </div>
+  </section>'''
+    return f'''<footer class="ftr">{cta}
+  <div class="ftr__grid">
+    <div class="ftr__brand">
+      <a class="fascia__brand" href="@domu" aria-label="HRANOL, úvodní stránka">{logo_svg("")}</a>
+      <p>Přesné obrábění a svařence pro výrobce strojů. Rousínov u Brna, od roku 1994.</p>
+    </div>
+    <nav aria-label="Stránky"><h2 class="ftr__h">Stránky</h2><ul>{pages}</ul></nav>
+    <div><h2 class="ftr__h">Kontakt</h2><p><a href="tel:+420517000100">+420 517 000 100</a><br><a href="mailto:poptavky@hranol-obrabeni.cz">poptavky@hranol-obrabeni.cz</a><br>Průmyslová 1187, 683 01 Rousínov</p></div>
+    <div><h2 class="ftr__h">Provoz</h2><p>Výroba Po–Pá 6:00–22:00<br>Kancelář Po–Pá 7:00–15:30</p></div>
   </div>
-</section>
-'''
-    return f'''{cta}<footer class="ftr">
-  <div class="stand stand--inset">
-    <div class="ftr__grid">
-      <div class="ftr__brand">
-        <a class="fascia__brand" href="@domu" aria-label="HRANOL, úvodní stránka">{logo_svg("")}</a>
-        <p>Přesné obrábění a svařence pro výrobce strojů. Rousínov u Brna, od roku 1994.</p>
-      </div>
-      <nav aria-label="Stránky"><h2 class="ftr__h">Stránky</h2><ul>{pages}</ul></nav>
-      <div><h2 class="ftr__h">Kontakt</h2><p><a href="tel:+420517000100">+420 517 000 100</a><br><a href="mailto:poptavky@hranol-obrabeni.cz">poptavky@hranol-obrabeni.cz</a><br>Průmyslová 1187, 683 01 Rousínov</p></div>
-      <div><h2 class="ftr__h">Provoz</h2><p>Výroba Po–Pá 6:00–22:00<br>Kancelář Po–Pá 7:00–15:30</p></div>
-    </div>
-    <div class="ftr__legal">
-      <p>© 2026 HRANOL s.r.o.</p>
-      <p>Ukázkový web fiktivní firmy. Návrh, texty a kód <a href="https://stepansynek.com" rel="author">Štěpán Synek</a>. Fotografie provozu Unsplash, rendery dílů vlastní.</p>
-    </div>
+  <div class="ftr__legal">
+    <p>© 2026 HRANOL s.r.o.</p>
+    <p>Ukázkový web fiktivní firmy. Návrh, texty a kód <a href="https://stepansynek.com" rel="author">Štěpán Synek</a>. Fotografie z Pexels, autor je uvedený u každého snímku. Rendery dílů vlastní.</p>
   </div>
 </footer>'''
 
@@ -413,7 +409,7 @@ def czech_nbsp(document):
 
 def chrome(mains, page=None):
     return (f'<a class="skip" href="#obsah">Přeskočit na obsah</a>\n'
-            f'<div class="demo"><p class="stand stand--inset">Ukázkový web fiktivní firmy HRANOL. Návrh, texty a kód: '
+            f'<div class="demo"><p>Ukázkový web fiktivní firmy HRANOL. Návrh, texty a kód: '
             f'<a href="https://stepansynek.com" rel="author">Štěpán Synek</a></p></div>\n'
             f'{header()}\n<div id="obsah" tabindex="-1">\n{mains}\n</div>\n{footer(page)}\n{PALETTE}\n{search_json()}')
 
@@ -430,7 +426,6 @@ def build_static():
         main = f'<main data-page="{pid}">\n{body}\n</main>'
         page = mark_current(chrome(main, pid), pid)
         head_extra = JSONLD if pid == "domu" else ""
-        scripts = f'<script defer src="{THREE}"></script>\n<script defer src="assets/part.js"></script>' if pid == "domu" else ""
         preload = "\n".join(f'<link rel="preload" href="{f}" as="font" type="font/woff2" crossorigin>' for f in FONTS)
         document = f'''<!doctype html>
 <html lang="cs">
@@ -441,7 +436,7 @@ def build_static():
 <meta name="description" content="{html.escape(meta["description"])}">
 <!-- Ukázkový web fiktivní firmy: vyhledávače ho nemají indexovat. Na ostrém webu tento řádek smazat. -->
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#edb93c">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="cs_CZ">
 <meta property="og:site_name" content="HRANOL s.r.o.">
@@ -459,7 +454,6 @@ def build_static():
 <link rel="stylesheet" href="assets/styles.css">
 {head_extra}
 <script defer src="assets/main.js"></script>
-{scripts}
 </head>
 <body>
 {links(page, False)}
@@ -478,7 +472,6 @@ def build_spa(out):
         mains.append(f'<main data-page="{pid}" data-title="{html.escape(meta["title"])}"{hidden}>\n{body}\n</main>')
     css = (ROOT / "assets/styles.css").read_text(encoding="utf-8").replace('url("fonts/', 'url("assets/fonts/')
     js = (ROOT / "assets/main.js").read_text(encoding="utf-8")
-    part = (ROOT / "assets/part.js").read_text(encoding="utf-8")
     page = mark_current(chrome("\n".join(mains)), "domu")
     document = f'''<meta charset="utf-8">
 <title>HRANOL přesné obrábění</title>
@@ -488,12 +481,8 @@ def build_spa(out):
 </style>
 {links(page, True)}
 <script>document.documentElement.lang = "cs"; window.HRANOL_SPA = true;</script>
-<script src="{THREE}"></script>
 <script>
 {js}
-</script>
-<script>
-{part}
 </script>
 '''
     Path(out).write_text(czech_nbsp(document), encoding="utf-8")

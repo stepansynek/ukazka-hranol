@@ -1,82 +1,65 @@
 <!-- {"title": "O firmě | HRANOL", "description": "Rodinná strojírenská firma z Rousínova. Historie od roku 1994, lidé, certifikace a volná místa."} -->
-<header class="phead phead--counter">
-  <div class="stand">
-    <div class="wall wall--nobeam phead__wall">
-      <div class="panel panel--2 phead__main">
-        <nav class="crumbs" aria-label="Drobečková navigace"><a href="@domu">Úvod</a><span aria-hidden="true">/</span><span aria-current="page">O firmě</span></nav>
-        <h1 class="letter">O firmě</h1>
-      </div>
-      <div class="panel phead__side">
-        <p class="lead">Rodinná firma z Rousínova. Začínali jsme v roce 1994 se dvěma soustruhy v pronajaté dílně, dnes máme 46 lidí a halu o 3 200 m².</p>
-      </div>
-    </div>
+<header class="phead">
+  <nav class="crumbs" aria-label="Drobečková navigace"><a href="@domu">Úvod</a><span aria-hidden="true">/</span><span aria-current="page">O firmě</span></nav>
+  <div class="phead__row">
+    <h1 class="display phead__title">O firmě</h1>
+    <p class="lead phead__lead">Rodinná firma z Rousínova. Začínali jsme v roce 1994 se dvěma soustruhy v pronajaté dílně, dnes máme 46 lidí a halu o 3 200 m².</p>
   </div>
 </header>
 
-<section class="front" id="hala" aria-labelledby="hala-title">
-  <div class="stand stand--inset">
-    <div class="counter board">
-      <div class="board__head">
-        <div class="board__intro">
-          <h2 class="counter__title" id="hala-title">Hala</h2>
-          <p>Materiál, obrábění, svařování, měření i expedice jsou pod jednou střechou a pár kroků od sebe. Díl mezi operacemi nikam nevozíme, takže se neztrácí čas ani dokumentace.</p>
-        </div>
-      </div>
-      {{hall}}
-    </div>
-  </div>
-</section>
+<figure class="band">
+  <img src="assets/img/foto/sklad.webp" srcset="assets/img/foto/sklad-900.webp 900w, assets/img/foto/sklad.webp 2400w" sizes="96vw" width="2400" height="1800" decoding="async" alt="Konzolový regál s ocelovými tyčemi a trubkami pod střechou haly.">
+  <figcaption class="credit">Konzolový regál s tyčemi a trubkami. Foto Zakhar Vozhdaienko, Pexels</figcaption>
+</figure>
 
-<section class="sec" id="historie" aria-labelledby="h-title">
-  <div class="stand">
-    <div class="sec__head"><h2 class="sec__title" id="h-title">Historie</h2></div>
-    <div class="wall wall--white">
-      <ol class="panel panel--3 seq seq--6 timeline">
-        <li><h3><span class="seq__mark">1994</span></h3><p>Pavel Hrubý zakládá dílnu se dvěma konvenčními soustruhy. První zakázky jsou náhradní díly pro zemědělská družstva.</p></li>
-        <li><h3><span class="seq__mark">2003</span></h3><p>První CNC stroj, Kovosvit MAS MCV. Začínáme dodávat výrobcům balicích strojů.</p></li>
-        <li><h3><span class="seq__mark">2009</span></h3><p>Vlastní hala v Rousínově, 1 800 m². Certifikace ISO 9001.</p></li>
-        <li><h3><span class="seq__mark">2015</span></h3><p>Svařovna a certifikace EN ISO 3834-2. Svařence obrábíme pod jednou střechou.</p></li>
-        <li><h3><span class="seq__mark">2019</span></h3><p>Pětiosé obrábění na DMG MORI DMU 65. Firmu přebírá druhá generace.</p></li>
-        <li><h3><span class="seq__mark">2023</span></h3><p>Přístavba na 3 200 m², Hermle s paletovým zásobníkem a klimatizovaná měrovna.</p></li>
-      </ol>
+<div class="sheet">
+  <section class="sec" id="hala" aria-labelledby="hala-title">
+    <div class="sec__head">
+      <h2 class="h2" id="hala-title">Hala</h2>
+      <p class="sec__aside">Materiál, obrábění, svařování, měření i expedice jsou pod jednou střechou a pár kroků od sebe. Díl mezi operacemi nikam nevozíme, takže se neztrácí čas ani dokumentace. Najeďte na zónu nebo na stroj.</p>
     </div>
-  </div>
-</section>
+    {{hall}}
+  </section>
 
-<section class="sec" id="lide" aria-labelledby="l-title">
-  <div class="stand">
-    <div class="sec__head"><h2 class="sec__title" id="l-title">Lidé</h2><p class="sec__aside">Zavolejte přímo člověku, který vaši věc vyřeší.</p></div>
-    <ul class="wall wall--white people">
-      <li class="panel">
-        <span class="people__initials" aria-hidden="true">JK</span>
-        <h3 class="panel__title">Ing. Jan Kalous</h3>
+  <section class="sec" id="historie" aria-labelledby="h-title">
+    <div class="sec__head"><h2 class="h2" id="h-title">Historie</h2></div>
+    <ol class="seq seq--6 timeline">
+      <li><h3><span class="seq__mark">1994</span></h3><p>Pavel Hrubý zakládá dílnu se dvěma konvenčními soustruhy. První zakázky jsou náhradní díly pro zemědělská družstva.</p></li>
+      <li><h3><span class="seq__mark">2003</span></h3><p>První CNC stroj, Kovosvit MAS MCV. Začínáme dodávat výrobcům balicích strojů.</p></li>
+      <li><h3><span class="seq__mark">2009</span></h3><p>Vlastní hala v Rousínově, 1 800 m². Certifikace ISO 9001.</p></li>
+      <li><h3><span class="seq__mark">2015</span></h3><p>Svařovna a certifikace EN ISO 3834-2. Svařence obrábíme pod jednou střechou.</p></li>
+      <li><h3><span class="seq__mark">2019</span></h3><p>Pětiosé obrábění na DMG MORI DMU 65. Firmu přebírá druhá generace.</p></li>
+      <li><h3><span class="seq__mark">2023</span></h3><p>Přístavba na 3 200 m², Hermle s paletovým zásobníkem a klimatizovaná měrovna.</p></li>
+    </ol>
+  </section>
+
+  <section class="sec" id="lide" aria-labelledby="l-title">
+    <div class="sec__head"><h2 class="h2" id="l-title">Lidé</h2><p class="sec__aside">Zavolejte přímo člověku, který vaši věc vyřeší.</p></div>
+    <ul class="people">
+      <li>
+        <h3 class="h3">Ing. Jan Kalous</h3>
         <p class="people__role">obchodní technik, nacenění zakázek</p>
         <p class="people__lines"><a href="tel:+420517000100">+420 517 000 100</a><br><a href="mailto:kalous@hranol-obrabeni.cz">kalous@hranol-obrabeni.cz</a></p>
       </li>
-      <li class="panel">
-        <span class="people__initials" aria-hidden="true">PS</span>
-        <h3 class="panel__title">Petra Svobodová</h3>
+      <li>
+        <h3 class="h3">Petra Svobodová</h3>
         <p class="people__role">vedoucí kvality, reklamace a dokumentace</p>
         <p class="people__lines"><a href="tel:+420517000110">+420 517 000 110</a><br><a href="mailto:svobodova@hranol-obrabeni.cz">svobodova@hranol-obrabeni.cz</a></p>
       </li>
-      <li class="panel">
-        <span class="people__initials" aria-hidden="true">MH</span>
-        <h3 class="panel__title">Martin Hrubý</h3>
+      <li>
+        <h3 class="h3">Martin Hrubý</h3>
         <p class="people__role">jednatel, smlouvy a rámcové objednávky</p>
         <p class="people__lines"><a href="tel:+420517000120">+420 517 000 120</a><br><a href="mailto:hruby@hranol-obrabeni.cz">hruby@hranol-obrabeni.cz</a></p>
       </li>
     </ul>
-  </div>
-</section>
+  </section>
 
-<section class="sec" id="kariera" aria-labelledby="k-title">
-  <div class="stand">
-    <div class="wall wall--white split">
-      <div class="panel split__head">
-        <h2 class="letter split__title" id="k-title">Kariéra</h2>
-        <p>Hledáme lidi, kteří chtějí dělat přesnou práci na moderních strojích. Zaučíme vás a mzdu píšeme rovnou do inzerátu.</p>
-      </div>
-      <div class="panel panel--2 jobs">
+  <section class="sec careers" id="kariera" aria-labelledby="k-title">
+    <figure class="careers__photo"><img src="assets/img/foto/obsluha-900.webp" srcset="assets/img/foto/obsluha-900.webp 700w, assets/img/foto/obsluha.webp 1500w" sizes="(min-width: 1080px) 30vw, 100vw" width="700" height="921" loading="lazy" decoding="async" alt="Obsluha v rukavicích u ovládacího panelu stroje."><figcaption class="credit">Obsluha u ovládacího panelu stroje. Foto Bulat843, Pexels</figcaption></figure>
+    <div class="careers__body">
+      <h2 class="h2" id="k-title">Kariéra</h2>
+      <p>Hledáme lidi, kteří chtějí dělat přesnou práci na pětiosých centrech a ve svařovně. Zaučíme vás a mzdu píšeme rovnou do inzerátu.</p>
+      <div class="jobs">
         <details class="job">
           <summary><span class="job__title">Operátor CNC frézky</span><span class="job__meta">2 směny, 42–52 tis. Kč</span></summary>
           <div class="job__body">
@@ -91,19 +74,17 @@
             <ul><li>metody 135 a 141</li><li>práce s nerezem výhodou</li><li>13. mzda, stravenky 140 Kč, pracovní oděv a obuv</li></ul>
           </div>
         </details>
-        <p class="jobs__contact">Ozvěte se Lence Dvořákové z personálního na <a href="mailto:kariera@hranol-obrabeni.cz">kariera@hranol-obrabeni.cz</a> nebo na <a href="tel:+420517000130">+420 517 000 130</a>.</p>
       </div>
+      <p class="jobs__contact">Ozvěte se Lence Dvořákové z personálního na <a href="mailto:kariera@hranol-obrabeni.cz">kariera@hranol-obrabeni.cz</a> nebo na <a href="tel:+420517000130">+420 517 000 130</a>.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="sec" id="certifikace" aria-labelledby="c-title">
-  <div class="stand">
-    <div class="sec__head"><h2 class="sec__title" id="c-title">Certifikace</h2></div>
-    <ul class="wall wall--white certs">
-      <li class="panel"><p class="certs__name">ISO 9001:2015</p><p>Systém řízení kvality</p><p class="certs__valid">platnost do 05/2028</p></li>
-      <li class="panel"><p class="certs__name">EN ISO 3834-2</p><p>Komplexní požadavky na jakost při svařování</p><p class="certs__valid">platnost do 11/2027</p></li>
-      <li class="panel"><p class="certs__name">EN ISO 9606-1</p><p>Zkoušky svářečů, 6 certifikovaných svářečů</p><p class="certs__valid">obnova každé 2 roky</p></li>
+  <section class="sec" id="certifikace" aria-labelledby="c-title">
+    <div class="sec__head"><h2 class="h2" id="c-title">Certifikace</h2></div>
+    <ul class="certs">
+      <li><p class="certs__name">ISO 9001:2015</p><p>Systém řízení kvality</p><p class="certs__valid">platnost do 05/2028</p></li>
+      <li><p class="certs__name">EN ISO 3834-2</p><p>Komplexní požadavky na jakost při svařování</p><p class="certs__valid">platnost do 11/2027</p></li>
+      <li><p class="certs__name">EN ISO 9606-1</p><p>Zkoušky svářečů, 6 certifikovaných svářečů</p><p class="certs__valid">obnova každé 2 roky</p></li>
     </ul>
-  </div>
-</section>
+  </section>
+</div>

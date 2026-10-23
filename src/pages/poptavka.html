@@ -1,21 +1,15 @@
 <!-- {"title": "Poptávka | HRANOL", "description": "Pošlete výkres a do 48 hodin dostanete cenu a termín. Poptávku nacení technik, NDA podepíšeme předem."} -->
-<header class="phead phead--counter">
-  <div class="stand">
-    <div class="wall wall--nobeam phead__wall">
-      <div class="panel panel--2 phead__main">
-        <nav class="crumbs" aria-label="Drobečková navigace"><a href="@domu">Úvod</a><span aria-hidden="true">/</span><span aria-current="page">Poptávka</span></nav>
-        <h1 class="letter">Poptávka</h1>
-      </div>
-      <div class="panel phead__side">
-        <p class="lead">Pošlete výkres a do 48 hodin vám pošleme cenu a termín. Poptávku nacení technik, který rozumí výrobě.</p>
-      </div>
-    </div>
+<header class="phead">
+  <nav class="crumbs" aria-label="Drobečková navigace"><a href="@domu">Úvod</a><span aria-hidden="true">/</span><span aria-current="page">Poptávka</span></nav>
+  <div class="phead__row">
+    <h1 class="display phead__title">Poptávka</h1>
+    <p class="lead phead__lead">Pošlete výkres a do 48 hodin vám pošleme cenu a termín. Poptávku nacení technik Jan Kalous, který má výrobu hned za dveřmi.</p>
   </div>
 </header>
 
-<section class="front" aria-label="Formulář poptávky">
-  <div class="stand stand--inset rfq-layout">
-    <form class="counter rfq" id="rfq" novalidate>
+<div class="sheet">
+<section class="sec rfq-layout" aria-label="Formulář poptávky">
+    <form class="rfq" id="rfq" novalidate>
       <ol class="stepper" aria-label="Kroky poptávky">
         <li class="is-current" aria-current="step"><span class="stepper__no">1</span>Výkresy</li>
         <li><span class="stepper__no">2</span>Parametry</li>
@@ -132,43 +126,34 @@
     </form>
 
     <aside class="rfq-aside" aria-label="Shrnutí a kontakt">
-      <div class="counter summary">
+      <div class="summary">
         <h2 class="summary__title">Shrnutí</h2>
         <dl>
           <div><dt>Soubory</dt><dd data-sum="files">žádné</dd></div>
-          <div><dt>Počet kusů</dt><dd data-sum="qty">—</dd></div>
+          <div><dt>Počet kusů</dt><dd data-sum="qty">nevyplněno</dd></div>
           <div><dt>Opakování</dt><dd data-sum="repeat">jednorázově</dd></div>
           <div><dt>Materiál</dt><dd data-sum="material">podle výkresu</dd></div>
           <div><dt>Úprava</dt><dd data-sum="finish">bez úpravy</dd></div>
-          <div><dt>Termín</dt><dd data-sum="date">—</dd></div>
+          <div><dt>Termín</dt><dd data-sum="date">nevyplněno</dd></div>
           <div><dt>NDA</dt><dd data-sum="nda">ne</dd></div>
         </dl>
       </div>
       <div class="contact-card">
-        <span class="people__initials" aria-hidden="true">JK</span>
-        <div>
-          <p class="contact-card__name">Ing. Jan Kalous</p>
-          <p class="contact-card__role">nacení vaši zakázku</p>
-        </div>
+        <p class="contact-card__name">Ing. Jan Kalous</p>
+        <p class="contact-card__role">nacení vaši zakázku</p>
         <p class="contact-card__lines"><a href="tel:+420517000100">+420 517 000 100</a><br><a href="mailto:poptavky@hranol-obrabeni.cz">poptavky@hranol-obrabeni.cz</a></p>
       </div>
     </aside>
-  </div>
 </section>
 
-<section class="sec" id="faq" aria-labelledby="faq-title">
-  <div class="stand">
-    <div class="wall wall--white split">
-      <div class="panel split__head">
-        <h2 class="letter split__title" id="faq-title">Časté otázky</h2>
-      </div>
-      <div class="panel panel--2 faq">
-        <details id="faq-formaty"><summary>Jaké formáty výkresů přijímáte?</summary><p>PDF výkres s tolerancemi a k němu ideálně 3D model ve formátu STEP. Zvládneme i IGES, DXF a DWG. Větší data pošlete přes úschovnu na poptavky@hranol-obrabeni.cz.</p></details>
-        <details id="faq-mnozstvi"><summary>Jaké je minimální množství?</summary><p>Žádné. Vyrobíme i jeden prototyp. U kusových zakázek tvoří větší část ceny příprava, proto ji v nabídce uvádíme zvlášť.</p></details>
-        <details id="faq-nda"><summary>Podepíšete NDA?</summary><p>Ano, ještě před zasláním dokumentace. Použijeme vaši smlouvu, nebo pošleme vlastní vzor.</p></details>
-        <details id="faq-lhuta"><summary>Jak rychle dostanu nabídku?</summary><p>Do 48 hodin v pracovní dny. U složitých sestav nebo neúplných výkresů se technik ozve dřív s doplňujícími otázkami.</p></details>
-        <details id="faq-export"><summary>Dodáváte i do zahraničí?</summary><p>Ano, pravidelně do Německa a Rakouska. Dokumentaci a fakturaci připravíme v němčině nebo angličtině.</p></details>
-      </div>
-    </div>
+<section class="sec faq-sec" id="faq" aria-labelledby="faq-title">
+  <div class="sec__head"><h2 class="h2" id="faq-title">Časté otázky</h2></div>
+  <div class="faq">
+    <details id="faq-formaty"><summary>Jaké formáty výkresů přijímáte?</summary><p>PDF výkres s tolerancemi a k němu ideálně 3D model ve formátu STEP. Zvládneme i IGES, DXF a DWG. Větší data pošlete přes úschovnu na poptavky@hranol-obrabeni.cz.</p></details>
+    <details id="faq-mnozstvi"><summary>Jaké je minimální množství?</summary><p>Vyrobíme i jeden prototyp. U kusových zakázek tvoří větší část ceny příprava, proto ji v nabídce uvádíme zvlášť.</p></details>
+    <details id="faq-nda"><summary>Podepíšete NDA?</summary><p>Ano, ještě před zasláním dokumentace. Použijeme vaši smlouvu, nebo pošleme vlastní vzor.</p></details>
+    <details id="faq-lhuta"><summary>Jak rychle dostanu nabídku?</summary><p>Do 48 hodin v pracovní dny. U složitých sestav nebo neúplných výkresů se technik ozve dřív s doplňujícími otázkami.</p></details>
+    <details id="faq-export"><summary>Dodáváte i do zahraničí?</summary><p>Ano, pravidelně do Německa a Rakouska. Dokumentaci a fakturaci připravíme v němčině nebo angličtině.</p></details>
   </div>
 </section>
+</div>

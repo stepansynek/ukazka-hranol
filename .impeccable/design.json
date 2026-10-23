@@ -1,475 +1,510 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-22T18:41:38+00:00",
+  "generatedAt": "2026-10-23T12:00:00Z",
   "title": "Design System: HRANOL s.r.o.",
   "extensions": {
     "colorMeta": {
-      "wall": {
+      "straw": {
         "role": "primary",
-        "displayName": "Signal Yellow",
-        "canonical": "oklch(84.0% 0.172 90.4)",
+        "displayName": "Straw",
+        "canonical": "#edb93c",
+        "oklch": "oklch(81.2% 0.147 85.0)",
         "tonalRamp": [
-          "#1d0200",
-          "#3c1f00",
-          "#683a00",
-          "#8b5d00",
-          "#b18100",
-          "#d7a700",
-          "#fccb1b",
-          "#ffec8d"
+          "#140900",
+          "#312200",
+          "#553E00",
+          "#7B5C01",
+          "#A37C14",
+          "#CD9D22",
+          "#F4C149",
+          "#FEEDC9"
         ]
       },
-      "wall-ink-2": {
-        "role": "primary",
-        "displayName": "Yellow-Wall Ink",
-        "canonical": "oklch(37.6% 0.078 97.3)",
+      "straw-pale": {
+        "role": "secondary",
+        "displayName": "Pale Straw",
+        "canonical": "#fbefc9",
+        "oklch": "oklch(95.2% 0.051 92.6)",
         "tonalRamp": [
-          "#150900",
-          "#312500",
-          "#514505",
-          "#72662e",
-          "#968a51",
-          "#bbaf75",
-          "#dfd297",
-          "#fdf0b4"
-        ]
-      },
-      "wall-pale": {
-        "role": "primary",
-        "displayName": "Pale Yellow",
-        "canonical": "oklch(96.4% 0.065 97.1)",
-        "tonalRamp": [
-          "#130900",
-          "#302600",
-          "#4f4517",
-          "#706639",
-          "#948a5b",
-          "#b9af7f",
-          "#ddd2a1",
-          "#faefbe"
+          "#0F0B01",
+          "#2A2514",
+          "#48422D",
+          "#686149",
+          "#8B8267",
+          "#AFA586",
+          "#D4C9A7",
+          "#FAEEC8"
         ]
       },
       "ink": {
-        "role": "neutral",
-        "displayName": "Graphite",
-        "canonical": "oklch(23.4% 0.007 258.4)",
+        "role": "primary",
+        "displayName": "Temper Blue Ink",
+        "canonical": "#151b33",
+        "oklch": "oklch(23.0% 0.047 271.6)",
         "tonalRamp": [
-          "#090b0e",
-          "#24272a",
-          "#434549",
-          "#64666a",
-          "#87898d",
-          "#abaeb2",
-          "#ced1d5",
-          "#eceff3"
+          "#06091E",
+          "#1D233C",
+          "#3A4159",
+          "#596078",
+          "#7A8299",
+          "#9DA4BB",
+          "#C2C9DD",
+          "#E9EEFE"
         ]
       },
-      "ink-2": {
-        "role": "neutral",
-        "displayName": "Soft Graphite",
-        "canonical": "oklch(42.5% 0.012 252.9)",
+      "ink-hover": {
+        "role": "secondary",
+        "displayName": "Lighter Temper Blue",
+        "canonical": "#2b3766",
+        "oklch": "oklch(35.2% 0.083 270.8)",
         "tonalRamp": [
-          "#080b10",
-          "#22272c",
-          "#41464b",
-          "#61676d",
-          "#848a90",
-          "#a9afb5",
-          "#ccd2d9",
-          "#e9eff6"
+          "#040529",
+          "#17214B",
+          "#323E6D",
+          "#515F8D",
+          "#7280AD",
+          "#96A3CE",
+          "#BBC8F1",
+          "#E8EEFF"
         ]
       },
-      "floor": {
-        "role": "neutral",
-        "displayName": "Hall Floor",
-        "canonical": "oklch(91.7% 0.007 106.5)",
+      "bronze": {
+        "role": "secondary",
+        "displayName": "Dark Bronze",
+        "canonical": "#5e3b10",
+        "oklch": "oklch(38.6% 0.075 67.1)",
         "tonalRamp": [
-          "#0b0b08",
-          "#272723",
-          "#454541",
-          "#666662",
-          "#898985",
-          "#aeaea9",
-          "#d1d1cc",
-          "#efefea"
-        ]
-      },
-      "floor-deep": {
-        "role": "neutral",
-        "displayName": "Deep Floor",
-        "canonical": "oklch(86.5% 0.010 106.6)",
-        "tonalRamp": [
-          "#0c0b07",
-          "#272722",
-          "#454540",
-          "#666660",
-          "#8a8a83",
-          "#aeaea8",
-          "#d1d1ca",
-          "#efefe8"
+          "#180600",
+          "#381E00",
+          "#5C390E",
+          "#7C5934",
+          "#9D7B58",
+          "#BF9E7D",
+          "#E2C3A4",
+          "#FEEBD8"
         ]
       },
       "white": {
         "role": "neutral",
-        "displayName": "Counter White",
-        "canonical": "oklch(100.0% 0.000 89.9)",
+        "displayName": "White",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 89.9)",
         "tonalRamp": [
-          "#0b0b0b",
-          "#262626",
-          "#454545",
-          "#666666",
-          "#898989",
-          "#aeaeae",
-          "#d1d1d1",
-          "#eeeeee"
+          "#0B0B0B",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#A5A5A5",
+          "#C9C9C9",
+          "#EEEEEE"
         ]
       },
-      "alu": {
+      "steel": {
         "role": "neutral",
-        "displayName": "Aluminium",
-        "canonical": "oklch(84.9% 0.009 247.9)",
+        "displayName": "Light Steel",
+        "canonical": "#eef0f3",
+        "oklch": "oklch(95.4% 0.005 258.3)",
         "tonalRamp": [
-          "#080c0f",
-          "#23272b",
-          "#41464a",
-          "#62676b",
-          "#858a8e",
-          "#aaaeb3",
-          "#cdd2d7",
-          "#eaeff4"
-        ]
-      },
-      "alu-lo": {
-        "role": "neutral",
-        "displayName": "Low Aluminium",
-        "canonical": "oklch(73.5% 0.013 248.0)",
-        "tonalRamp": [
-          "#070c10",
-          "#22272d",
-          "#40464c",
-          "#60676d",
-          "#838a91",
-          "#a8afb6",
-          "#cbd2d9",
-          "#e8eff7"
-        ]
-      },
-      "groove": {
-        "role": "neutral",
-        "displayName": "Groove",
-        "canonical": "oklch(67.0% 0.013 248.0)",
-        "tonalRamp": [
-          "#070c10",
-          "#21272d",
-          "#40464c",
-          "#60676d",
-          "#838a91",
-          "#a8afb6",
-          "#cad2d9",
-          "#e8eff7"
+          "#0B0B0C",
+          "#242526",
+          "#414244",
+          "#606163",
+          "#818284",
+          "#A3A5A7",
+          "#C7C9CC",
+          "#EDEFF2"
         ]
       },
       "line": {
         "role": "neutral",
         "displayName": "Hairline",
-        "canonical": "oklch(90.2% 0.005 247.9)",
+        "canonical": "#d5d9e0",
+        "oklch": "oklch(88.4% 0.011 261.8)",
         "tonalRamp": [
-          "#090b0d",
-          "#242729",
-          "#434548",
-          "#646669",
-          "#87898c",
-          "#abaeb1",
-          "#ced1d4",
-          "#eceff2"
+          "#0A0B0E",
+          "#232528",
+          "#404246",
+          "#5F6166",
+          "#7F8288",
+          "#A2A5AB",
+          "#C5C9D0",
+          "#EBEFF5"
         ]
       },
-      "line-strong": {
+      "field": {
         "role": "neutral",
         "displayName": "Field Edge",
-        "canonical": "oklch(66.0% 0.013 248.0)",
+        "canonical": "#838ca0",
+        "oklch": "oklch(64.0% 0.032 266.2)",
         "tonalRamp": [
-          "#070c11",
-          "#21272d",
-          "#40464c",
-          "#60676d",
-          "#838a91",
-          "#a8afb6",
-          "#cad2d9",
-          "#e8eff7"
+          "#070B15",
+          "#1F2531",
+          "#3B4251",
+          "#5A6172",
+          "#7A8296",
+          "#9CA5B9",
+          "#C1C9DC",
+          "#E8EFFE"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Slate Muted",
+        "canonical": "#545d72",
+        "oklch": "oklch(47.9% 0.036 266.8)",
+        "tonalRamp": [
+          "#060B17",
+          "#1E2534",
+          "#3A4254",
+          "#586176",
+          "#798297",
+          "#9CA5B9",
+          "#C1C9DC",
+          "#E7EEFF"
         ]
       },
       "error": {
-        "role": "error",
-        "displayName": "Fault Red",
-        "canonical": "oklch(50.0% 0.182 29.5)",
+        "role": "neutral",
+        "displayName": "Error Red",
+        "canonical": "#b42318",
+        "oklch": "oklch(50.0% 0.182 29.5)",
         "tonalRamp": [
-          "#2d0000",
-          "#520000",
-          "#8e0000",
-          "#b7271c",
-          "#e25242",
-          "#ff7966",
-          "#ff9e88",
-          "#ffd0bf"
+          "#220000",
+          "#4E0000",
+          "#810000",
+          "#B12016",
+          "#D55041",
+          "#F87A68",
+          "#FDB4A8",
+          "#FFE9E5"
         ]
+      },
+      "temper-1-pale-straw": {
+        "role": "tertiary",
+        "displayName": "Temper 1, Pale Straw",
+        "canonical": "#f7e3a1",
+        "oklch": "oklch(91.7% 0.087 93.2)",
+        "tonalRamp": [
+          "#24397A",
+          "#63396F",
+          "#9C5A2E",
+          "#D4932B",
+          "#EDB93C",
+          "#F7E3A1"
+        ],
+        "note": "The project's own six-step ramp in heating order (shown dark to light); never synthesised or reordered."
+      },
+      "temper-2-straw": {
+        "role": "tertiary",
+        "displayName": "Temper 2, Straw",
+        "canonical": "#edb93c",
+        "oklch": "oklch(81.2% 0.147 85.0)",
+        "tonalRamp": [
+          "#24397A",
+          "#63396F",
+          "#9C5A2E",
+          "#D4932B",
+          "#EDB93C",
+          "#F7E3A1"
+        ],
+        "note": "The project's own six-step ramp in heating order (shown dark to light); never synthesised or reordered."
+      },
+      "temper-3-gold": {
+        "role": "tertiary",
+        "displayName": "Temper 3, Gold",
+        "canonical": "#d4932b",
+        "oklch": "oklch(71.1% 0.137 73.8)",
+        "tonalRamp": [
+          "#24397A",
+          "#63396F",
+          "#9C5A2E",
+          "#D4932B",
+          "#EDB93C",
+          "#F7E3A1"
+        ],
+        "note": "The project's own six-step ramp in heating order (shown dark to light); never synthesised or reordered."
+      },
+      "temper-4-bronze": {
+        "role": "tertiary",
+        "displayName": "Temper 4, Bronze",
+        "canonical": "#9c5a2e",
+        "oklch": "oklch(53.5% 0.105 52.2)",
+        "tonalRamp": [
+          "#24397A",
+          "#63396F",
+          "#9C5A2E",
+          "#D4932B",
+          "#EDB93C",
+          "#F7E3A1"
+        ],
+        "note": "The project's own six-step ramp in heating order (shown dark to light); never synthesised or reordered."
+      },
+      "temper-5-purple": {
+        "role": "tertiary",
+        "displayName": "Temper 5, Purple",
+        "canonical": "#63396f",
+        "oklch": "oklch(41.8% 0.099 318.4)",
+        "tonalRamp": [
+          "#24397A",
+          "#63396F",
+          "#9C5A2E",
+          "#D4932B",
+          "#EDB93C",
+          "#F7E3A1"
+        ],
+        "note": "The project's own six-step ramp in heating order (shown dark to light); never synthesised or reordered."
+      },
+      "temper-6-blue": {
+        "role": "tertiary",
+        "displayName": "Temper 6, Blue",
+        "canonical": "#24397a",
+        "oklch": "oklch(36.7% 0.114 267.1)",
+        "tonalRamp": [
+          "#24397A",
+          "#63396F",
+          "#9C5A2E",
+          "#D4932B",
+          "#EDB93C",
+          "#F7E3A1"
+        ],
+        "note": "The project's own six-step ramp in heating order (shown dark to light); never synthesised or reordered."
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Home hero claim on the yellow wall."
+        "purpose": "Home H1 and inner page titles on straw; capped at 11svh in the hero; width 114 % under 720px."
       },
-      "headline-page": {
-        "displayName": "Page headline",
-        "purpose": "Inner-page H1 on the page-head wall."
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles on sheets, RFQ step legends."
       },
-      "headline-wall": {
-        "displayName": "Wall headline",
-        "purpose": "Closing wall claim; feature, tech and case titles in the same lettering."
+      "headline-feature": {
+        "displayName": "Headline Feature",
+        "purpose": "Case titles, interlude title, footer closing call, pull quotes."
       },
-      "headline-section": {
-        "displayName": "Section headline",
-        "purpose": "Section heads standing on the floor."
+      "title": {
+        "displayName": "Title",
+        "purpose": "H3s, job titles, sector names, mobile menu links; small lettering uses the same 750 / 110–112 % at body size."
       },
-      "title-counter": {
-        "displayName": "Counter title",
-        "purpose": "Titles on white counters."
-      },
-      "title-panel": {
-        "displayName": "Panel title",
-        "purpose": "Titles inside panels, certificates, sectors, mobile nav."
-      },
-      "title-item": {
-        "displayName": "Item title",
-        "purpose": "Plinth names, steps, machine names, FAQ and job titles."
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Case facts and sequence step marks; width 100–104 % so figures stay readable."
       },
       "lead": {
         "displayName": "Lead",
-        "purpose": "The one paragraph under a headline, max 34em."
+        "purpose": "Opening paragraph beside a page head, 52–54ch."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Running text, 1rem on mobile."
+        "purpose": "Running text, 17px (16px under 720px), 44–66ch."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Button labels."
-      },
-      "data": {
-        "displayName": "Data",
-        "purpose": "Tabular figures at width 87 for every compared number."
+        "purpose": "Table heads, capacity weeks, credits, metadata; sentence case, tabular figures."
       }
     },
     "shadows": [
       {
-        "name": "shadow-wall",
-        "value": "0 1px 2px rgb(64 50 0 / 0.14), 0 20px 36px -16px rgb(64 50 0 / 0.42)",
-        "purpose": "Plinths, hero counter, fit checker, request form and summary standing in front of the yellow wall."
+        "name": "lift",
+        "value": "0 1px 2px rgb(21 27 51 / 0.12), 0 28px 48px -24px rgb(21 27 51 / 0.45)",
+        "purpose": "Standing surfaces: drawing counter, fit-checker panel, mobile menu."
       },
       {
-        "name": "shadow-floor",
-        "value": "0 1px 2px rgb(28 30 33 / 0.08), 0 24px 44px -24px rgb(28 30 33 / 0.38)",
-        "purpose": "Counters standing on the hall floor."
+        "name": "lift-armed",
+        "value": "0 2px 4px rgb(21 27 51 / 0.14), 0 40px 60px -24px rgb(21 27 51 / 0.6)",
+        "purpose": "Armed drawing counter (with 6px rise); search palette box."
       },
       {
-        "name": "shadow-armed",
-        "value": "0 2px 4px rgb(64 50 0 / 0.14), 0 34px 50px -18px rgb(64 50 0 / 0.5)",
-        "purpose": "Hero counter lifted 8px while a file is dragged over the window."
-      },
-      {
-        "name": "shadow-fascia",
-        "value": "0 14px 28px -20px rgb(28 30 33 / 0.5)",
-        "purpose": "Sticky header after scroll."
-      },
-      {
-        "name": "shadow-palette",
-        "value": "0 2px 6px rgb(0 0 0 / 0.12), 0 40px 70px -24px rgb(0 0 0 / 0.55)",
-        "purpose": "Search dialog over a rgb(28 30 33 / 0.5) backdrop."
+        "name": "header-scrolled",
+        "value": "0 1px 0 rgb(21 27 51 / 0.18), 0 14px 28px -22px rgb(21 27 51 / 0.6)",
+        "purpose": "Sticky header once the page has scrolled."
       }
     ],
     "motion": [
       {
         "name": "ease",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "House exponential ease-out for every state transition."
+        "purpose": "The single exponential ease-out for every state change (0.2–0.45s)."
       },
       {
-        "name": "state-fast",
-        "value": "0.25s",
-        "purpose": "Button, chip, segment and rail colour changes."
+        "name": "view-transition",
+        "value": "old 0.38s / new 0.62s, translateX ±4–6vw by menu order",
+        "purpose": "Cross-document page step; disabled under reduced motion."
       },
       {
-        "name": "state",
-        "value": "0.3s to 0.35s",
-        "purpose": "Row and zone highlights, nav underline wipe, drop zone."
-      },
-      {
-        "name": "counter-arm",
-        "value": "0.45s",
-        "purpose": "Hero counter lift when a file is dragged in."
-      },
-      {
-        "name": "page-step",
-        "value": "out 0.38s translateX(-5vw), in 0.62s from translateX(7vw); reversed on back navigation",
-        "purpose": "Cross-document view transition: a sideways step along the stand."
-      },
-      {
-        "name": "desk-in",
-        "value": "0.35s to 0.4s from opacity 0, translateY(16px)",
-        "purpose": "Search palette and mobile menu entrance."
+        "name": "no-scroll-reveals",
+        "value": "none",
+        "purpose": "Nothing animates on scroll."
       }
     ],
     "breakpoints": [
       {
-        "name": "wide",
+        "name": "narrow-desktop",
         "value": "1279px"
-      },
-      {
-        "name": "nav",
-        "value": "1240px"
       },
       {
         "name": "tablet",
         "value": "1079px"
       },
       {
-        "name": "mobile",
+        "name": "phone",
         "value": "719px"
       },
       {
-        "name": "low-desktop",
-        "value": "min-width 1080px and max-height 820px"
+        "name": "short-desktop",
+        "value": "min-width 1080px and max-height 860px"
       }
-    ]
+    ],
+    "imagery": {
+      "photoGrade": "tools/photos.py: cool hues drained to blue steel, warm hues kept, shadows on #151B33, highlights toward straw, shared grain; provenance JSON per file.",
+      "credits": "Every photo captioned with subject and 'Foto <name>, Pexels'; renders captioned 'Vlastní render'.",
+      "renders": "tools/render-parts: three.js parts on straw tiles, straw key, blue rim.",
+      "material": "tools/heat-tint.py: the one material use of the temper ramp, a TIG weld with real oxide colours.",
+      "chamfer": "Home hero photo top-right corner cut 45° by --cut, echoing the logo."
+    }
   },
   "components": [
-    {
-      "name": "Sign Button",
-      "kind": "button",
-      "refersTo": "button-sign",
-      "description": "Yellow call to action: drawing upload, capacity booking.",
-      "html": "<a class=\"ds-btn ds-btn-sign\" href=\"#\">Nahrát výkres</a>",
-      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border:2px solid transparent;font-family:Archivo,system-ui,sans-serif;font-weight:700;font-stretch:112%;font-size:1.0625rem;line-height:1.1;text-decoration:none;white-space:nowrap;border-radius:0;transition:background-color .25s cubic-bezier(0.16, 1, 0.3, 1),color .25s cubic-bezier(0.16, 1, 0.3, 1),border-color .25s cubic-bezier(0.16, 1, 0.3, 1);} .ds-btn-sign{background:#f5c400;color:#1c1e21;border-color:#f5c400;} .ds-btn-sign:hover{background:#1c1e21;color:#f5c400;border-color:#1c1e21;} .ds-btn:focus-visible{outline:3px solid #1c1e21;outline-offset:3px;}"
-    },
     {
       "name": "Ink Button",
       "kind": "button",
       "refersTo": "button-ink",
-      "description": "Graphite action, including the header Poptávka (small size).",
-      "html": "<a class=\"ds-btn-ink\" href=\"#\">Poptávka</a>",
-      "css": ".ds-btn-ink{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;background:#1c1e21;color:#fff;border:2px solid #1c1e21;border-radius:0;font-family:Archivo,system-ui,sans-serif;font-weight:700;font-stretch:112%;font-size:1.0625rem;line-height:1.1;text-decoration:none;transition:background-color .25s cubic-bezier(0.16, 1, 0.3, 1),border-color .25s cubic-bezier(0.16, 1, 0.3, 1);} .ds-btn-ink:hover{background:#3a3e44;border-color:#3a3e44;} .ds-btn-ink:focus-visible{outline:3px solid #1c1e21;outline-offset:3px;}"
+      "description": "Primary action: header Poptávka, form steps.",
+      "html": "<button class=\"ds-btn ds-btn-ink\">Poptávka</button>",
+      "css": ".ds-btn { display:inline-flex; align-items:center; justify-content:center; min-height:52px; padding:0 26px; border:2px solid transparent; border-radius:0; font-family: var(--f-text, Archivo, system-ui, sans-serif); font-weight:700; font-size:1.0625rem; line-height:1.1; cursor:pointer; transition: background-color .25s var(--ease, cubic-bezier(0.16,1,0.3,1)), color .25s var(--ease, cubic-bezier(0.16,1,0.3,1)), border-color .25s var(--ease, cubic-bezier(0.16,1,0.3,1)); } .ds-btn:focus-visible { outline:3px solid #151b33; outline-offset:2px; } .ds-btn-ink { background:#151b33; color:#fff; } .ds-btn-ink:hover { background:#2b3766; }"
+    },
+    {
+      "name": "Straw Button",
+      "kind": "button",
+      "refersTo": "button-straw",
+      "description": "Action on white sheets: upload a drawing, book capacity.",
+      "html": "<div style=\"background:#fff;padding:24px\"><button class=\"ds-btn ds-btn-straw\">Nahrát výkres</button></div>",
+      "css": ".ds-btn { display:inline-flex; align-items:center; justify-content:center; min-height:52px; padding:0 26px; border:2px solid transparent; border-radius:0; font-family: var(--f-text, Archivo, system-ui, sans-serif); font-weight:700; font-size:1.0625rem; line-height:1.1; cursor:pointer; transition: background-color .25s var(--ease, cubic-bezier(0.16,1,0.3,1)), color .25s var(--ease, cubic-bezier(0.16,1,0.3,1)), border-color .25s var(--ease, cubic-bezier(0.16,1,0.3,1)); } .ds-btn:focus-visible { outline:3px solid #151b33; outline-offset:2px; } .ds-btn-straw { background:#edb93c; border-color:#edb93c; color:#151b33; } .ds-btn-straw:hover { background:#151b33; border-color:#151b33; color:#edb93c; }"
     },
     {
       "name": "Line Button",
       "kind": "button",
       "refersTo": "button-line",
-      "description": "Secondary outlined action; on a yellow wall the hover label turns yellow.",
-      "html": "<div class=\"ds-wallbg\"><a class=\"ds-btn-line\" href=\"#\">Strojový park</a></div>",
-      "css": ".ds-wallbg{background:#f5c400;padding:24px;} .ds-btn-line{display:inline-flex;align-items:center;min-height:52px;padding:0 24px;background:transparent;color:#1c1e21;border:2px solid #1c1e21;border-radius:0;font-family:Archivo,system-ui,sans-serif;font-weight:700;font-stretch:112%;font-size:1.0625rem;text-decoration:none;transition:background-color .25s cubic-bezier(0.16, 1, 0.3, 1),color .25s cubic-bezier(0.16, 1, 0.3, 1);} .ds-btn-line:hover{background:#1c1e21;color:#f5c400;} .ds-btn-line:focus-visible{outline:3px solid #1c1e21;outline-offset:3px;}"
+      "description": "Secondary action, 2px ink frame.",
+      "html": "<button class=\"ds-btn ds-btn-line\">Zpět</button>",
+      "css": ".ds-btn { display:inline-flex; align-items:center; justify-content:center; min-height:52px; padding:0 26px; border:2px solid transparent; border-radius:0; font-family: var(--f-text, Archivo, system-ui, sans-serif); font-weight:700; font-size:1.0625rem; line-height:1.1; cursor:pointer; transition: background-color .25s var(--ease, cubic-bezier(0.16,1,0.3,1)), color .25s var(--ease, cubic-bezier(0.16,1,0.3,1)), border-color .25s var(--ease, cubic-bezier(0.16,1,0.3,1)); } .ds-btn:focus-visible { outline:3px solid #151b33; outline-offset:2px; } .ds-btn-line { background:transparent; border-color:#151b33; color:#151b33; } .ds-btn-line:hover { background:#151b33; color:#fff; }"
     },
     {
-      "name": "Field",
+      "name": "Text Field",
       "kind": "input",
-      "refersTo": "input-field",
-      "description": "Square white field with Field Edge border and graphite focus.",
+      "refersTo": "input",
+      "description": "Square white field with 1.5px field border; ink on hover and focus.",
       "html": "<label class=\"ds-field\"><span>E-mail</span><input type=\"email\" placeholder=\"jmeno@firma.cz\"></label>",
-      "css": ".ds-field{display:grid;gap:8px;font-family:Archivo,system-ui,sans-serif;color:#1c1e21;} .ds-field span{font-weight:600;} .ds-field input{min-height:52px;padding:12px 14px;background:#fff;border:1.5px solid #8c939a;border-radius:0;font:inherit;font-size:1.0625rem;transition:border-color .2s cubic-bezier(0.16, 1, 0.3, 1);} .ds-field input::placeholder{color:#4a4f55;} .ds-field input:hover{border-color:#1c1e21;} .ds-field input:focus-visible{outline:3px solid #1c1e21;outline-offset:2px;border-color:#1c1e21;}"
+      "css": ".ds-field { display:block; max-width:360px; font-family: var(--f-text, Archivo, system-ui, sans-serif); color:#151b33; } .ds-field span { display:block; margin-bottom:6px; font-weight:600; } .ds-field input { width:100%; min-height:52px; padding:12px 14px; border:1.5px solid #838ca0; border-radius:0; background:#fff; font:inherit; color:inherit; transition:border-color .2s var(--ease, cubic-bezier(0.16,1,0.3,1)); } .ds-field input:hover, .ds-field input:focus { border-color:#151b33; } .ds-field input:focus-visible { outline:3px solid #151b33; outline-offset:2px; }"
     },
     {
       "name": "Filter Chip",
       "kind": "chip",
       "refersTo": "chip",
-      "description": "Machine filter; pressed fills graphite.",
-      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\">Frézování <span>4</span></button><button class=\"ds-chip\" aria-pressed=\"false\">Soustružení <span>3</span></button></div>",
-      "css": ".ds-chips{display:flex;gap:8px;} .ds-chip{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;background:#fff;color:#1c1e21;border:1.5px solid #8c939a;border-radius:0;font-family:Archivo,system-ui,sans-serif;font-weight:600;cursor:pointer;transition:background-color .25s cubic-bezier(0.16, 1, 0.3, 1),border-color .25s cubic-bezier(0.16, 1, 0.3, 1);} .ds-chip span{font-stretch:87%;font-variant-numeric:tabular-nums;font-size:.875rem;color:#4a4f55;} .ds-chip:hover{border-color:#1c1e21;} .ds-chip[aria-pressed=true]{background:#1c1e21;border-color:#1c1e21;color:#fff;} .ds-chip[aria-pressed=true] span{color:#d5d8db;} .ds-chip:focus-visible{outline:3px solid #1c1e21;outline-offset:3px;}"
+      "description": "Machine park filters with tabular counts; pressed fills ink.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\">Frézování <span>6</span></button><button class=\"ds-chip\" aria-pressed=\"false\">Soustružení <span>4</span></button></div>",
+      "css": ".ds-chips { display:flex; gap:8px; } .ds-chip { min-height:40px; padding:0 14px; border:1.5px solid #838ca0; border-radius:0; background:#fff; color:#151b33; font-family: var(--f-text, Archivo, system-ui, sans-serif); font-weight:600; font-size:.9375rem; cursor:pointer; } .ds-chip span { margin-left:4px; font-variant-numeric:tabular-nums; opacity:.7; } .ds-chip:hover { border-color:#151b33; } .ds-chip[aria-pressed=\"true\"] { background:#151b33; border-color:#151b33; color:#fff; } .ds-chip:focus-visible { outline:3px solid #151b33; outline-offset:2px; }"
     },
     {
-      "name": "Fascia Navigation",
+      "name": "Header Navigation",
       "kind": "nav",
-      "refersTo": "rail-link-current",
-      "description": "White header band between aluminium rails; yellow wipe on hover, graphite bar on current.",
-      "html": "<nav class=\"ds-fascia\"><a href=\"#\" aria-current=\"page\">Výroba</a><a href=\"#\">Stroje</a><a href=\"#\">Reference</a><a href=\"#\">O firmě</a></nav>",
-      "css": ".ds-fascia{display:flex;gap:2px;padding:18px 16px;background:linear-gradient(#c9ced3 0 2px,#8f969d 2px 4px,#c9ced3 4px 6px,transparent 6px calc(100% - 6px),#c9ced3 calc(100% - 6px) calc(100% - 4px),#8f969d calc(100% - 4px) calc(100% - 2px),#c9ced3 calc(100% - 2px)),#fff;font-family:Archivo,system-ui,sans-serif;} .ds-fascia a{position:relative;padding:10px 12px;font-weight:600;color:#1c1e21;text-decoration:none;} .ds-fascia a::after{content:'';position:absolute;left:12px;right:12px;bottom:2px;height:4px;background:#f5c400;transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(0.16, 1, 0.3, 1);} .ds-fascia a:hover::after{transform:scaleX(1);} .ds-fascia a[aria-current=page]::after{transform:scaleX(1);background:#1c1e21;} .ds-fascia a:focus-visible{outline:3px solid #1c1e21;outline-offset:3px;}"
+      "refersTo": "nav",
+      "description": "Links on straw with an ink underline that grows on hover; 3px for the current page.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Výroba</a><a href=\"#\" aria-current=\"page\">Strojový park</a><a href=\"#\">Reference</a><a href=\"#\">O firmě</a></nav>",
+      "css": ".ds-nav { display:flex; gap:26px; padding:20px 24px; background:#edb93c; font-family: var(--f-text, Archivo, system-ui, sans-serif); } .ds-nav a { padding:8px 0; color:#151b33; font-weight:600; text-decoration:none; background:linear-gradient(#151b33,#151b33) 0 100% / 0 2px no-repeat; transition:background-size .3s var(--ease, cubic-bezier(0.16,1,0.3,1)); } .ds-nav a:hover { background-size:100% 2px; } .ds-nav a[aria-current=\"page\"] { background-size:100% 3px; } .ds-nav a:focus-visible { outline:3px solid #151b33; outline-offset:2px; }"
     },
     {
-      "name": "Wall with Panels",
-      "kind": "card",
-      "refersTo": "panel-wall",
-      "description": "Aluminium post-and-rail wall holding yellow panels, each outlined by the groove line.",
-      "html": "<div class=\"ds-wall\"><div class=\"ds-panel\"><h3>Frézování</h3><p>Pětiosé centrum, 1200 × 800 × 600 mm.</p></div><div class=\"ds-panel\"><h3>Svařování</h3><p>Žíhání a obrobení na jedno upnutí.</p></div></div>",
-      "css": ".ds-wall{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:10px;background:#c9ced3;box-shadow:inset 0 0 0 1px #a3aab1;font-family:Archivo,system-ui,sans-serif;color:#1c1e21;} .ds-panel{position:relative;padding:28px;background:#f5c400;box-shadow:0 0 0 1px #a3aab1;} .ds-panel::before{content:'';position:absolute;inset:-6px;border:2px solid #8f969d;pointer-events:none;} .ds-panel h3{margin:0 0 12px;font-weight:800;font-stretch:118%;font-size:1.5rem;line-height:1.05;} .ds-panel p{margin:0;}"
-    },
-    {
-      "name": "Counter",
-      "kind": "card",
-      "refersTo": "counter",
-      "description": "White working surface with a 10px graphite top, standing on the floor.",
-      "html": "<div class=\"ds-floor\"><div class=\"ds-counter\"><h3>Volná kapacita</h3><p>Osm týdnů dopředu, po technologiích.</p></div></div>",
-      "css": ".ds-floor{background:#e4e4df;padding:32px;} .ds-counter{background:#fff;border-top:10px solid #1c1e21;padding:28px;box-shadow:0 1px 2px rgb(28 30 33 / .08),0 24px 44px -24px rgb(28 30 33 / .38);font-family:Archivo,system-ui,sans-serif;color:#1c1e21;} .ds-counter h3{margin:0 0 10px;font-weight:800;font-stretch:125%;font-size:2rem;line-height:1;letter-spacing:-.01em;} .ds-counter p{margin:0;color:#4a4f55;}"
-    },
-    {
-      "name": "Capacity Cells",
+      "name": "Drawing Counter",
       "kind": "custom",
-      "description": "Week cells: floor grey with a load bar, yellow when free.",
-      "html": "<div class=\"ds-cap\"><span class=\"ds-cell\" style=\"--v:80\" tabindex=\"0\"><i></i></span><span class=\"ds-cell\" style=\"--v:95\" tabindex=\"0\"><i></i></span><span class=\"ds-cell ds-free\" style=\"--v:45\" tabindex=\"0\"><i></i></span><span class=\"ds-cell ds-free\" style=\"--v:20\" tabindex=\"0\"><i></i></span></div>",
-      "css": ".ds-cap{display:flex;gap:5px;background:#fff;padding:16px;} .ds-cell{position:relative;width:64px;height:58px;background:#e4e4df;overflow:hidden;} .ds-cell.ds-free{background:#f5c400;} .ds-cell i{position:absolute;left:0;right:0;bottom:0;height:calc(var(--v) * 1%);background:#4a4f55;} .ds-cell:hover,.ds-cell:focus-visible{outline:3px solid #1c1e21;outline-offset:1px;}"
+      "refersTo": "drawing-counter",
+      "description": "Signature: white counter standing over the hero photo; arms (lifts, drop zone turns straw) when a file is dragged over the window.",
+      "html": "<div class=\"ds-stage\"><div class=\"ds-desk\"><p class=\"ds-desk__t\">Máte výkres?</p><p class=\"ds-desk__l\">Cenu a termín vám pošleme do 48 hodin.</p><div class=\"ds-drop\" tabindex=\"0\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"#151b33\" stroke-width=\"2\" stroke-linecap=\"square\"><path d=\"M12 15V4M7 9l5-5 5 5M4 15v5h16v-5\"/></svg><b>Přetáhněte sem PDF nebo STEP</b><span>Výkresy se přenesou rovnou do poptávky.</span></div><button class=\"ds-desk__b\">Nahrát výkres</button></div></div>",
+      "css": ".ds-stage { padding:32px; background:#151b33; } .ds-desk { width:min(420px,100%); padding:28px; background:#fff; color:#151b33; font-family: var(--f-text, Archivo, system-ui, sans-serif); box-shadow:0 1px 2px rgb(21 27 51 / .12), 0 28px 48px -24px rgb(21 27 51 / .45); transition:transform .4s var(--ease, cubic-bezier(0.16,1,0.3,1)), box-shadow .4s var(--ease, cubic-bezier(0.16,1,0.3,1)); } .ds-desk:hover { transform:translateY(-6px); box-shadow:0 2px 4px rgb(21 27 51 / .14), 0 40px 60px -24px rgb(21 27 51 / .6); } .ds-desk__t { margin:0; font-family: var(--f-display, Anybody, Archivo, sans-serif); font-weight:800; font-stretch:118%; font-size:1.75rem; line-height:1; letter-spacing:-.02em; } .ds-desk__l { margin:10px 0 0; font-weight:600; } .ds-drop { display:block; margin-top:18px; padding:18px 18px 16px; border:2px dashed #838ca0; background:#eef0f3; cursor:pointer; transition:background-color .2s var(--ease, cubic-bezier(0.16,1,0.3,1)), border-color .2s var(--ease, cubic-bezier(0.16,1,0.3,1)); } .ds-drop svg { display:block; margin-bottom:8px; } .ds-drop b { display:block; } .ds-drop span { display:block; margin-top:4px; font-size:.9375rem; color:#545d72; } .ds-desk:hover .ds-drop { border-style:solid; border-color:#151b33; background:#edb93c; } .ds-desk:hover .ds-drop span { color:#5e3b10; } .ds-drop:focus-visible { outline:3px solid #151b33; outline-offset:2px; } .ds-desk__b { width:100%; margin-top:14px; min-height:52px; border:2px solid #edb93c; border-radius:0; background:#edb93c; color:#151b33; font:inherit; font-weight:700; cursor:pointer; } .ds-desk__b:hover { background:#151b33; border-color:#151b33; color:#edb93c; }"
+    },
+    {
+      "name": "Capacity Board Row",
+      "kind": "custom",
+      "refersTo": "capacity-cell",
+      "description": "Signature: weekly load cells coloured by the temper ramp in heating order; the only UI use of the ramp.",
+      "html": "<div class=\"ds-cap\"><span class=\"ds-cap__n\">Soustružení</span><span class=\"ds-cap__c\" data-t=\"6\">98 %</span><span class=\"ds-cap__c\" data-t=\"6\">97 %</span><span class=\"ds-cap__c\" data-t=\"5\">92 %</span><span class=\"ds-cap__c\" data-t=\"5\">85 %</span><span class=\"ds-cap__c\" data-t=\"4\">80 %</span><span class=\"ds-cap__c\" data-t=\"3\">72 %</span><span class=\"ds-cap__c\" data-t=\"3\">64 %</span><span class=\"ds-cap__c\" data-t=\"2\">50 %</span></div><ol class=\"ds-ramp\"><li data-t=\"1\">pod 45 %</li><li data-t=\"2\">45–59 %</li><li data-t=\"3\">60–74 %</li><li data-t=\"4\">75–84 %</li><li data-t=\"5\">85–92 %</li><li data-t=\"6\">93 % a víc</li></ol>",
+      "css": ".ds-cap { display:grid; grid-template-columns:150px repeat(8,1fr); gap:4px; align-items:center; font-family: var(--f-text, Archivo, system-ui, sans-serif); color:#151b33; } .ds-cap__n { font-family: var(--f-display, Anybody, Archivo, sans-serif); font-weight:750; font-stretch:112%; } .ds-cap__c { display:grid; place-items:center; height:58px; font-size:.9375rem; font-weight:600; font-variant-numeric:tabular-nums; cursor:default; } .ds-cap__c:hover { outline:3px solid #151b33; outline-offset:1px; } [data-t=\"1\"].ds-cap__c { background:#f7e3a1; } [data-t=\"2\"].ds-cap__c { background:#edb93c; } [data-t=\"3\"].ds-cap__c { background:#d4932b; } [data-t=\"4\"].ds-cap__c { background:#9c5a2e; color:#fff; } [data-t=\"5\"].ds-cap__c { background:#63396f; color:#fff; } [data-t=\"6\"].ds-cap__c { background:#24397a; color:#fff; } .ds-ramp { display:grid; grid-template-columns:repeat(6,minmax(64px,1fr)); gap:4px; max-width:460px; margin:20px 0 0; padding:0; list-style:none; font-family: var(--f-text, Archivo, system-ui, sans-serif); font-size:.875rem; color:#545d72; font-variant-numeric:tabular-nums; } .ds-ramp li::before { content:\"\"; display:block; height:14px; margin-bottom:6px; } .ds-ramp [data-t=\"1\"]::before { background:#f7e3a1; } .ds-ramp [data-t=\"2\"]::before { background:#edb93c; } .ds-ramp [data-t=\"3\"]::before { background:#d4932b; } .ds-ramp [data-t=\"4\"]::before { background:#9c5a2e; } .ds-ramp [data-t=\"5\"]::before { background:#63396f; } .ds-ramp [data-t=\"6\"]::before { background:#24397a; }"
+    },
+    {
+      "name": "Summary Panel",
+      "kind": "card",
+      "refersTo": "summary-panel",
+      "description": "Steel field on white: RFQ live summary, 2px ink rule, hairline rows.",
+      "html": "<div class=\"ds-sum\"><p class=\"ds-sum__t\">Vaše poptávka</p><dl><div><dt>Výkresy</dt><dd>2 soubory</dd></div><div><dt>Množství</dt><dd>250 ks</dd></div></dl></div>",
+      "css": ".ds-sum { max-width:340px; padding:24px; background:#eef0f3; color:#151b33; font-family: var(--f-text, Archivo, system-ui, sans-serif); } .ds-sum__t { margin:0; font-family: var(--f-display, Anybody, Archivo, sans-serif); font-weight:800; font-stretch:116%; font-size:1.5rem; line-height:1.1; } .ds-sum dl { margin:14px 0 0; border-top:2px solid #151b33; } .ds-sum dl div { display:flex; justify-content:space-between; gap:16px; padding:10px 0; border-bottom:1px solid #d5d9e0; font-size:.9375rem; } .ds-sum dt { color:#545d72; } .ds-sum dd { margin:0; font-weight:650; font-variant-numeric:tabular-nums; }"
     }
   ],
   "narrative": {
-    "northStar": "The Fair Stand",
-    "overview": "The site is a machine shop's own stand at the Brno engineering fair, seen in frontal elevation. Signal-yellow system walls are framed by aluminium posts and rails; claims are lettered onto the panels in wide, heavy Archivo; delivered parts stand as exhibits on white plinths; work happens at white counters with graphite tops (capacity, fit check, machine table, request form). The page ground is the warm grey of the hall floor. Everything is square, built from equal panels, and lit by real, soft shadows only where an object physically stands in front of the wall.\n\nThe governing split is home and away: yellow walls persuade, white counters work. On white, yellow is no longer a surface but a signal, marking what is free (capacity weeks), what is selected (palette item, rail position, segmented choice) and what is actionable (the drawing upload). Density is moderate and factual: big lettering on walls, tight tabular data on counters, nothing decorative that is not a piece of stand hardware.\n\nIt must read as a believable Moravian job shop, never as an art piece, a dark \"tech\" site, or a blueprint pastiche, and it shares no grammar with the sibling SETINA demo.",
+    "northStar": "Náběhové barvy",
+    "overview": "**Creative North Star: \"Náběhové barvy\"**\n\nHRANOL is shown in the colours steel takes when it is heated, the temper colours every machinist reads off a part: pale straw, straw, gold, bronze, purple, blue. The page itself is straw, the ink is temper blue, and every photograph is graded between those two poles so that pictures from many photographers read as one shoot. The look is warm, flat and workmanlike: square corners, hairline rules, wide heavy lettering, plain Czech with numbers.\n\nEvery page is framed by a straw ground (top strip, header, page head, interludes, footer with the closing call). Content sits on white sheets inset in that straw by a narrow gutter, so a thin straw edge always shows on both sides of the sheet. One left axis runs through headlines, leads and sheet content; section heads put the headline in columns 1 to 7 and the aside in columns 8 to 12. Sections vary in form rather than repeating a card grid: a technology list with a photograph that changes per row, a plate photograph beside a vertical step axis, the capacity heat board, a case interlude on straw, a before and after comparison table.\n\nThe full temper ramp is a physical scale, not a decoration. It appears as UI colour in exactly one place, the capacity board, where load runs from pale straw (free) to blue (booked) in real heating order, and once as material, in the own heat-tint render of a TIG weld. Motion is limited to state changes on one exponential ease-out plus a sideways cross-document view transition; there are no scroll reveals.",
     "keyCharacteristics": [
-      "Yellow wall panels in an aluminium post-and-rail grid, every panel outlined by a groove line.",
-      "White counters (10px graphite top) and white plinths stand in front of the wall with soft, warm shadows.",
-      "One family, Archivo variable, carried by width: 125 for lettering, 112 for labels and names, 87 with tabular figures for data.",
-      "Square corners everywhere; borders and solid fills instead of rounding.",
-      "One authored motion: a sideways step along the stand between pages, exponential ease-out."
+      "Straw ground frames every page; white sheets inset by the gutter carry content.",
+      "Temper-blue ink for all type and primary buttons; bronze for secondary text on straw, slate for secondary text on white.",
+      "Anybody, wide and heavy, for lettering; Archivo for text, tables and tabular figures.",
+      "Square corners everywhere; the only angled edge is the 45° chamfer on the home hero photograph, echoing the logo.",
+      "Photography graded to one look by `tools/photos.py`, always captioned with subject and credit.",
+      "The temper ramp appears once as UI (capacity board) and once as material (heat-tint weld render)."
     ],
     "rules": [
       {
-        "name": "The Home and Away Rule",
-        "body": "Yellow walls persuade, white counters work. On a white surface, yellow means free, selected or actionable; it is never decoration there.",
+        "name": "The Two Poles Rule",
+        "body": "Straw frames, white carries, ink speaks. No colour outside the palette is introduced, and no gradients are used. One sanctioned exception: the wide piston-rod render in the reference interlude fades out at its bottom through an alpha mask, so its contact shadow dissolves into the straw instead of ending at the crop edge. It is a transparency mask on an image, never a colour gradient.",
         "section": "colors"
       },
       {
-        "name": "The Ink-on-Yellow Rule",
-        "body": "Text on yellow is graphite or Yellow-Wall Ink, nothing else; white text never sits on yellow.",
+        "name": "The Heating Order Rule",
+        "body": "The temper ramp keeps the physical order pale straw, straw, gold, bronze, purple, blue. It is never shuffled, never used as decoration, and appears as UI colour only on the capacity board.",
         "section": "colors"
       },
       {
-        "name": "The Lettering Rule",
-        "body": "Headlines are lettered, not typeset: weight 800, width 125, slightly negative tracking, balanced wrapping. Display tops out at 6rem.",
+        "name": "The Right Secondary Rule",
+        "body": "Secondary text on straw is bronze; secondary text on white is slate muted. Never put muted on straw or bronze on white.",
+        "section": "colors"
+      },
+      {
+        "name": "The Wide Letter Rule",
+        "body": "Anybody is lettering only: 800 weight at width 112 to 122 % for headings, 100 to 104 % for numerals. Paragraphs, tables, forms and buttons are always Archivo.",
         "section": "typography"
       },
       {
-        "name": "The Spec-Sheet Rule",
-        "body": "Every number a buyer compares (dimensions, tolerances, dates, capacity, sizes) is set at width 87 with tabular figures. No monospace, no all-caps labels.",
+        "name": "The Plain Label Rule",
+        "body": "Labels are sentence case Archivo. No uppercase tracking, no monospace, no eyebrow line above a heading.",
         "section": "typography"
       },
       {
-        "name": "The Standing Object Rule",
-        "body": "Only something that physically stands in front of the wall or floor (plinth, counter, open menu, dialog) casts a shadow; wall panels never do.",
+        "name": "The Standing Surface Rule",
+        "body": "Only a surface that stands over another layer casts a shadow. Sheets, cards, tables and photos are flat.",
         "section": "elevation"
+      },
+      {
+        "name": "The One Chamfer Rule",
+        "body": "The 45° chamfer belongs to the logo and the home hero photo only. No other element is clipped, rounded or angled.",
+        "section": "shapes"
       }
     ],
     "dos": [
-      "**Do** build every persuasive block as yellow panels inside an aluminium wall with 10px posts and the 2px groove line.",
-      "**Do** put every working tool (tables, forms, checkers) on a white counter with the 10px graphite top.",
-      "**Do** use yellow on white only to mean free, selected or actionable.",
-      "**Do** set headlines at Archivo 800, width 125, line-height about 0.94 to 1, and keep display at or below 6rem.",
-      "**Do** set comparable numbers at width 87 with tabular figures.",
-      "**Do** keep every edge square and draw focus as a 3px graphite outline.",
-      "**Do** keep motion to state changes on `cubic-bezier(0.16, 1, 0.3, 1)` plus the sideways page step, and honour reduced motion."
+      "Do frame every page in straw and set content on white sheets inset by the gutter, square-cornered.",
+      "Do use temper-blue ink for all type and primary actions; bronze for secondary text on straw, slate muted on white.",
+      "Do set lettering in Anybody 800 at width 112 to 122 % and numerals at 100 to 104 %; set text, tables and forms in Archivo with tabular figures.",
+      "Do keep the temper ramp in heating order and use it as UI colour only on the capacity board.",
+      "Do grade every photograph with `tools/photos.py` and caption it with subject and credit; stand renders on straw tiles with a straw key and blue rim.",
+      "Do vary section form (list with changing photo, plate with step axis, heat board, interlude, comparison table) and keep one left axis.",
+      "Do limit motion to state changes on the single exponential ease-out (`cubic-bezier(0.16, 1, 0.3, 1)`) and the sideways view transition; honour reduced motion."
     ],
     "donts": [
-      "**Don't** give a wall panel a shadow; shadows belong to plinths, counters and overlays only.",
-      "**Don't** use hard offset shadows or rounded corners.",
-      "**Don't** set white text on yellow, or use yellow as decoration on a white surface.",
-      "**Don't** add a second typeface, monospace, or all-caps label lines.",
-      "**Don't** add eyebrows or kickers above headlines.",
-      "**Don't** use blueprint devices (title blocks, stamps, dimension-line ornament), a dark \"tech\" look, or any SETINA grammar (white protocol pages, blue/green measurement accents).",
-      "**Don't** use glyph or emoji icons; icons are stroked SVG with square caps."
+      "Don't add eyebrows or kickers above headings, all-caps labels, or monospace type.",
+      "Don't put arrows in links or em dashes in copy.",
+      "Don't round, clip or angle anything other than the hero photo's single 45° chamfer and the logo.",
+      "Don't introduce colours outside the palette or colour gradients; the temper ramp is a stepped scale, not a gradient. The only fade is the alpha mask on the reference interlude render.",
+      "Don't use the temper ramp decoratively or reorder it.",
+      "Don't run photographs as thumbnails in cards, or ship an ungraded or uncredited photo.",
+      "Don't cast shadows from flat content; only standing surfaces (counter, fit panel, menu, palette) lift.",
+      "Don't add scroll reveals."
     ]
   }
 }
